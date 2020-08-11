@@ -8,4 +8,8 @@
 - Rust version (if building from source): `rustc --version`:
 - Notify version (or commit hash if building from git):
 
-<!-- And as much 
+<!-- And as much of the following as you can / think is relevant: -->
+
+- If you're coming from a project that makes use of Notify, what it is, and a link to the downstream issue if there is one:
+- Filesystem type and options:
+- O
