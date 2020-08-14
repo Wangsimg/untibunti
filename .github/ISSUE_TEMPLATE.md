@@ -12,4 +12,7 @@
 
 - If you're coming from a project that makes use of Notify, what it is, and a link to the downstream issue if there is one:
 - Filesystem type and options:
-- O
+- On Linux: Kernel version:
+- On Windows: version and if you're running under Windows, Cygwin (unsupported), Linux Subsystem:
+- If you're running as a privileged user (root, System):
+- If you're
