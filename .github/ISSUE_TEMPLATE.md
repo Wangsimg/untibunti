@@ -15,4 +15,10 @@
 - On Linux: Kernel version:
 - On Windows: version and if you're running under Windows, Cygwin (unsupported), Linux Subsystem:
 - If you're running as a privileged user (root, System):
-- If you're
+- If you're running in a container, details on the runtime and overlay:
+- If you're running in a VM, details on the hypervisor:
+
+<!-- (remove the ones that are not relevant) -->
+
+
+#### W
