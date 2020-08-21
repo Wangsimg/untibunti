@@ -20,4 +20,14 @@ jobs:
         version:
           - 1.56.0 # MSRV
           - stable
-          - n
+          - nightly
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name:
