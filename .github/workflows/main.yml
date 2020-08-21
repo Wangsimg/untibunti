@@ -38,4 +38,9 @@ jobs:
           rustup override set ${{ matrix.version }}
 
       - name: check build serde,macos_kqueue for examples
-        if: matrix.version != '1.56.0' && matrix.os == 'macos-la
+        if: matrix.version != '1.56.0' && matrix.os == 'macos-latest'
+        run: cargo check -p notify --features=serde,macos_kqueue --examples
+
+      - name: check build serde,macos_kqueue
+        if: matrix.version == '1.56.0' && matrix.os == 'macos-latest'
+      
