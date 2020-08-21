@@ -21,4 +21,16 @@
 <!-- (remove the ones that are not relevant) -->
 
 
-#### W
+#### What you did (as detailed as you can)
+
+
+
+#### What you expected
+
+
+
+#### What happened
+
+
+
+<!-- Thank you! -->
