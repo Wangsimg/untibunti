@@ -43,4 +43,7 @@ jobs:
 
       - name: check build serde,macos_kqueue
         if: matrix.version == '1.56.0' && matrix.os == 'macos-latest'
-      
+        run: cargo check -p notify --features=serde,macos_kqueue
+
+      - name: check build serde for examples
+        if: matrix.version != '1.56.0' && matrix.os != 'macos-latest'
