@@ -51,4 +51,9 @@ jobs:
 
       - name: check build serde
         if: matrix.version == '1.56.0' && matrix.os != 'macos-latest'
-        run: cargo
+        run: cargo check --features=serde
+
+      - name: check build without crossbeam/default features
+        if: matrix.version == 'stable'
+        run: cargo check -p notify --no-default-features --features=macos_fsevent
+        # -p notify
