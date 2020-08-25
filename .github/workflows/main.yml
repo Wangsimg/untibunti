@@ -47,3 +47,8 @@ jobs:
 
       - name: check build serde for examples
         if: matrix.version != '1.56.0' && matrix.os != 'macos-latest'
+        run: cargo check -p notify --features=serde --examples
+
+      - name: check build serde
+        if: matrix.version == '1.56.0' && matrix.os != 'macos-latest'
+        run: cargo
