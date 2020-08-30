@@ -59,4 +59,8 @@ jobs:
         # -p notify required for feature selection!
 
       - name: check build without crossbeam/default features on macos with kqueue
-        if: matrix.version == 'stable' && matrix.os == 'macos
+        if: matrix.version == 'stable' && matrix.os == 'macos-latest'
+        run: cargo check -p notify --no-default-features --features=macos_kqueue
+        # -p notify required for feature selection!
+
+      - name: check
