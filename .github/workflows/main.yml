@@ -72,4 +72,11 @@ jobs:
         if: matrix.version == 'stable'
         run: cargo check --package examples --examples
 
-      - name: test hot_
+      - name: test hot_reload_tide
+        if: matrix.version == 'stable'
+        run: cargo test
+        working-directory: examples/hot_reload_tide
+
+      - name: test
+        if: matrix.version == 'stable'
+        shell
