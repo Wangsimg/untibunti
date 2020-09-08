@@ -79,4 +79,13 @@ jobs:
 
       - name: test
         if: matrix.version == 'stable'
-        shell
+        shell: bash
+        run: tests/and-retry --features serde
+
+  bsd:
+    strategy:
+      matrix:
+        target:
+          - x86_64-unknown-netbsd
+          - x86_64-unknown-freebsd
+    runs-on: ub
