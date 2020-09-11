@@ -88,4 +88,12 @@ jobs:
         target:
           - x86_64-unknown-netbsd
           - x86_64-unknown-freebsd
-    runs-on: ub
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: setup toolchain
+        # `--no-self-update` is needed due to a permission issue on the GHA env.
+        run: |
+ 
