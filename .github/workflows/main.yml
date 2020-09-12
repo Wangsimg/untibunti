@@ -96,4 +96,10 @@ jobs:
       - name: setup toolchain
         # `--no-self-update` is needed due to a permission issue on the GHA env.
         run: |
- 
+          rustup set profile minimal
+          rustup toolchain install stable --no-self-update
+          rustup target add ${{ matrix.target }}
+
+      - name: check build
+        run: |
+        
