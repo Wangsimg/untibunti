@@ -102,4 +102,8 @@ jobs:
 
       - name: check build
         run: |
-        
+          rustc --version && cargo --version
+          cargo build --target ${{ matrix.target }}
+
+      - name: check build without crossbeam/default features
+        run: cargo bui
