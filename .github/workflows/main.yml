@@ -106,4 +106,14 @@ jobs:
           cargo build --target ${{ matrix.target }}
 
       - name: check build without crossbeam/default features
-        run: cargo bui
+        run: cargo build -p notify --no-default-features --target ${{ matrix.target }}
+
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: install cargo-audit
+        run: |
+        
