@@ -17,4 +17,12 @@ v4 commits split out to branch `v4_maintenance` starting with `4.0.16`
 
 - DOCS: correctly document the `crossbeam` feature [#440]
 
-[#440]: https://github.com/notify
+[#440]: https://github.com/notify-rs/notify/pull/440
+
+## debouncer-mini 0.2.0 (2022-08-30)
+
+Upgrade notify dependency to 5.0.0
+
+## notify 5.0.0 (2022-08-28)
+
+For a list of changes when upgrading from v4 see [UPGRADING_V4_TO_V5.md](UPGRADING_V4_TO_
