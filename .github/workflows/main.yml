@@ -116,4 +116,8 @@ jobs:
 
       - name: install cargo-audit
         run: |
-        
+          rustup override set stable
+          cargo install cargo-audit
+
+      - name: audit check
+        run: cargo audit
