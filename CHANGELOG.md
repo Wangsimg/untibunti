@@ -25,4 +25,9 @@ Upgrade notify dependency to 5.0.0
 
 ## notify 5.0.0 (2022-08-28)
 
-For a list of changes when upgrading from v4 see [UPGRADING_V4_TO_V5.md](UPGRADING_V4_TO_
+For a list of changes when upgrading from v4 see [UPGRADING_V4_TO_V5.md](UPGRADING_V4_TO_V5.md).
+
+Differences to 5.0.0-pre.16:
+
+- FIX: update minimum walkdir version to 2.2.2 [#432]
+- CHANGE: add `need_rescan` function to `Event`, allowing easier detection when a res
