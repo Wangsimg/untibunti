@@ -32,4 +32,9 @@ Differences to 5.0.0-pre.16:
 - FIX: update minimum walkdir version to 2.2.2 [#432]
 - CHANGE: add `need_rescan` function to `Event`, allowing easier detection when a rescan is required [#435]
 - FIX: debouncer-mini: change crossbeam feature to `crossbeam`, to allow passthrough with notify re-exports [#429]
-- DOCS: improve v5-to-v5 upgrade docs [
+- DOCS: improve v5-to-v5 upgrade docs [#431]
+- DOCS: file back v4 changelog into main [#437]
+- DOCS: cleanups and link fixes
+
+[#431]: https://github.com/notify-rs/notify/pull/431
+[#432]: https://github.com/notify-rs/
