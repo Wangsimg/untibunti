@@ -37,4 +37,9 @@ Differences to 5.0.0-pre.16:
 - DOCS: cleanups and link fixes
 
 [#431]: https://github.com/notify-rs/notify/pull/431
-[#432]: https://github.com/notify-rs/
+[#432]: https://github.com/notify-rs/notify/pull/432
+[#437]: https://github.com/notify-rs/notify/pull/437
+[#435]: https://github.com/notify-rs/notify/pull/435
+[#429]: https://github.com/notify-rs/notify/pull/429
+
+## 5.0.0
