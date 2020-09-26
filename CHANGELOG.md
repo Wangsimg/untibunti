@@ -54,4 +54,8 @@ Differences to 5.0.0-pre.16:
 
 [#395]: https://github.com/notify-rs/notify/pull/395
 [#406]: https://github.com/notify-rs/notify/pull/406
-[#409]: https://github.com/notify-rs/notify/pull/4
+[#409]: https://github.com/notify-rs/notify/pull/409
+[#425]: https://github.com/notify-rs/notify/pull/425
+[#286]: https://github.com/notify-rs/notify/pull/286
+[#426]: https://github.com/notify-rs/notify/pull/426
+[#371]: https://git
