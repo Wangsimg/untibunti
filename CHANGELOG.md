@@ -64,4 +64,8 @@ Differences to 5.0.0-pre.16:
 
 - CHANGE: raise MSRV to 1.56! [#396] and [#402]
 - FEATURE: add support for pseudo filesystems like sysfs/procfs [#396]
-- F
+- FIX: Fix builds on (Free)BSD due to changes in kqueue fix release [#399]
+
+[#396]: https://github.com/notify-rs/notify/pull/396
+[#399]: https://github.com/notify-rs/notify/pull/399
+[#402]: http
