@@ -50,4 +50,8 @@ Differences to 5.0.0-pre.16:
 - FEATURE: allow disabling crossbeam-channel dependency [#425]
 - FIX: PollWatcher panic after delete-and-recreate [#406]
 - MISC: rework pollwatcher internally [#409]
-- DOCS: clean
+- DOCS: cleanup all docs towards v5 [#395]
+
+[#395]: https://github.com/notify-rs/notify/pull/395
+[#406]: https://github.com/notify-rs/notify/pull/406
+[#409]: https://github.com/notify-rs/notify/pull/4
