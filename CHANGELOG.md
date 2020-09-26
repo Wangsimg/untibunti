@@ -68,4 +68,10 @@ Differences to 5.0.0-pre.16:
 
 [#396]: https://github.com/notify-rs/notify/pull/396
 [#399]: https://github.com/notify-rs/notify/pull/399
-[#402]: http
+[#402]: https://github.com/notify-rs/notify/pull/402
+
+## 5.0.0-pre.14 (2022-03-13)
+
+- CHANGE: upgrade mio to 0.8 [#386]
+- CHANGE: PollWatcher: unify signature of new and with_delay  [#360]
+- CHANGE: e
