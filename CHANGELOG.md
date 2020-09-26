@@ -46,4 +46,8 @@ Differences to 5.0.0-pre.16:
 
 - CHANGE: require config for watcher creation and unify config [#426]
 - CHANGE: fsevent: use RenameMode::Any for renaming events [#371]
-- FEATURE: re-add debouncer as 
+- FEATURE: re-add debouncer as new crate and fixup CI [#286]
+- FEATURE: allow disabling crossbeam-channel dependency [#425]
+- FIX: PollWatcher panic after delete-and-recreate [#406]
+- MISC: rework pollwatcher internally [#409]
+- DOCS: clean
