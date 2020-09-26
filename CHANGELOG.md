@@ -58,4 +58,10 @@ Differences to 5.0.0-pre.16:
 [#425]: https://github.com/notify-rs/notify/pull/425
 [#286]: https://github.com/notify-rs/notify/pull/286
 [#426]: https://github.com/notify-rs/notify/pull/426
-[#371]: https://git
+[#371]: https://github.com/notify-rs/notify/pull/371
+
+## 5.0.0-pre.15 (2022-04-30)
+
+- CHANGE: raise MSRV to 1.56! [#396] and [#402]
+- FEATURE: add support for pseudo filesystems like sysfs/procfs [#396]
+- F
