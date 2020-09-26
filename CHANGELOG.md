@@ -42,4 +42,8 @@ Differences to 5.0.0-pre.16:
 [#435]: https://github.com/notify-rs/notify/pull/435
 [#429]: https://github.com/notify-rs/notify/pull/429
 
-## 5.0.0
+## 5.0.0-pre.16 (2022-08-12)
+
+- CHANGE: require config for watcher creation and unify config [#426]
+- CHANGE: fsevent: use RenameMode::Any for renaming events [#371]
+- FEATURE: re-add debouncer as 
