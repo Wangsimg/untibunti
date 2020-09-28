@@ -74,4 +74,7 @@ Differences to 5.0.0-pre.16:
 
 - CHANGE: upgrade mio to 0.8 [#386]
 - CHANGE: PollWatcher: unify signature of new and with_delay  [#360]
-- CHANGE: e
+- CHANGE: emit EventKind::Modify on kqueue write event [#370]
+- CHANGE: use RenameMode::Any for renaming events [#371]
+- CHANGE: name all threads spawned by notify [#383]
+- FEATURE: Add Watcher::ki
