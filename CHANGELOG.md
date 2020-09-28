@@ -77,4 +77,7 @@ Differences to 5.0.0-pre.16:
 - CHANGE: emit EventKind::Modify on kqueue write event [#370]
 - CHANGE: use RenameMode::Any for renaming events [#371]
 - CHANGE: name all threads spawned by notify [#383]
-- FEATURE: Add Watcher::ki
+- FEATURE: Add Watcher::kind() [#364]
+- FEATURE: Add more Debug/Copy trait impls [#377] [#378]
+- FIX: Fix selection of RecommendedWatcher for macos_kqueue feature  [#362]
+- FIX: Turn possible panic into an error in
