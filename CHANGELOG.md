@@ -82,4 +82,9 @@ Differences to 5.0.0-pre.16:
 - FIX: Fix selection of RecommendedWatcher for macos_kqueue feature  [#362]
 - FIX: Turn possible panic into an error in FSEvents backend when file is deleted rapidly [#369]
 - FIX: lqueue: emit Create Events and watch all files in a directory [#372]
-- FIX: inotify: don't panic on shutd
+- FIX: inotify: don't panic on shutdown [#373]
+
+[#386]: https://github.com/notify-rs/notify/pull/386
+[#360]: https://github.com/notify-rs/notify/pull/360
+[#370]: https://github.com/notify-rs/notify/pull/370
+[#371]: https://github.com/
