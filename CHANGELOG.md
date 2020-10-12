@@ -95,4 +95,10 @@ Differences to 5.0.0-pre.16:
 [#362]: https://github.com/notify-rs/notify/pull/362
 [#369]: https://github.com/notify-rs/notify/pull/369
 [#372]: https://github.com/notify-rs/notify/pull/372
-[#37
+[#373]: https://github.com/notify-rs/notify/pull/373
+
+
+## 5.0.0-pre.13 (2021-09-07)
+
+- Fix: Add path information to inotify and kqueue watch/unwatch errors  [#354]
+- Fix: Delete dbg cal
