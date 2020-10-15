@@ -119,4 +119,7 @@ Differences to 5.0.0-pre.16:
 ## 5.0.0-pre.11 (2021-07-22)
 
 - FEATURE: Add `Kqueue` backend for use on BSD [#335]
-- CHANGE: Change Event
+- CHANGE: Change EventFn to take FnMut [#333]
+- CHANGE: Make `Watcher` object safe [#336]
+- FIX: Join thread in `fseven` on shutdown [#337]
+- FIX: Only check for ENOSPC on inotify_add_watch in `i
