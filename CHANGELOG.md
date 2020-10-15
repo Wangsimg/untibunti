@@ -122,4 +122,8 @@ Differences to 5.0.0-pre.16:
 - CHANGE: Change EventFn to take FnMut [#333]
 - CHANGE: Make `Watcher` object safe [#336]
 - FIX: Join thread in `fseven` on shutdown [#337]
-- FIX: Only check for ENOSPC on inotify_add_watch in `i
+- FIX: Only check for ENOSPC on inotify_add_watch in `inotify` [#330]
+- FIX: Free context when stream is deallocated in `fsevent` [#329]
+- DOCS: Fix missing comma in docs [#340]
+
+[#333]: https://github.com/notify-rs/notify/pull/333
