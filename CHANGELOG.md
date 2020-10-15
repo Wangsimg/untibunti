@@ -108,4 +108,8 @@ Differences to 5.0.0-pre.16:
 
 ## 5.0.0-pre.12 (2021-08-12)
 
-- CHANGE: Move creation 
+- CHANGE: Move creation of watcher into trait [#345]
+- CHANGE: Add EventHandler trait to replace EventFn [#346]
+- FIX: Fix build failure on x86_64-unknown-netbsd [#347]
+
+[#345]: https://github.com/notify-rs/noti
