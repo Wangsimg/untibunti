@@ -130,4 +130,10 @@ Differences to 5.0.0-pre.16:
 [#336]: https://github.com/notify-rs/notify/pull/336
 [#340]: https://github.com/notify-rs/notify/pull/340
 [#337]: https://github.com/notify-rs/notify/pull/337
-[#335]: https://github.com/notify-rs/notify/pull/
+[#335]: https://github.com/notify-rs/notify/pull/335
+[#330]: https://github.com/notify-rs/notify/pull/330
+[#329]: https://github.com/notify-rs/notify/pull/329
+
+## 5.0.0-pre.10 (2021-06-04)
+
+- FIX: Make StreamContextInfo `Send` to fix soundn
