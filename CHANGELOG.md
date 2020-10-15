@@ -127,3 +127,7 @@ Differences to 5.0.0-pre.16:
 - DOCS: Fix missing comma in docs [#340]
 
 [#333]: https://github.com/notify-rs/notify/pull/333
+[#336]: https://github.com/notify-rs/notify/pull/336
+[#340]: https://github.com/notify-rs/notify/pull/340
+[#337]: https://github.com/notify-rs/notify/pull/337
+[#335]: https://github.com/notify-rs/notify/pull/
