@@ -148,4 +148,7 @@ Differences to 5.0.0-pre.16:
 - CHANGE: Hide fsevent::{CFRunLoopIsWaiting,callback}, fix clippy lint warnings [#312]
 - FIX: Fix some clippy lints [#320]
 
-[#3
+[#319]: https://github.com/notify-rs/notify/pull/319
+[#313]: https://github.com/notify-rs/notify/pull/313
+[#312]: https://github.com/notify-rs/notify/pull/312
+[#320]: https://github.com/notify-rs/notify/pull/32
