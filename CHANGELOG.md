@@ -151,4 +151,11 @@ Differences to 5.0.0-pre.16:
 [#319]: https://github.com/notify-rs/notify/pull/319
 [#313]: https://github.com/notify-rs/notify/pull/313
 [#312]: https://github.com/notify-rs/notify/pull/312
-[#320]: https://github.com/notify-rs/notify/pull/32
+[#320]: https://github.com/notify-rs/notify/pull/320
+[#322]: https://github.com/notify-rs/notify/pull/322
+
+## 4.0.17 (2021-05-13)
+
+- FIX: Don't crash on macos when creating & deleting folders in rapid succession [#303]
+
+[#303]: https://githu
