@@ -158,4 +158,9 @@ Differences to 5.0.0-pre.16:
 
 - FIX: Don't crash on macos when creating & deleting folders in rapid succession [#303]
 
-[#303]: https://githu
+[#303]: https://github.com/notify-rs/notify/pull/303
+
+## 5.0.0-pre.8 (2021-05-12)
+
+- HOTFIX: Fix breaking change in fsevent-sys in minor version destroying builds [#316]
+- FIX: Don't crash on m
