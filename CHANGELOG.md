@@ -172,4 +172,12 @@ Differences to 5.0.0-pre.16:
 
 ## 5.0.0-pre.7 (2021-04-15)
 
-- FIX: Display proper error message when reaching inotify limits on linux [
+- FIX: Display proper error message when reaching inotify limits on linux [#285]
+- FIX: Fix leaks on Windows [#298]
+
+[#285]: https://github.com/notify-rs/notify/pull/285
+[#298]: https://github.com/notify-rs/notify/pull/298
+
+## 5.0.0-pre.6 (2021-02-20)
+
+- FIX: Han
