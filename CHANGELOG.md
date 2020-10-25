@@ -167,4 +167,9 @@ Differences to 5.0.0-pre.16:
 - FIX: Remove `anymap`, and replace event attributes with an opaque type. [#306]
 
 [#302]: https://github.com/notify-rs/notify/pull/302
-[#306]: https://github.com/
+[#306]: https://github.com/notify-rs/notify/pull/306
+[#316]: https://github.com/notify-rs/notify/pull/316
+
+## 5.0.0-pre.7 (2021-04-15)
+
+- FIX: Display proper error message when reaching inotify limits on linux [
