@@ -187,4 +187,8 @@ Differences to 5.0.0-pre.16:
 ## 5.0.0-pre.5 (2021-01-28)
 
 - RUSTC: Push the minimum version to 1.47.0 [#280]
-- DEPS: Update `inotify` to 0.9 [#
+- DEPS: Update `inotify` to 0.9 [#280]
+- DEPS: Update `mio` to 0.7 and remove `mio-extras` [#278]
+- FIX: Report events promptly on Linux, even when many occur in rapid succession. [#268]
+
+[#280]: https://github.com/notify-rs/notify/pul
