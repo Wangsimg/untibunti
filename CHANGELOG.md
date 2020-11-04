@@ -191,4 +191,10 @@ Differences to 5.0.0-pre.16:
 - DEPS: Update `mio` to 0.7 and remove `mio-extras` [#278]
 - FIX: Report events promptly on Linux, even when many occur in rapid succession. [#268]
 
-[#280]: https://github.com/notify-rs/notify/pul
+[#280]: https://github.com/notify-rs/notify/pull/280
+[#278]: https://github.com/notify-rs/notify/pull/278
+
+## 5.0.0-pre.4 (2020-10-31)
+
+- CHANGE: Avoid stating the watched path for non-recursive watches with inotify [#256]
+- DOCS: Fix broken li
