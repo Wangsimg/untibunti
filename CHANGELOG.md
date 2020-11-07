@@ -204,4 +204,11 @@ Differences to 5.0.0-pre.16:
 
 ## 5.0.0-pre.3 (2020-06-22)
 
-- DEPS: Removed unused chashm
+- DEPS: Removed unused chashmap dependency [#242]
+
+[#242]: https://github.com/notify-rs/notify/pull/242
+
+## 4.0.16 (2021-04-14)
+
+- FIX: Report events promptly on Linux, even when many occur in rapid succession. [#268]
+- FIX: Fix leaks on Windows and debou
