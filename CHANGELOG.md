@@ -211,4 +211,8 @@ Differences to 5.0.0-pre.16:
 ## 4.0.16 (2021-04-14)
 
 - FIX: Report events promptly on Linux, even when many occur in rapid succession. [#268]
-- FIX: Fix leaks on Windows and debou
+- FIX: Fix leaks on Windows and debounce module. [#288]
+- FIX: Display proper error message when reaching inotify limits on linux. [#290]
+
+[#268]: https://github.com/notify-rs/notify/pull/268
+[#288]: https://github.com
