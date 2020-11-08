@@ -215,4 +215,11 @@ Differences to 5.0.0-pre.16:
 - FIX: Display proper error message when reaching inotify limits on linux. [#290]
 
 [#268]: https://github.com/notify-rs/notify/pull/268
-[#288]: https://github.com
+[#288]: https://github.com/notify-rs/notify/pull/288
+[#290]: https://github.com/notify-rs/notify/pull/290
+
+## 5.0.0-pre.2 (2020-01-07)
+
+- (Temporary): Remove event debouncing.
+- (Temporary): Remove tests.
+- 
