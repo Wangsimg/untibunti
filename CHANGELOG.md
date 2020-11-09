@@ -222,4 +222,8 @@ Differences to 5.0.0-pre.16:
 
 - (Temporary): Remove event debouncing.
 - (Temporary): Remove tests.
-- 
+- CHANGE: Rewrite immediate events to use new system.
+- CHANGE: Remove `Sender`s from watcher API in favour of `EventFn` [#214]
+- DEPS: Update inotify to 0.8. [#234]
+- DEPS: Update crossbeam-channel to 0.4.
+- DEPS: \[
