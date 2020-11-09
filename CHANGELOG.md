@@ -252,4 +252,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: Add new runtime configuration system.
 - FEATURE: Add `Ongoing` events (optional, configured at runtime). [#146], [#183]
 - FEATURE: Bring in new event system from `next` branch. [#187]
-- FEATURE: Allow multiple watchers to send to the s
+- FEATURE: Allow multiple watchers to send to the same channel. [`2a035c86`]
+- CHANGE: Switch to crossbeam channel. [#160]
+- CHANGE: Rename `Chmod` to `Metadata`. [#179], [#180], previously [#112], [#161]
+- CHANGE: Remove `DebouncedEvent` eve
