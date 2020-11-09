@@ -238,3 +238,12 @@ Differences to 5.0.0-pre.16:
 - DEPS: Update winapi to 0.3 and remove kernel32-sys. [#232]
 
 [#232]: https://github.com/notify-rs/notify/pull/232
+
+## 5.0.0-pre.1 (2019-06-30)
+
+_(no changes, just a new release because the old one failed to publish properly)_
+
+## 5.0.0-pre.0 (2019-06-22)
+
+- **yanked 2019-06-30**
+- RUSTC: Push the minimum vers
