@@ -226,4 +226,11 @@ Differences to 5.0.0-pre.16:
 - CHANGE: Remove `Sender`s from watcher API in favour of `EventFn` [#214]
 - DEPS: Update inotify to 0.8. [#234]
 - DEPS: Update crossbeam-channel to 0.4.
-- DEPS: \[
+- DEPS: \[macOS\] Update fsevent to 2.0.1 and fsevent-sys to 3.0.0.
+
+[#214]: https://github.com/notify-rs/notify/pull/214
+[#234]: https://github.com/notify-rs/notify/pull/234
+
+## 4.0.15 (2020-01-07)
+
+- D
