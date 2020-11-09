@@ -250,4 +250,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 - RUSTC: Switch the crate to Rust 2018.
 - FIX: Implement `Sync` for PollWatcher to support FreeBSD. [#197]
 - FEATURE: Add new runtime configuration system.
-- FEATU
+- FEATURE: Add `Ongoing` events (optional, configured at runtime). [#146], [#183]
+- FEATURE: Bring in new event system from `next` branch. [#187]
+- FEATURE: Allow multiple watchers to send to the s
