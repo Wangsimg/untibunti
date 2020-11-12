@@ -262,4 +262,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - META: Rename `v4-legacy` branch to `main`, to further clarify status and prepare for a breaking release.
 - DOCS: Change `v5` to `Next Generation Notify` to allow for a breaking release.
 - DOCS: Add rust-analyzer to Readme showcase.
-- DOCS: Add 
+- DOCS: Add github issue / PR templates and funding.
+
+[#112]: https://github.com/notify-rs/notify/issues/112
+[#146]: https://github.com/notify-rs/notify/issues/146
+[#160]: https://github.com/notify-rs/notify/i
