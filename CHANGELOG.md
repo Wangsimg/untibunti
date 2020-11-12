@@ -259,4 +259,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - DEPS: \[Linux\] Upgrade inotify to 0.7. [#184]
 - DEPS: \[macOS\] Upgrade fsevent to 0.4. [#195]
 - DEPS: Upgrade filetime to 0.2.6.
-- META: Rename `v4-legacy` branch to `main`, to 
+- META: Rename `v4-legacy` branch to `main`, to further clarify status and prepare for a breaking release.
+- DOCS: Change `v5` to `Next Generation Notify` to allow for a breaking release.
+- DOCS: Add rust-analyzer to Readme showcase.
+- DOCS: Add 
