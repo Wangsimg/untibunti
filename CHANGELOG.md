@@ -255,4 +255,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: Allow multiple watchers to send to the same channel. [`2a035c86`]
 - CHANGE: Switch to crossbeam channel. [#160]
 - CHANGE: Rename `Chmod` to `Metadata`. [#179], [#180], previously [#112], [#161]
-- CHANGE: Remove `DebouncedEvent` eve
+- CHANGE: Remove `DebouncedEvent` event classification. [#187]
+- DEPS: \[Linux\] Upgrade inotify to 0.7. [#184]
+- DEPS: \[macOS\] Upgrade fsevent to 0.4. [#195]
+- DEPS: Upgrade filetime to 0.2.6.
+- META: Rename `v4-legacy` branch to `main`, to 
