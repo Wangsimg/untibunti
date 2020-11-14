@@ -266,4 +266,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [#112]: https://github.com/notify-rs/notify/issues/112
 [#146]: https://github.com/notify-rs/notify/issues/146
-[#160]: https://github.com/notify-rs/notify/i
+[#160]: https://github.com/notify-rs/notify/issues/160
+[#161]: https://github.com/notify-rs/notify/issues/161
+[#179]: https://github.com/notify-rs/notify/issues/179
+[#180]: https://github.com/notify-rs/notify/issues/180
+[#183]: https://githu
