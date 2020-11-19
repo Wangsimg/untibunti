@@ -281,4 +281,15 @@ _(no changes, just a new release because the old one failed to publish properly)
 ## 4.0.15 (2020)
 
 - DEPS: Update winapi to 0.3.8 and remove kernel32-sys. [#232]
-- META: The project maintainers are changed from @pass
+- META: The project maintainers are changed from @passcod to notify-rs.
+
+[#232]: https://github.com/notify-rs/notify/pull/232
+
+## 4.0.14 (2019-10-17)
+
+- FIX: Fix deadlock in debouncer. [#210]
+
+[#210]: https://github.com/notify-rs/notify/pull/210
+
+## 4.0.13 (2019-09-01)
+
