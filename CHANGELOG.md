@@ -276,4 +276,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#195]: https://github.com/notify-rs/notify/issues/195
 [#197]: https://github.com/notify-rs/notify/issues/197
 [#201]: https://github.com/notify-rs/notify/issues/201
-[`2a035c86`]: https://github.com/notify-rs/notify/com
+[`2a035c86`]: https://github.com/notify-rs/notify/commit/2a035c86c5f12aeee635a827c1f458211ca923ca
+
+## 4.0.15 (2020)
+
+- DEPS: Update winapi to 0.3.8 and remove kernel32-sys. [#232]
+- META: The project maintainers are changed from @pass
