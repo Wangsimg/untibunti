@@ -273,4 +273,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#183]: https://github.com/notify-rs/notify/issues/183
 [#184]: https://github.com/notify-rs/notify/issues/184
 [#187]: https://github.com/notify-rs/notify/issues/187
-[#195]: https://github.com/notify-rs/notify
+[#195]: https://github.com/notify-rs/notify/issues/195
+[#197]: https://github.com/notify-rs/notify/issues/197
+[#201]: https://github.com/notify-rs/notify/issues/201
+[`2a035c86`]: https://github.com/notify-rs/notify/com
