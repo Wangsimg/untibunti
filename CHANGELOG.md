@@ -332,4 +332,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 ## 4.0.8 (2019-02-06)
 
 - DOCS: Mention hotwatch as alternative API. [#175], [`34775f26`]
--
+- DEPS: \[Linux\] Disable `stream` feature for inotify. [#176], [`e729e279`]
+- DOCS: Add dates to releases in changelog. [`cc621398`]
+- DOCS: Backfill changelog: 4.0.2 to 4.0.7. [`6457f697`]
+- DOCS: 
