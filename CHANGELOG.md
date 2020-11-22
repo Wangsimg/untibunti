@@ -297,4 +297,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 - META: Project is abandoned.
 
 [#202]: https://github.com/notify-rs/notify/issues/202
-[`22e40f5e`]: https://github.com/notify-rs/notify/commit/22e40f5e4cb2a235
+[`22e40f5e`]: https://github.com/notify-rs/notify/commit/22e40f5e4cb2a23528f169fc92015f935edc1c55
+
+## 4.0.12 (2019-05-22)
+
+- FIX: Implement `Sync` for PollWatcher to support FreeBSD. [#198]
+- DEPS: Peg filetime to 1.2.5 to maintain rustc 1.26.1 compatibility. 
