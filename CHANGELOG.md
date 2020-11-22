@@ -323,4 +323,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 4.0.9 (2019-02-09)
 
-- 
+- FIX: High CPU usage in some conditions when using debouncing. [#177], [#178], coming from [rust-analyzer/#556]
+
+[#177]: https://github.com/notify-rs/notify/issues/177
+[#178]: https://github.com/notify-rs/not
