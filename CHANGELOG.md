@@ -309,4 +309,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 4.0.11 (2019-05-08)
 
-- DEPS: \[macOS\] Upgrade fsevent 
+- DEPS: \[macOS\] Upgrade fsevent to 0.4. [#196]
+
+[#196]: https://github.com/notify-rs/notify/issues/196
+
+## 4.0.10 (2019-03-07)
+
+- FIX: Panic caused by a clock race. [#182]
+- DOCS: Add xi to Readme showcase. [`e6f09
