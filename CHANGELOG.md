@@ -335,4 +335,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - DEPS: \[Linux\] Disable `stream` feature for inotify. [#176], [`e729e279`]
 - DOCS: Add dates to releases in changelog. [`cc621398`]
 - DOCS: Backfill changelog: 4.0.2 to 4.0.7. [`6457f697`]
-- DOCS: 
+- DOCS: Backfill changelog: 0.0.1 to 2.6.0. [`d34e6ee7`]
+
+[#175]: https://github.com/notify-rs/notify/issues/175
+[`34775f26`]: https://github.com/notify-rs/notify/commit/34775f2695ec236fabc79f2c938e12e4cd5404
