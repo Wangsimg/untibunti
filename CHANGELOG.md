@@ -338,4 +338,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - DOCS: Backfill changelog: 0.0.1 to 2.6.0. [`d34e6ee7`]
 
 [#175]: https://github.com/notify-rs/notify/issues/175
-[`34775f26`]: https://github.com/notify-rs/notify/commit/34775f2695ec236fabc79f2c938e12e4cd5404
+[`34775f26`]: https://github.com/notify-rs/notify/commit/34775f2695ec236fabc79f2c938e12e4cd54047b
+[#176]: https://github.com/notify-rs/notify/issues/176
+[`e729e279`]: https://github.com/notify-rs/notify/commit/e729e279f0721c4a5729e725a7cd5e4d761efb58
+[`cc621398`]: https://github.com/notify
