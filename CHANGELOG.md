@@ -341,4 +341,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 [`34775f26`]: https://github.com/notify-rs/notify/commit/34775f2695ec236fabc79f2c938e12e4cd54047b
 [#176]: https://github.com/notify-rs/notify/issues/176
 [`e729e279`]: https://github.com/notify-rs/notify/commit/e729e279f0721c4a5729e725a7cd5e4d761efb58
-[`cc621398`]: https://github.com/notify
+[`cc621398`]: https://github.com/notify-rs/notify/commit/cc621398e56e2257daf5816e8c2bb01ca79e8ddb
+[`6457f697`]: https://github.com/notify-rs/notify/commit/6457f6975a9171483d531fcdafb956d2ee334d55
+[`d34e6ee7`]: https://github.com/notify-r
