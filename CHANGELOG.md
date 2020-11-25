@@ -349,4 +349,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 ## 4.0.7 (2019-01-23)
 
 - DOCS: Document unexpected behaviour around watching a tree root. [#165], [#166]
-- DOCS: Remove v2 documentation. [`8310b2cc
+- DOCS: Remove v2 documentation. [`8310b2cc`]
+- TESTS: Change how tests are skipped. [`0b4c8400`]
+- DOCS: Add timetrack to Readme showcase. [#167]
+- META: Change commit message style: commits are now prefixed by a `[topic]`.
+- FIX:
