@@ -343,4 +343,10 @@ _(no changes, just a new release because the old one failed to publish properly)
 [`e729e279`]: https://github.com/notify-rs/notify/commit/e729e279f0721c4a5729e725a7cd5e4d761efb58
 [`cc621398`]: https://github.com/notify-rs/notify/commit/cc621398e56e2257daf5816e8c2bb01ca79e8ddb
 [`6457f697`]: https://github.com/notify-rs/notify/commit/6457f6975a9171483d531fcdafb956d2ee334d55
-[`d34e6ee7`]: https://github.com/notify-r
+[`d34e6ee7`]: https://github.com/notify-rs/notify/commit/d34e6ee70df9b4905cbd04fe1a2b5770a9d2a4d4
+
+
+## 4.0.7 (2019-01-23)
+
+- DOCS: Document unexpected behaviour around watching a tree root. [#165], [#166]
+- DOCS: Remove v2 documentation. [`8310b2cc
