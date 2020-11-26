@@ -356,4 +356,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: Make sure debounced watcher terminates. [#170]
 - FIX: \[Linux\] Remove thread wake-up on timeout (introduced in 4.0.5 by error). [#174]
 - FIX: Restore compatibility with Rust before 1.30.0. [`eab75118`]
-- META: E
+- META: Enforce compatibility with Rust 1.26.1 via CI. [`50924cd6`]
+- META: Add maintenance status badge. [`ecd686ba`]
+- DOCS: Freeze v4 branch (2018-10-05) [`8310b2cc`] — and subsequently unfreeze 
