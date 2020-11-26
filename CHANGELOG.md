@@ -353,4 +353,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - TESTS: Change how tests are skipped. [`0b4c8400`]
 - DOCS: Add timetrack to Readme showcase. [#167]
 - META: Change commit message style: commits are now prefixed by a `[topic]`.
-- FIX:
+- FIX: Make sure debounced watcher terminates. [#170]
+- FIX: \[Linux\] Remove thread wake-up on timeout (introduced in 4.0.5 by error). [#174]
+- FIX: Restore compatibility with Rust before 1.30.0. [`eab75118`]
+- META: E
