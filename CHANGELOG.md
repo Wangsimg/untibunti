@@ -358,4 +358,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: Restore compatibility with Rust before 1.30.0. [`eab75118`]
 - META: Enforce compatibility with Rust 1.26.1 via CI. [`50924cd6`]
 - META: Add maintenance status badge. [`ecd686ba`]
-- DOCS: Freeze v4 branch (2018-10-05) [`8310b2cc`] — and subsequently unfreeze 
+- DOCS: Freeze v4 branch (2018-10-05) [`8310b2cc`] — and subsequently unfreeze it. (2019-01-19) [`20c40f99`], [`c00da47c`]
+
+[#165]: https://github.com/notify-rs/notify/issues/165
+[#166]: https://github.com/notify-rs/notify/issues/166
+[`8310b2cc
