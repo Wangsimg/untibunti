@@ -364,4 +364,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#166]: https://github.com/notify-rs/notify/issues/166
 [`8310b2cc`]: https://github.com/notify-rs/notify/commit/8310b2ccf68382548914df6ffeaf45248565b9fb
 [`0b4c8400`]: https://github.com/notify-rs/notify/commit/0b4c840091f5b3ebd3262d7109308828800dc976
-[#16
+[#167]: https://github.com/notify-rs/notify/issues/167
+[#170]: https://github.com/notify-rs/notify/issues/170
+[#174]: https://github.com/notify-rs/notify/issues/174
