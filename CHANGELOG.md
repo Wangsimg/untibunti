@@ -369,4 +369,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#174]: https://github.com/notify-rs/notify/issues/174
 [`eab75118`]: https://github.com/notify-rs/notify/commit/eab75118464dc5d0d48dce31ab7a8e07d7e68d80
 [`50924cd6`]: https://github.com/notify-rs/notify/commit/50924cd676c8bce877634e32260ef3872f2feccb
-[`ecd686ba`]: https://github.com/notif
+[`ecd686ba`]: https://github.com/notify-rs/notify/commit/ecd686bab604442c315c114e536bdc310a9413b1
+[`20c40f99`]: https://github.com/notify-rs/notify/commit/20c40f99ad042fba5abf36f65e9ee598562744d8
+[`c00da47c`]: https://gi
