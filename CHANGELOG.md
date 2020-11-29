@@ -371,4 +371,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 [`50924cd6`]: https://github.com/notify-rs/notify/commit/50924cd676c8bce877634e32260ef3872f2feccb
 [`ecd686ba`]: https://github.com/notify-rs/notify/commit/ecd686bab604442c315c114e536bdc310a9413b1
 [`20c40f99`]: https://github.com/notify-rs/notify/commit/20c40f99ad042fba5abf36f65e9ee598562744d8
-[`c00da47c`]: https://gi
+[`c00da47c`]: https://github.com/notify-rs/notify/commit/c00da47ce63815972ef7c4bafd3b8c2c11b8b0de
+
+
+## 4.0.6 (2018-08-30)
+
+- FIX: Add some consts to restore semver compatibility. [`6d4f1ab9`]
+
+[`6d4f1ab9`]: ht
