@@ -378,4 +378,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - FIX: Add some consts to restore semver compatibility. [`6d4f1ab9`]
 
-[`6d4f1ab9`]: ht
+[`6d4f1ab9`]: https://github.com/notify-rs/notify/commit/6d4f1ab9af76ecfc856f573a3f5584ddcfe017df
+
+
+## 4.0.5 (2018-08-29)
+
+- DEPS: Update winapi (0.3), mio (0.6), inotify (0.6), filetime (0.2), bi
