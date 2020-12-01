@@ -383,4 +383,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 4.0.5 (2018-08-29)
 
-- DEPS: Update winapi (0.3), mio (0.6), inotify (0.6), filetime (0.2), bi
+- DEPS: Update winapi (0.3), mio (0.6), inotify (0.6), filetime (0.2), bitflags (1.0). [#162]
+- SEMVER BREAK: The bitflags upgrade introduced a breaking change to the API.
+
+[#162]: https://github.com/notify-rs/notify/issues/162
+
+
+## 4.0.4 (2018-08-06)
+
+- Derive various tra
