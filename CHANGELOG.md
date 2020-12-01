@@ -391,4 +391,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 4.0.4 (2018-08-06)
 
-- Derive various tra
+- Derive various traits for `RecursiveMode`. [#148]
+- DOCS: Add docket to Readme showcase. [#154]
+- DOCS: [Rename OS X to macOS](https://www.wired.com/2016/06/apple-os-x-dead-long-live-macos/). [#156]
+- FIX: \[
