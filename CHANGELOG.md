@@ -405,4 +405,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 ## 4.0.3 (2017-11-26)
 
 - FIX: \[macOS\] Concurrency-related FSEvent crash. [#132]
-- FIX: \[macOS\] Deadlock due to race in FsEvent
+- FIX: \[macOS\] Deadlock due to race in FsEventWatcher. [#118], [#134]
+- DEPS: Update walkdir to 2.0. [`fbffef24`]
+
+[#118]: https://github.com/notify-rs/notify/issues/118
+[#132]: https://github.com/notify-rs/notify/issues/132
+[#13
