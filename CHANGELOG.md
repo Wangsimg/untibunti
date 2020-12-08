@@ -398,4 +398,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [#148]: https://github.com/notify-rs/notify/issues/148
 [#154]: https://github.com/notify-rs/notify/issues/154
-[#156]: https://
+[#156]: https://github.com/notify-rs/notify/issues/156
+[#159]: https://github.com/notify-rs/notify/issues/159
+
+
+## 4.0.3 (2017-11-26)
+
+- FIX: \[macOS\] Concurrency-related FSEvent crash. [#132]
+- FIX: \[macOS\] Deadlock due to race in FsEvent
