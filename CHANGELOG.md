@@ -410,4 +410,10 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [#118]: https://github.com/notify-rs/notify/issues/118
 [#132]: https://github.com/notify-rs/notify/issues/132
-[#13
+[#134]: https://github.com/notify-rs/notify/issues/134
+[`fbffef24`]: https://github.com/notify-rs/notify/commit/fbffef244726aae6e8a98e33ecb77a66274db91b
+
+
+## 4.0.2 (2017-11-03)
+
+- FI
