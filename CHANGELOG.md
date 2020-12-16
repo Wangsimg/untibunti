@@ -416,4 +416,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 4.0.2 (2017-11-03)
 
-- FI
+- FIX: Suppress events for files which have been moved and deleted if a new file in the original location is created quickly when using the debounced interface (eg. while safe-saving files) [#129]
+
+[#129]: https://
