@@ -418,4 +418,14 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - FIX: Suppress events for files which have been moved and deleted if a new file in the original location is created quickly when using the debounced interface (eg. while safe-saving files) [#129]
 
-[#129]: https://
+[#129]: https://github.com/notify-rs/notify/issues/129
+
+
+## 4.0.1 (2017-03-25)
+
+- FIX: \[Linux\] Detect moves if two connected move events are split between two mio polls
+
+
+## 4.0.0 (2017-02-07)
+
+- CHANGE: \[Linux\] Upda
