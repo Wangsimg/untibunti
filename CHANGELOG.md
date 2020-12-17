@@ -428,4 +428,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 4.0.0 (2017-02-07)
 
-- CHANGE: \[Linux\] Upda
+- CHANGE: \[Linux\] Update dependency to inotify 0.3.0.
+- FIX: \[macOS\] `.watch()` panics on macOS when the target doesn't exist. [#105]
+
+[#105]: https://github.com/notify-rs/notify/issues/105
+
+## (start work on vNex
