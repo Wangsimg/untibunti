@@ -433,4 +433,10 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [#105]: https://github.com/notify-rs/notify/issues/105
 
-## (start work on vNex
+## (start work on vNext) (2016-12-29)
+
+## 3.0.1 (2016-12-05)
+
+- FIX: \[macOS\] Fix multiple panics in debounce module related to move events. [#99], [#100], [#101]
+
+[#99]: https://github.com/notify-rs/notify/issu
