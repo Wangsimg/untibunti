@@ -439,4 +439,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - FIX: \[macOS\] Fix multiple panics in debounce module related to move events. [#99], [#100], [#101]
 
-[#99]: https://github.com/notify-rs/notify/issu
+[#99]: https://github.com/notify-rs/notify/issues/99
+[#100]: https://github.com/notify-rs/notify/issues/100
+[#101]: https://github.com/notify-rs/notify/issues/101
+
+
+## 3.0.0 (2016-10-30)
+
+- FIX: \[Windows\] Fix watching files on Windows using relative paths. [#
