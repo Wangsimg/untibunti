@@ -449,4 +449,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: \[Windows\] Fix watching files on Windows using relative paths. [#90]
 - FEATURE: Add debounced event notification interface. [#63]
 - FEATURE: \[Polling\] Implement `CREATE` and `DELETE` events for PollWatcher. [#88]
-- FEATURE: \[Polling\] Add `::with_delay
+- FEATURE: \[Polling\] Add `::with_delay_ms()` constructor. [#88]
+- FIX: \[macOS\] Report `ITEM_CHANGE_OWNER` as `CHMOD` events. [#93]
+- FIX: \[Linux\] Emit `CLOSE_WRITE` events. [#93]
+- FEATURE: Allow recu
