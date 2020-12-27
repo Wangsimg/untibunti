@@ -446,4 +446,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 3.0.0 (2016-10-30)
 
-- FIX: \[Windows\] Fix watching files on Windows using relative paths. [#
+- FIX: \[Windows\] Fix watching files on Windows using relative paths. [#90]
+- FEATURE: Add debounced event notification interface. [#63]
+- FEATURE: \[Polling\] Implement `CREATE` and `DELETE` events for PollWatcher. [#88]
+- FEATURE: \[Polling\] Add `::with_delay
