@@ -452,4 +452,6 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: \[Polling\] Add `::with_delay_ms()` constructor. [#88]
 - FIX: \[macOS\] Report `ITEM_CHANGE_OWNER` as `CHMOD` events. [#93]
 - FIX: \[Linux\] Emit `CLOSE_WRITE` events. [#93]
-- FEATURE: Allow recu
+- FEATURE: Allow recursion mode to be changed. [#60], [#61] **breaking**
+- FEATURE: Track move events using a cookie.
+- FEATURE: \[macOS\] Return an error when trying to unwatch non-existing fil
