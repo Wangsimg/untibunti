@@ -454,4 +454,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: \[Linux\] Emit `CLOSE_WRITE` events. [#93]
 - FEATURE: Allow recursion mode to be changed. [#60], [#61] **breaking**
 - FEATURE: Track move events using a cookie.
-- FEATURE: \[macOS\] Return an error when trying to unwatch non-existing fil
+- FEATURE: \[macOS\] Return an error when trying to unwatch non-existing file or directory.
+- CHANGE: \[Linux\] Remove `IGNORED` event. **breaking**
+- CHANGE: \[Linux\] Provide absolute paths even if the watch was created with a relative path.
+
+[#60]: https://github.c
