@@ -462,4 +462,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#61]: https://github.com/notify-rs/notify/issues/61
 [#63]: https://github.com/notify-rs/notify/issues/63
 [#88]: https://github.com/notify-rs/notify/issues/88
-[#90]
+[#90]: https://github.com/notify-rs/notify/issues/90
+[#93]: https://github.com/notify-rs/notify/issues/93
+
+
+## 2.6.3 (2016-08-05)
+
+- FIX: \[macOS\] Bump `fsevents` version. [#91]
+
+[#91]: https:/
