@@ -458,4 +458,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - CHANGE: \[Linux\] Remove `IGNORED` event. **breaking**
 - CHANGE: \[Linux\] Provide absolute paths even if the watch was created with a relative path.
 
-[#60]: https://github.c
+[#60]: https://github.com/notify-rs/notify/issues/60
+[#61]: https://github.com/notify-rs/notify/issues/61
+[#63]: https://github.com/notify-rs/notify/issues/63
+[#88]: https://github.com/notify-rs/notify/issues/88
+[#90]
