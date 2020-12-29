@@ -470,4 +470,10 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - FIX: \[macOS\] Bump `fsevents` version. [#91]
 
-[#91]: https:/
+[#91]: https://github.com/notify-rs/notify/issues/91
+
+
+## 2.6.2 (2016-07-05)
+
+- FEATURE: \[macOS\] Implement Send and Sync for FsWatcher. [#82]
+- FEATURE: \[Windows\] Implement Send and Sync for ReadDirectoryChan
