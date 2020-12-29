@@ -483,4 +483,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#82]: https://github.com/notify-rs/notify/issues/82
 
 
-## 2.6.1 (20
+## 2.6.1 (2016-06-09)
+
+- FIX: \[Linux\] Only register _directories_ for watching. [#74]
+- DOCS: Update Readme example code. [`ccfb54be`]
+
+[`ccfb54be`]: https://github.com/notify-rs/notify/comm
