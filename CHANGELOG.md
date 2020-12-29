@@ -476,4 +476,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 ## 2.6.2 (2016-07-05)
 
 - FEATURE: \[macOS\] Implement Send and Sync for FsWatcher. [#82]
-- FEATURE: \[Windows\] Implement Send and Sync for ReadDirectoryChan
+- FEATURE: \[Windows\] Implement Send and Sync for ReadDirectoryChangesWatcher. [#82]
+- DOCS: Add example to monitor a given file or directory. [#77]
+
+[#77]: https://github.com/notify-rs/notify/issues/77
+[#82]: https://github.com/notify-rs/notify/issues/82
+
+
+## 2.6.1 (20
