@@ -496,4 +496,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - Fix clippy lints. [#57]
 - Run formatter. [#59]
-- Fix 
+- Fix warnings. [#58]
+- FEATURE: Add `Result` alias. [#72]
+- DEPS: Update inotify (0.2). [#49], [#70]
+- DOCS: Write API docs. [#65]
+- FEATURE: \[Linux\] Add op::IGNORED. [#73]
+- Simplify C
