@@ -488,4 +488,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: \[Linux\] Only register _directories_ for watching. [#74]
 - DOCS: Update Readme example code. [`ccfb54be`]
 
-[`ccfb54be`]: https://github.com/notify-rs/notify/comm
+[`ccfb54be`]: https://github.com/notify-rs/notify/commit/ccfb54bed3df7c4c5e0058566f10232e92b526a4
+[#74]: https://github.com/notify-rs/notify/issues/74
+
+
+## 2.6.0 (2016-06-06)
+
+- Fix clippy lints. [#57]
+- Run formatter. [#59]
+- Fix 
