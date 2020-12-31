@@ -513,3 +513,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#65]: https://github.com/notify-rs/notify/issues/65
 [#73]: https://github.com/notify-rs/notify/issues/73
 [#75]: https://github.com/notify-rs/notify/issues/75
+[#71]: https://github.com/notify-rs/notify/issues/71
+
+
+## 2.5.5 (2016-03-27)
+
+- DOCS: Explain an FSEvent limitation. [#51]
+- DOCS: Clean up example code. [#52]
+- RELENG: \[ma
