@@ -505,4 +505,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: Implement std::Error for our Error type. [#71]
 
 [#57]: https://github.com/notify-rs/notify/issues/57
-[#59]: https://github.com/notify-rs/notify/issues
+[#59]: https://github.com/notify-rs/notify/issues/59
+[#58]: https://github.com/notify-rs/notify/issues/58
+[#72]: https://github.com/notify-rs/notify/issues/72
+[#49]: https://github.com/notify-rs/notify/issues/49
+[#70]: https://github.com/notify-rs/
