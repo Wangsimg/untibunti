@@ -501,4 +501,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - DEPS: Update inotify (0.2). [#49], [#70]
 - DOCS: Write API docs. [#65]
 - FEATURE: \[Linux\] Add op::IGNORED. [#73]
-- Simplify C
+- Simplify Cargo.toml. [#75]
+- FEATURE: Implement std::Error for our Error type. [#71]
+
+[#57]: https://github.com/notify-rs/notify/issues/57
+[#59]: https://github.com/notify-rs/notify/issues
