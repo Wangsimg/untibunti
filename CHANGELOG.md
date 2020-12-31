@@ -509,4 +509,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#58]: https://github.com/notify-rs/notify/issues/58
 [#72]: https://github.com/notify-rs/notify/issues/72
 [#49]: https://github.com/notify-rs/notify/issues/49
-[#70]: https://github.com/notify-rs/
+[#70]: https://github.com/notify-rs/notify/issues/70
+[#65]: https://github.com/notify-rs/notify/issues/65
+[#73]: https://github.com/notify-rs/notify/issues/73
+[#75]: https://github.com/notify-rs/notify/issues/75
