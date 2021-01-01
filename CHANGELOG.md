@@ -525,4 +525,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [#51]: https://github.com/notify-rs/notify/issues/51
 [#52]: https://github.com/notify-rs/notify/issues/52
-[#54]: https://gith
+[#54]: https://github.com/notify-rs/notify/issues/54
+[#56]: https://github.com/notify-rs/notify/issues/56
+
+
+## 2.5.4 (2016-01-23)
+
+- META: Remove all `*` specifiers to comply with Crates.io policy. [`9f44843f`]
+
+[`9f44843f
