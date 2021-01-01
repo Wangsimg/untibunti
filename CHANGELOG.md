@@ -520,4 +520,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - DOCS: Explain an FSEvent limitation. [#51]
 - DOCS: Clean up example code. [#52]
-- RELENG: \[ma
+- RELENG: \[macOS\] Support i686. [#54]
+- FEATURE: Implement `Display` on `Error`. [#56]
+
+[#51]: https://github.com/notify-rs/notify/issues/51
+[#52]: https://github.com/notify-rs/notify/issues/52
+[#54]: https://gith
