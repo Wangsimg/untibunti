@@ -533,4 +533,14 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - META: Remove all `*` specifiers to comply with Crates.io policy. [`9f44843f`]
 
-[`9f44843f
+[`9f44843f`]: https://github.com/notify-rs/notify/commit/9f44843f2e70b2e1fcb3ef8b0834692fe75a99a6
+
+
+## 2.5.3 (2015-12-25)
+
+- RELENG: \[Linux\] Support i686. [#46]
+
+[#46]: https://github.com/notify-rs/notify/issues/46
+
+
+## 2.5.2 (2015-12-21)
