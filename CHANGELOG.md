@@ -549,4 +549,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: \[Linux\] Use a mio loop instead of handmade. [#40]
 - DEPS: Replace walker by walkdir (0.1). [#44]
 
-[#43]: https://github.com/notify-rs/notif
+[#43]: https://github.com/notify-rs/notify/issues/43
+[#45]: https://github.com/notify-rs/notify/issues/45
+[#40]: https://github.com/notify-rs/notify/issues/40
+[#44]: https://github.com/notify-rs/notify/issues/44
+
+
+## 2.5.1 (2015-12-05)
+
+- META: Update Code of 
