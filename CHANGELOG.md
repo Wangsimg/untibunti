@@ -544,3 +544,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 
 ## 2.5.2 (2015-12-21)
+
+- META: Fix AppVeyor build. [#43], [#45]
+- FIX: \[Linux\] Use a mio loop instead of handmade. [#40]
+- DEPS: Replace walker by walkdir (0.1). [#44]
+
+[#43]: https://github.com/notify-rs/notif
