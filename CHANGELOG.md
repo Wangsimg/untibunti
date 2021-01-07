@@ -557,4 +557,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 2.5.1 (2015-12-05)
 
-- META: Update Code of 
+- META: Update Code of Conduct. [`c963bdf0`]
+- RELENG: Support musl. [#42]
+
+[`c963bdf0`]: https://github.com/notify-rs/notify/commit/c963bdf0a94d951f5d11ca2a691eeb42746e721b
+[#42]: https://github.com/notify-r
