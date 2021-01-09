@@ -561,4 +561,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 - RELENG: Support musl. [#42]
 
 [`c963bdf0`]: https://github.com/notify-rs/notify/commit/c963bdf0a94d951f5d11ca2a691eeb42746e721b
-[#42]: https://github.com/notify-r
+[#42]: https://github.com/notify-rs/notify/issues/42
+
+
+## 2.5.0 (2015-11-29)
+
+- FEATURE: Add Windows backend. [#39]
+- META: Add AppVeyor CI. [`304473c3`]
+
+[`304473c3`]: https://github.com/notify-rs/notify/commit/304473c32a76ec60bbcb20a1d673fa7c5
