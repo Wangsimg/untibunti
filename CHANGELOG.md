@@ -580,4 +580,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 2.4.0 (2015-10-25)
 
-- FIX: \[macOS\] Stop segfa
+- FIX: \[macOS\] Stop segfault when watcher is moved. [#33], [#35]
+- FEATURE: Add `::with_delay` to poll. [#34]
+
+[#33]: https://github.com/notify-rs/notify/issues/33
+[#35]: https://github.com/notify-rs/notify/issues/35
+[#34]: https://github
