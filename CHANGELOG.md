@@ -600,4 +600,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 - META: Use Travis CI Linux containers, macOS builds. [`7081297d`]
 - FIX: \[macOS\] Symlinks and broken tests. [#27]
 
-[`7081297d`]: https://github.com/notify-rs/notify/commit/7
+[`7081297d`]: https://github.com/notify-rs/notify/commit/7081297de6c557484e4cc7fbf8b2837a7d408870
+[#27]: https://github.com/notify-rs/notify/issues/27
+
+
+## 2.3.1 (2015-08-24)
+
+- FIX: Move paths instead of borrowing. [`3340d740`]
+
+[`3340d740`]: https://github.com/notify-rs/notify/comm
