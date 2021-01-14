@@ -569,4 +569,15 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: Add Windows backend. [#39]
 - META: Add AppVeyor CI. [`304473c3`]
 
-[`304473c3`]: https://github.com/notify-rs/notify/commit/304473c32a76ec60bbcb20a1d673fa7c5
+[`304473c3`]: https://github.com/notify-rs/notify/commit/304473c32a76ec60bbcb20a1d673fa7c5879767d
+[#39]: https://github.com/notify-rs/notify/issues/39
+
+
+## 2.4.1 (2015-11-06)
+
+- FIX: \[macOS\] Race condition in FSEvent. [#33]
+
+
+## 2.4.0 (2015-10-25)
+
+- FIX: \[macOS\] Stop segfa
