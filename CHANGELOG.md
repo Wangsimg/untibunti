@@ -608,4 +608,14 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - FIX: Move paths instead of borrowing. [`3340d740`]
 
-[`3340d740`]: https://github.com/notify-rs/notify/comm
+[`3340d740`]: https://github.com/notify-rs/notify/commit/3340d7401230be5f5ed59956b29f8db3a1c12d1c
+
+
+## 2.3.0 (2015-07-29)
+
+- FEATURE: Use `AsRef<Path>` instead of `Path` in signatures. [#25]
+
+[#25]: https://github.com/notify-rs/notify/issues/25
+
+
+## 2.2.0 (20
