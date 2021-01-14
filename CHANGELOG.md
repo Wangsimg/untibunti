@@ -585,4 +585,15 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [#33]: https://github.com/notify-rs/notify/issues/33
 [#35]: https://github.com/notify-rs/notify/issues/35
-[#34]: https://github
+[#34]: https://github.com/notify-rs/notify/issues/34
+
+
+## 2.3.3 (2015-10-08)
+
+- FIX: Comply with Rust RFC 1214, adding `Sized` bound to trait. [#32]
+
+[#32]: https://github.com/notify-rs/notify/issues/32
+
+
+## 2.3.2 (2015-09-08)
+
