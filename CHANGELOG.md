@@ -618,4 +618,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 [#25]: https://github.com/notify-rs/notify/issues/25
 
 
-## 2.2.0 (20
+## 2.2.0 (2015-07-12)
+
+- FEATURE: \[Linux\] Support watching single file. [#22]
+- META: Change release commit message style to be just the version, instead of "Cut ${version}".
+
+[#22]: https://github.com/notify-rs/notify/is
