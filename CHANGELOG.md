@@ -597,3 +597,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 2.3.2 (2015-09-08)
 
+- META: Use Travis CI Linux containers, macOS builds. [`7081297d`]
+- FIX: \[macOS\] Symlinks and broken tests. [#27]
+
+[`7081297d`]: https://github.com/notify-rs/notify/commit/7
