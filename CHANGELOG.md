@@ -623,4 +623,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: \[Linux\] Support watching single file. [#22]
 - META: Change release commit message style to be just the version, instead of "Cut ${version}".
 
-[#22]: https://github.com/notify-rs/notify/is
+[#22]: https://github.com/notify-rs/notify/issues/22
+
+
+## 2.1.0 (2015-06-26)
+
+- META: Add Code of Conduct. [`4b88f7d9`]
+- FEATURE: Restore Poll backend. [#12]
+- FIX: \[Linux\] Inverse op::WRITE and op::REMOVE. [#18]
+- DEPS: \[macOS\] Us
