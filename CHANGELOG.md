@@ -635,4 +635,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 [`4b88f7d9`]: https://github.com/notify-rs/notify/commit/4b88f7d9fcc4c41bb942c46c792f64afc848db2c
 [#12]: https://github.com/notify-rs/notify/issues/12
-[#18]: https
+[#18]: https://github.com/notify-rs/notify/issues/18
+[#14]: https://github.com/notify-rs/notify/issues/14
+
+
+## 2.0.0 (2015-06-09)
+
+- RUST: 1.0 is out! Use stable, migrate to walker crate. [`0b127a38`]
+- FE
