@@ -631,4 +631,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 - META: Add Code of Conduct. [`4b88f7d9`]
 - FEATURE: Restore Poll backend. [#12]
 - FIX: \[Linux\] Inverse op::WRITE and op::REMOVE. [#18]
-- DEPS: \[macOS\] Us
+- DEPS: \[macOS\] Use fsevent (0.2). [#14]
+
+[`4b88f7d9`]: https://github.com/notify-rs/notify/commit/4b88f7d9fcc4c41bb942c46c792f64afc848db2c
+[#12]: https://github.com/notify-rs/notify/issues/12
+[#18]: https
