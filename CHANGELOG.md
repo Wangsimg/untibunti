@@ -642,4 +642,8 @@ _(no changes, just a new release because the old one failed to publish properly)
 ## 2.0.0 (2015-06-09)
 
 - RUST: 1.0 is out! Use stable, migrate to walker crate. [`0b127a38`]
-- FE
+- FEATURE: \[macOS\] FSEvent backend. [#13]
+- BREAKING: Remove Poll backend. [`92936460`]
+
+[`0b127a38`]: https://github.com/notify-rs/notify/commit/0b127a383072b0136bb44f74d5580abae01e7627
+[`92936460`]: h
