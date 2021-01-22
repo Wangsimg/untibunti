@@ -646,4 +646,10 @@ _(no changes, just a new release because the old one failed to publish properly)
 - BREAKING: Remove Poll backend. [`92936460`]
 
 [`0b127a38`]: https://github.com/notify-rs/notify/commit/0b127a383072b0136bb44f74d5580abae01e7627
-[`92936460`]: h
+[`92936460`]: https://github.com/notify-rs/notify/commit/92936460070d4dd44090fc9e3b4c4150c2ef434c
+[#13]: https://github.com/notify-rs/notify/issues/13
+
+
+## 1.2.2 (2015-05-09)
+
+- RUST: Update to latest,
