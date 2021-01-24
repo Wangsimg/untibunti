@@ -661,4 +661,15 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - RUST: Update to latest, thread upgrades. [#9]
 
-[#9]: https://gi
+[#9]: https://github.com/notify-rs/notify/issues/9
+
+
+## 1.2.0 (2015-03-05)
+
+- FEATURE: Provide full path to file that caused an event. [#8]
+
+[#8]: https://github.com/notify-rs/notify/issues/8
+
+
+## 1.1.3 (2015-02-18)
+
