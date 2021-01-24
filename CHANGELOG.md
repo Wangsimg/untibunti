@@ -652,4 +652,13 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 1.2.2 (2015-05-09)
 
-- RUST: Update to latest,
+- RUST: Update to latest, migrate to bitflags crate. [#11]
+
+[#11]: https://github.com/notify-rs/notify/issues/11
+
+
+## 1.2.1 (2015-04-03)
+
+- RUST: Update to latest, thread upgrades. [#9]
+
+[#9]: https://gi
