@@ -673,3 +673,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 1.1.3 (2015-02-18)
 
+- META: Add Travis CI. [`2c865803`]
+- DOCS: Build using Rust-CI. [`9c7dd960`]
+- RUST: Update to latest, upgrade to new IO. [#5]
+- FIX: \[Linux\] Keep watching when there are no even
