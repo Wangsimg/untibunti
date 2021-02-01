@@ -676,4 +676,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 - META: Add Travis CI. [`2c865803`]
 - DOCS: Build using Rust-CI. [`9c7dd960`]
 - RUST: Update to latest, upgrade to new IO. [#5]
-- FIX: \[Linux\] Keep watching when there are no even
+- FIX: \[Linux\] Keep watching when there are no events received. [#6]
+
+[`2c865803`]: https://github.com/notify-rs/notify/commit/2c865803ba9d04227661e3cd320732da22526634
+[`9c7dd960`]: https://github.com/notify-rs/notify/commit/9c7dd960f3f4e635
