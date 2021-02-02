@@ -686,4 +686,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 1.1.2 (2015-02-03)
 
-- RUST: Update to la
+- RUST: Update to latest, using `old_io`. [`116af0c4`]
+
+[`116af0c4`]: https://github.com/notify-rs/notify/commit/116af0c4e00b5d5b268a9d69bba772cc1f2f67fa
+
+
+## 1.1.1 (2015-01-06)
+
+- RUST: Update to latest and fix changes to channels. [`3270
