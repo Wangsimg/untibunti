@@ -679,4 +679,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: \[Linux\] Keep watching when there are no events received. [#6]
 
 [`2c865803`]: https://github.com/notify-rs/notify/commit/2c865803ba9d04227661e3cd320732da22526634
-[`9c7dd960`]: https://github.com/notify-rs/notify/commit/9c7dd960f3f4e635
+[`9c7dd960`]: https://github.com/notify-rs/notify/commit/9c7dd960f3f4e635046b6a1dd4b847c69dfd4f94
+[#5]: https://github.com/notify-rs/notify/issues/5
+[#6]: https://github.com/notify-rs/notify/issues/6
+
+
+## 1.1.2 (2015-02-03)
+
+- RUST: Update to la
