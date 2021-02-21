@@ -693,4 +693,13 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 1.1.1 (2015-01-06)
 
-- RUST: Update to latest and fix changes to channels. [`3270
+- RUST: Update to latest and fix changes to channels. [`327075c2`]
+
+[`327075c2`]: https://github.com/notify-rs/notify/commit/327075c2ecd1d0c4123e9979aeebde4248015ef6
+
+
+## 1.1.0 (2015-01-06)
+
+- FEATURE: \[Linux\] Recursive watch. [#2]
+
+[#2]: https:
