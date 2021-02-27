@@ -712,4 +712,14 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FIX: \[Linux\] Stop panic when inotify backend is dropped. [`6f7d38a9`]
 
 [`6f7d38a9`]: https://github.com/notify-rs/notify/commit/6f7d38a94aead30c2f059bb6bea8bdcda542d4af
-[`fd78d0e4`]: https://github.com/notify-rs/notify/commit/fd78
+[`fd78d0e4`]: https://github.com/notify-rs/notify/commit/fd78d0e4b988d92d1be81e05e1812432ad476149
+
+
+## 1.0.4 (2014-12-23)
+
+- RUST: Update to latest. [`d45c954c`]
+
+[`d45c954c`]: https://github.com/notify-rs/notify/commit/d45c954c03f2d4d948e252abdcf7136a139b378b
+
+
+##
