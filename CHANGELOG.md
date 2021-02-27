@@ -709,4 +709,7 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - RELENG: Publish on crates.io. [`6f7d38a9`]
 - RUST: Update to latest. [`fd78d0e4`]
-- FIX: \[Linux\] Stop panic when inotify backend is dropped. [`6
+- FIX: \[Linux\] Stop panic when inotify backend is dropped. [`6f7d38a9`]
+
+[`6f7d38a9`]: https://github.com/notify-rs/notify/commit/6f7d38a94aead30c2f059bb6bea8bdcda542d4af
+[`fd78d0e4`]: https://github.com/notify-rs/notify/commit/fd78
