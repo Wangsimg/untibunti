@@ -702,4 +702,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 - FEATURE: \[Linux\] Recursive watch. [#2]
 
-[#2]: https:
+[#2]: https://github.com/notify-rs/notify/issues/2
+
+
+## 1.0.5 (2015-01-03)
+
+- RELENG: Publish on crates.io. [`6f7d38a9`]
+- RUST: Update to latest. [`fd78d0e4`]
+- FIX: \[Linux\] Stop panic when inotify backend is dropped. [`6
