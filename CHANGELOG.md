@@ -722,4 +722,11 @@ _(no changes, just a new release because the old one failed to publish properly)
 [`d45c954c`]: https://github.com/notify-rs/notify/commit/d45c954c03f2d4d948e252abdcf7136a139b378b
 
 
-##
+## 1.0.3 (2014-12-23)
+
+- DEPS: Update inotify (0.1). [`fcda20bb`]
+
+[`fcda20bb`]: https://github.com/notify-rs/notify/commit/fcda20bb17e9b2b30645350c57d9bfe2ce9b78d9
+
+
+## 1.0.2 (2014-12-2
