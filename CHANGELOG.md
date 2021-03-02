@@ -729,4 +729,13 @@ _(no changes, just a new release because the old one failed to publish properly)
 [`fcda20bb`]: https://github.com/notify-rs/notify/commit/fcda20bb17e9b2b30645350c57d9bfe2ce9b78d9
 
 
-## 1.0.2 (2014-12-2
+## 1.0.2 (2014-12-21)
+
+- FIX: Build on non-Linux platforms. [`55c8d7b0`]
+
+[`55c8d7b0`]: https://github.com/notify-rs/notify/commit/55c8d7b0bb7ae767b3032ccb57571de5d506e842
+
+
+## 1.0.1 (2014-12-20)
+
+- DOCS: Add exam
