@@ -746,4 +746,9 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 1.0.0 (2014-12-20)
 
-- FE
+- FEATURE: Invent Notify.
+- FEATURE: \[Linux\] inotify backend. [`d4b61fd2`]
+- FEATURE: Poll backend. [`b24a5339`]
+- FEATURE: Recommended watcher selection mechanism. [`a9c60ebf`]
+
+[`d4b61f
