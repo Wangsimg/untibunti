@@ -738,4 +738,12 @@ _(no changes, just a new release because the old one failed to publish properly)
 
 ## 1.0.1 (2014-12-20)
 
-- DOCS: Add exam
+- DOCS: Add example code to Readme. [`f14e83f3`]
+- META: Add cargo metadata. [`f14e83f3`]
+
+[`f14e83f3`]: https://github.com/notify-rs/notify/commit/f14e83f33df33f362f151525bce768911933d0dd
+
+
+## 1.0.0 (2014-12-20)
+
+- FE
