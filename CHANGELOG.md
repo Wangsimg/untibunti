@@ -751,4 +751,5 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: Poll backend. [`b24a5339`]
 - FEATURE: Recommended watcher selection mechanism. [`a9c60ebf`]
 
-[`d4b61f
+[`d4b61fd2`]: https://github.com/notify-rs/notify/commit/d4b61fd29c82880c473f20a2d7119977817530e0
+[`b24a5339`]: https://github.com/notify-rs/notify/commit/b24a5339680792cbd7b4f25ad7ec23a04b2eba
