@@ -752,4 +752,10 @@ _(no changes, just a new release because the old one failed to publish properly)
 - FEATURE: Recommended watcher selection mechanism. [`a9c60ebf`]
 
 [`d4b61fd2`]: https://github.com/notify-rs/notify/commit/d4b61fd29c82880c473f20a2d7119977817530e0
-[`b24a5339`]: https://github.com/notify-rs/notify/commit/b24a5339680792cbd7b4f25ad7ec23a04b2eba
+[`b24a5339`]: https://github.com/notify-rs/notify/commit/b24a5339680792cbd7b4f25ad7ec23a04b2eba57
+[`a9c60ebf`]: https://github.com/notify-rs/notify/commit/a9c60ebf0fcc630bd745dc7e5106a24311c5f1bf
+
+
+## 0.0.1 (2014-12-11)
+
+- Empty release (no code)
