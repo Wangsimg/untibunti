@@ -20,4 +20,8 @@ include:
 * Focusing on what is best for the community
 * Showing empathy towards other community members
 
-Example
+Examples of unacceptable behavior by participants include:
+
+* The use of sexualized language or imagery and unwelcome sexual attention or
+advances
+* Trolling, insulting/derogatory comments, and personal o
