@@ -28,4 +28,10 @@ advances
 * Public or private harassment
 * Publishing others' private information, such as a physical or electronic
   address, without explicit permission
-* Other conduct which could reason
+* Other conduct which could reasonably be considered inappropriate in a
+  professional setting
+
+## Our Responsibilities
+
+Project maintainers are responsible for clarifying the standards of acceptable
+behavior and are expected to ta
