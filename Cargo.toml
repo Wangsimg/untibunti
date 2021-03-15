@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+  "notify",
+  "notify-debouncer-mini",
+  
+  # internal
+  "examples"
+ 
