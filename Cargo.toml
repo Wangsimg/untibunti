@@ -13,4 +13,4 @@ exclude = ["examples/hot_reload_tide"]
 
 [patch.crates-io]
 notify = { path = "notify/" }
-notify-debouncer-min
+notify-debouncer-mini = { path = "notify-debouncer-mini/" }
