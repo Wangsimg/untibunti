@@ -7,4 +7,11 @@
 [![» Conduct](https://flat.badgen.net/badge/contributor/covenant/5e0d73)][coc]
 [![» Public Domain](https://flat.badgen.net/badge/license/CC0-1.0/purple)][cc0]
 
-_Cross-platform files
+_Cross-platform filesystem notification library for Rust._
+
+(Looking for desktop notifications instead? Have a look at [notify-rust] or
+[alert-after]!)
+
+- [API Documentation][docs]
+- [Debouncer Documentation][debouncer]
+- [Examples][exa
