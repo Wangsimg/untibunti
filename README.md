@@ -35,4 +35,6 @@ and others.
 
 ### FSEvents
 
-Due to the 
+Due to the inner security model of FSEvents (see [FileSystemEventSecurity]),
+some events cannot be observed easily when trying to follow files that do not
+belong to you. In this case, revert
