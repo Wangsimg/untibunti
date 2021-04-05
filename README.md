@@ -37,4 +37,10 @@ and others.
 
 Due to the inner security model of FSEvents (see [FileSystemEventSecurity]),
 some events cannot be observed easily when trying to follow files that do not
-belong to you. In this case, revert
+belong to you. In this case, reverting to the pollwatcher can fix the issue,
+with a slight performance cost.
+
+## License
+
+Notify was undergoing a transition to using the
+[Artistic License 2.0][artistic] from [CC Zero 1.0]
