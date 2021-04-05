@@ -46,4 +46,8 @@ Notify was undergoing a transition to using the
 [Artistic License 2.0][artistic] from [CC Zero 1.0][cc0]. A part of
 the code is only under CC0, and another part, including _all new code_ since
 commit [`3378ac5a`], is under _both_ CC0 and Artistic. When the project was to be
-entirely free of CC0 code, the license 
+entirely free of CC0 code, the license would be formally changed (and that would
+have incurred a major version bump). As part of this, contributions to Notify since
+would agree to release under both.
+
+[`3378ac5a`]: https://github.c
