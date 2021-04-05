@@ -19,4 +19,12 @@ _Cross-platform filesystem notification library for Rust._
 - [Changelog][changelog]
 - [Upgrading from v4](UPGRADING_V4_TO_V5.md)
 - Earliest supported Rust version: **1.56**
-- **incomplete [Guides and in-depth docs][wiki
+- **incomplete [Guides and in-depth docs][wiki]**
+
+As used by: [alacritty], [cargo watch], [cobalt], [docket], [mdBook], [pax],
+[rdiff], [rust-analyzer], [timetrack], [watchexec], [xi-editor], [watchfiles],
+and others.
+
+## Platforms
+
+- Linux / Andro
