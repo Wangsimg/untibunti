@@ -27,4 +27,12 @@ and others.
 
 ## Platforms
 
-- Linux / Andro
+- Linux / Android: inotify
+- macOS: FSEvents or kqueue, see features
+- Windows: ReadDirectoryChangesW
+- FreeBSD / NetBSD / OpenBSD / DragonflyBSD: kqueue
+- All platforms: polling
+
+### FSEvents
+
+Due to the 
