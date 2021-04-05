@@ -14,4 +14,9 @@ _Cross-platform filesystem notification library for Rust._
 
 - [API Documentation][docs]
 - [Debouncer Documentation][debouncer]
-- [Examples][exa
+- [Examples][examples]
+- [Crate page][crate]
+- [Changelog][changelog]
+- [Upgrading from v4](UPGRADING_V4_TO_V5.md)
+- Earliest supported Rust version: **1.56**
+- **incomplete [Guides and in-depth docs][wiki
