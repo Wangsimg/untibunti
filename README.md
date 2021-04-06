@@ -71,4 +71,8 @@ Originally created by [Félix Saparelli] and awesome [contributors].
 [cargo watch]: https://github.com/passcod/cargo-watch
 [cc0]: ./LICENSE
 [changelog]: ./CHANGELOG.md
-[cobalt]: https://github.com/cobalt-org/cobalt
+[cobalt]: https://github.com/cobalt-org/cobalt.rs
+[coc]: http://contributor-covenant.org/version/1/4/
+[contributors]: https://github.com/notify-rs/notify/graphs/contributors
+[crate]: https://crates.io/crates/notify
+[docket]: https://iwillspeak.github.
