@@ -62,4 +62,8 @@ Originally created by [Félix Saparelli] and awesome [contributors].
 
 [Chokidar]: https://github.com/paulmillr/chokidar
 [FileSystemEventSecurity]: https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/FSEvents_ProgGuide/FileSystemEventSecurity/FileSystemEventSecurity.html
-[debouncer]: https://github.com/notify-rs/notify/tre
+[debouncer]: https://github.com/notify-rs/notify/tree/main/notify-debouncer-mini
+[Félix Saparelli]: https://passcod.name
+[alacritty]: https://github.com/jwilm/alacritty
+[alert-after]: https://github.com/frewsxcv/alert-after
+[artistic]: ./LICENSE.
