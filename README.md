@@ -66,4 +66,9 @@ Originally created by [Félix Saparelli] and awesome [contributors].
 [Félix Saparelli]: https://passcod.name
 [alacritty]: https://github.com/jwilm/alacritty
 [alert-after]: https://github.com/frewsxcv/alert-after
-[artistic]: ./LICENSE.
+[artistic]: ./LICENSE.ARTISTIC
+[build]: https://github.com/notify-rs/notify/actions
+[cargo watch]: https://github.com/passcod/cargo-watch
+[cc0]: ./LICENSE
+[changelog]: ./CHANGELOG.md
+[cobalt]: https://github.com/cobalt-org/cobalt
