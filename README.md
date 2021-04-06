@@ -83,4 +83,8 @@ Originally created by [Félix Saparelli] and awesome [contributors].
 [mdBook]: https://github.com/rust-lang-nursery/mdBook
 [notify-rust]: https://github.com/hoodie/notify-rust
 [pax]: https://pax.js.org/
-[rdiff]: https://githu
+[rdiff]: https://github.com/dyule/rdiff
+[rust-analyzer]: https://github.com/rust-analyzer/rust-analyzer
+[serde]: https://serde.rs/
+[timetrack]: https://github.com/joshmcguigan/timetrack
+[watchexec
