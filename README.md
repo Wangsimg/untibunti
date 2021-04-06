@@ -55,4 +55,10 @@ would agree to release under both.
 ## Origins
 
 Inspired by Go's [fsnotify] and Node.js's [Chokidar], born out of need for
-[cargo watch], and general frustration 
+[cargo watch], and general frustration at the non-existence of C/Rust
+cross-platform notify libraries.
+
+Originally created by [Félix Saparelli] and awesome [contributors].
+
+[Chokidar]: https://github.com/paulmillr/chokidar
+[FileSystemEventSe
