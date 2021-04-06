@@ -79,4 +79,8 @@ Originally created by [Félix Saparelli] and awesome [contributors].
 [docs]: https://docs.rs/notify/5.1.0/notify/
 [fsnotify]: https://github.com/go-fsnotify/fsnotify
 [handlebars-iron]: https://github.com/sunng87/handlebars-iron
-[hotwatch]: https://github.com/francesc
+[hotwatch]: https://github.com/francesca64/hotwatch
+[mdBook]: https://github.com/rust-lang-nursery/mdBook
+[notify-rust]: https://github.com/hoodie/notify-rust
+[pax]: https://pax.js.org/
+[rdiff]: https://githu
