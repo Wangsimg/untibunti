@@ -50,4 +50,9 @@ entirely free of CC0 code, the license would be formally changed (and that would
 have incurred a major version bump). As part of this, contributions to Notify since
 would agree to release under both.
 
-[`3378ac5a`]: https://github.c
+[`3378ac5a`]: https://github.com/notify-rs/notify/commit/3378ac5ad5f174dfeacce6edadd7ded1a08d384e
+
+## Origins
+
+Inspired by Go's [fsnotify] and Node.js's [Chokidar], born out of need for
+[cargo watch], and general frustration 
