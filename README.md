@@ -61,4 +61,5 @@ cross-platform notify libraries.
 Originally created by [Félix Saparelli] and awesome [contributors].
 
 [Chokidar]: https://github.com/paulmillr/chokidar
-[FileSystemEventSe
+[FileSystemEventSecurity]: https://developer.apple.com/library/mac/documentation/Darwin/Conceptual/FSEvents_ProgGuide/FileSystemEventSecurity/FileSystemEventSecurity.html
+[debouncer]: https://github.com/notify-rs/notify/tre
