@@ -87,4 +87,8 @@ Originally created by [Félix Saparelli] and awesome [contributors].
 [rust-analyzer]: https://github.com/rust-analyzer/rust-analyzer
 [serde]: https://serde.rs/
 [timetrack]: https://github.com/joshmcguigan/timetrack
-[watchexec
+[watchexec]: https://github.com/mattgreen/watchexec
+[wiki]: https://github.com/notify-rs/notify/wiki
+[xi-editor]: https://xi-editor.io/
+[watchfiles]: https://watchfiles.helpmanual.io/
+[examples]: examples/
