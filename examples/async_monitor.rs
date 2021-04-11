@@ -36,4 +36,8 @@ fn async_watcher() -> notify::Result<(RecommendedWatcher, Receiver<notify::Resul
 async fn async_watch<P: AsRef<Path>>(path: P) -> notify::Result<()> {
     let (mut watcher, mut rx) = async_watcher()?;
 
-    // Add a path t
+    // Add a path to be watched. All files and directories at that path and
+    // below will be monitored for changes.
+    watcher.watch(path.as_ref(), RecursiveMode::Recursive)?;
+
+    while let Some(res) = rx.next().await 
