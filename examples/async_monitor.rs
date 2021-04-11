@@ -28,4 +28,12 @@ fn async_watcher() -> notify::Result<(RecommendedWatcher, Receiver<notify::Resul
         futures::executor::block_on(async {
             tx.send(res).await.unwrap();
         })
- 
+    }, Config::default())?;
+
+    Ok((watcher, rx))
+}
+
+async fn async_watch<P: AsRef<Path>>(path: P) -> notify::Result<()> {
+    let (mut watcher, mut rx) = async_watcher()?;
+
+    // Add a path t
