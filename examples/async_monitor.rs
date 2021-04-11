@@ -12,4 +12,11 @@ fn main() {
         .expect("Argument 1 needs to be a path");
     println!("watching {}", path);
 
-    futures::ex
+    futures::executor::block_on(async {
+        if let Err(e) = async_watch(path).await {
+            println!("error: {:?}", e)
+        }
+    });
+}
+
+fn async_watcher() -> notify::Result<(RecommendedWat
