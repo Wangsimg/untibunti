@@ -23,4 +23,9 @@ fn async_watcher() -> notify::Result<(RecommendedWatcher, Receiver<notify::Resul
     let (mut tx, rx) = channel(1);
 
     // Automatically select the best implementation for your platform.
-    // You can also access each implementation 
+    // You can also access each implementation directly e.g. INotifyWatcher.
+    let watcher = RecommendedWatcher::new(move |res| {
+        futures::executor::block_on(async {
+            tx.send(res).await.unwrap();
+        })
+ 
