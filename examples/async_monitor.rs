@@ -40,4 +40,12 @@ async fn async_watch<P: AsRef<Path>>(path: P) -> notify::Result<()> {
     // below will be monitored for changes.
     watcher.watch(path.as_ref(), RecursiveMode::Recursive)?;
 
-    while let Some(res) = rx.next().await 
+    while let Some(res) = rx.next().await {
+        match res {
+            Ok(event) => println!("changed: {:?}", event),
+            Err(e) => println!("watch error: {:?}", e),
+        }
+    }
+
+    Ok(())
+}
