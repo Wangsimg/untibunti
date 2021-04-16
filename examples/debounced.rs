@@ -18,4 +18,9 @@ fn main() {
     // setup debouncer
     let (tx, rx) = std::sync::mpsc::channel();
 
-    // No specifi
+    // No specific tickrate, max debounce time 2 seconds
+    let mut debouncer = new_debouncer(Duration::from_secs(2), None, tx).unwrap();
+
+    debouncer
+        .watcher()
+        .watch(Path:
