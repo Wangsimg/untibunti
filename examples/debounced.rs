@@ -23,4 +23,13 @@ fn main() {
 
     debouncer
         .watcher()
-        .watch(Path:
+        .watch(Path::new("."), RecursiveMode::Recursive)
+        .unwrap();
+
+    // print all events, non returning
+    for events in rx {
+        for e in events {
+            println!("{:?}", e);
+        }
+    }
+}
