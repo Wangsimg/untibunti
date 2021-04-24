@@ -27,4 +27,7 @@ fn main() {
     // print all events, non returning
     for events in rx {
         for e in events {
-            pr
+            println!("{:?}", e);
+        }
+    }
+}
