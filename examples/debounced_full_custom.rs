@@ -10,4 +10,11 @@ fn main() {
         let path = Path::new("test.txt");
         let _ = std::fs::remove_file(&path);
         loop {
-            std::
+            std::fs::write(&path, b"Lorem ipsum").unwrap();
+            std::thread::sleep(Duration::from_millis(250));
+        }
+    });
+
+    // setup debouncer
+    let (tx, rx) = std::sync::mpsc::channel();
+    /
