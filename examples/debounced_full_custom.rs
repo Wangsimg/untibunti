@@ -19,3 +19,12 @@ fn main() {
     let (tx, rx) = std::sync::mpsc::channel();
     // select backend via fish operator, here PollWatcher backend
     let mut debouncer = new_debouncer_opt::<_,notify::PollWatcher>(Duration::from_secs(2), None, tx, Config::default()).unwrap();
+
+    debouncer
+        .watcher()
+        .watch(Path::new("."), RecursiveMode::Recursive)
+        .unwrap();
+    // print all events, non returning
+    for events in rx {
+        for e in events {
+            pr
