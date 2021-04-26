@@ -69,3 +69,8 @@ async fn get_message(req: Request) -> tide::Result {
     let name: String = req.param("name")?.parse()?;
     let config = &req.state().lock().unwrap();
     let value = config.messages.get(&name);
+
+    let body = Body::from_json(&value)?;
+    res.set_body(body);
+    Ok(res)
+}
