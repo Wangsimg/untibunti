@@ -16,4 +16,8 @@ pub struct Message {
     pub volume: f32,
 }
 
-pub fn load_co
+pub fn load_config(path: &str) -> Result<Config, Box<dyn std::error::Error>> {
+    let file = std::fs::File::open(path)?;
+    let file_size = file.metadata()?.len();
+
+    if fi
