@@ -26,4 +26,6 @@ pub fn load_config(path: &str) -> Result<Config, Box<dyn std::error::Error>> {
 
     let reader = std::io::BufReader::new(file);
 
-    let config: Config = serde_json::from_r
+    let config: Config = serde_json::from_reader(reader)?;
+    Ok(config)
+}
