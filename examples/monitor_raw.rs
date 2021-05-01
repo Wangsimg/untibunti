@@ -12,4 +12,8 @@ fn main() {
 }
 
 fn watch<P: AsRef<Path>>(path: P) -> notify::Result<()> {
-    let (tx, rx) = std::sync::mp
+    let (tx, rx) = std::sync::mpsc::channel();
+
+    // Automatically select the best implementation for your platform.
+    // You can also access each implementation directly e.g. INotifyWatcher.
+    let mut wa
