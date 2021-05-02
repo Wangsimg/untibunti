@@ -3,4 +3,10 @@
 /// This example can't be demonstrated under windows, it might be relevant for network shares
 #[cfg(not(target_os = "windows"))]
 fn not_windows_main() -> notify::Result<()> {
-    use notify::{Pol
+    use notify::{PollWatcher, RecursiveMode, Watcher, Config};
+    use std::path::Path;
+    use std::time::Duration;
+
+    let mut paths: Vec<_> = std::env::args()
+        .skip(1)
+        .map(|arg| Path::new(&arg).to_pat
