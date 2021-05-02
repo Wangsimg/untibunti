@@ -25,4 +25,9 @@ fn watch<P: AsRef<Path>>(path: P) -> notify::Result<()> {
     for res in rx {
         match res {
             Ok(event) => println!("changed: {:?}", event),
-            Err(e) => println!("watch error: {:?}
+            Err(e) => println!("watch error: {:?}", e),
+        }
+    }
+
+    Ok(())
+}
