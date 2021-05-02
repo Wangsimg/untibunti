@@ -25,4 +25,8 @@ fn not_windows_main() -> notify::Result<()> {
     }
 
     println!("watching {:?}...", paths);
-    // configure 
+    // configure pollwatcher backend
+    let config = Config::default()
+        .with_compare_contents(true) // crucial part for pseudo filesystems 
+        .with_poll_interval(Duration::from_secs(2));
+ 
