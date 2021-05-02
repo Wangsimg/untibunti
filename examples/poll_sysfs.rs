@@ -18,4 +18,11 @@ fn not_windows_main() -> notify::Result<()> {
             std::process::exit(1);
         }
         println!(
-            "Trying {
+            "Trying {:?}, use `ping localhost` to see changes!",
+            lo_stats
+        );
+        paths.push(lo_stats);
+    }
+
+    println!("watching {:?}...", paths);
+    // configure 
