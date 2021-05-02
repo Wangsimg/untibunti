@@ -9,4 +9,9 @@ fn not_windows_main() -> notify::Result<()> {
 
     let mut paths: Vec<_> = std::env::args()
         .skip(1)
-        .map(|arg| Path::new(&arg).to_pat
+        .map(|arg| Path::new(&arg).to_path_buf())
+        .collect();
+    if paths.is_empty() {
+        let lo_stats = Path::new("/sys/class/net/lo/statistics/tx_bytes").to_path_buf();
+        if !lo_stats.exists() {
+            
