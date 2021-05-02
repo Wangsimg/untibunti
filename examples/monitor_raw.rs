@@ -20,4 +20,9 @@ fn watch<P: AsRef<Path>>(path: P) -> notify::Result<()> {
 
     // Add a path to be watched. All files and directories at that path and
     // below will be monitored for changes.
-    watcher.watch(pat
+    watcher.watch(path.as_ref(), RecursiveMode::Recursive)?;
+
+    for res in rx {
+        match res {
+            Ok(event) => println!("changed: {:?}", event),
+            Err(e) => println!("watch error: {:?}
