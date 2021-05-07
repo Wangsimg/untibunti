@@ -29,4 +29,8 @@ fn not_windows_main() -> notify::Result<()> {
     let config = Config::default()
         .with_compare_contents(true) // crucial part for pseudo filesystems 
         .with_poll_interval(Duration::from_secs(2));
- 
+    let (tx, rx) = std::sync::mpsc::channel();
+    // create pollwatcher backend
+    let mut watcher = PollWatcher::new(tx, config)?;
+    for path in paths {
+        // watch all 
