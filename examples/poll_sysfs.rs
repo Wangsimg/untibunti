@@ -33,4 +33,10 @@ fn not_windows_main() -> notify::Result<()> {
     // create pollwatcher backend
     let mut watcher = PollWatcher::new(tx, config)?;
     for path in paths {
-        // watch all 
+        // watch all paths
+        watcher.watch(&path, RecursiveMode::Recursive)?;
+    }
+    // print all events, never returns
+    for res in rx {
+        match res {
+            Ok(event)
