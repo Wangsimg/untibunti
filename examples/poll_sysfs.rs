@@ -49,4 +49,9 @@ fn not_windows_main() -> notify::Result<()> {
 
 fn main() -> notify::Result<()> {
     #[cfg(not(target_os = "windows"))]
-   
+    {
+        not_windows_main()
+    }
+    #[cfg(target_os = "windows")]
+    notify::Result::Ok(())
+}
