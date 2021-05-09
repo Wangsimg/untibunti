@@ -39,4 +39,14 @@ fn not_windows_main() -> notify::Result<()> {
     // print all events, never returns
     for res in rx {
         match res {
-            Ok(event)
+            Ok(event) => println!("changed: {:?}", event),
+            Err(e) => println!("watch error: {:?}", e),
+        }
+    }
+
+    Ok(())
+}
+
+fn main() -> notify::Result<()> {
+    #[cfg(not(target_os = "windows"))]
+   
