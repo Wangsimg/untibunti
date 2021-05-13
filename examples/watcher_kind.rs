@@ -7,4 +7,8 @@ fn main() {
     // This example is a little bit misleading as you can just create one Config and use it for all watchers.
     // That way the pollwatcher specific stuff is still configured, if it should be used.
     let mut watcher: Box<dyn Watcher> = if RecommendedWatcher::kind() == WatcherKind::PollWatcher {
-        // c
+        // custom config for PollWatcher kind
+        // you 
+        let config = Config::default()
+            .with_poll_interval(Duration::from_secs(1));
+        Box::new(PollWatcher::ne
