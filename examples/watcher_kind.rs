@@ -17,4 +17,11 @@ fn main() {
         Box::new(RecommendedWatcher::new(tx, Config::default()).unwrap())
     };
 
-    // watch some 
+    // watch some stuff
+    watcher
+        .watch(Path::new("."), RecursiveMode::Recursive)
+        .unwrap();
+
+    // just print all events, this blocks forever
+    for e in rx {
+        pri
