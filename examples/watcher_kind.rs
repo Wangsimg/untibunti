@@ -11,4 +11,10 @@ fn main() {
         // you 
         let config = Config::default()
             .with_poll_interval(Duration::from_secs(1));
-        Box::new(PollWatcher::ne
+        Box::new(PollWatcher::new(tx, config).unwrap())
+    } else {
+        // use default config for everything else
+        Box::new(RecommendedWatcher::new(tx, Config::default()).unwrap())
+    };
+
+    // watch some 
