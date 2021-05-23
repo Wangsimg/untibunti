@@ -25,4 +25,8 @@ libc = "0.2.4"
 serde = { version = "1.0.89", features = ["derive"], optional = true }
 walkdir = "2.2.2"
 
-[target.'cfg(any
+[target.'cfg(any(target_os="linux", target_os="android"))'.dependencies]
+inotify = { version = "0.9", default-features = false }
+mio = { version = "0.8", features = ["os-ext"] }
+
+[target.'cfg(target_os="macos
