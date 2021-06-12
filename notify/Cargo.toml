@@ -49,4 +49,6 @@ nix = "0.23.1"
 [features]
 default = ["macos_fsevent","crossbeam-channel"]
 timing_tests = []
-manual_
+manual_tests = []
+macos_kqueue = ["kqueue", "mio"]
+macos_fsevent = ["fsevent-sys"]
