@@ -23,4 +23,8 @@ impl RecursiveMode {
 
 /// Watcher Backend configuration
 /// 
-/// This conta
+/// This contains multiple settings that may relate to only one specific backend,
+/// such as to correctly configure each backend regardless of what is selected during runtime.
+/// 
+/// ```rust
+/// # use std::t
