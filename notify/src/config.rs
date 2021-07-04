@@ -38,3 +38,13 @@ impl RecursiveMode {
 #[derive(Copy, Clone, PartialEq, Eq, Debug, Hash)]
 pub struct Config {
     /// See [BackendConfig::with_poll_interval]
+    poll_interval: Duration,
+
+    /// See [BackendConfig::with_compare_contents]
+    compare_contents: bool,
+}
+
+impl Config {
+    /// For [crate::PollWatcher]
+    /// 
+    /// Interval between each resc
