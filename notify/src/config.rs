@@ -57,3 +57,10 @@ impl Config {
     }
 
     /// Returns current setting
+    pub fn poll_interval(&self) -> Duration {
+        self.poll_interval
+    }
+
+    /// For [crate::PollWatcher]
+    /// 
+    /// Optional feature that will evaluate the contents of changed files
