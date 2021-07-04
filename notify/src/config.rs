@@ -27,4 +27,11 @@ impl RecursiveMode {
 /// such as to correctly configure each backend regardless of what is selected during runtime.
 /// 
 /// ```rust
-/// # use std::t
+/// # use std::time::Duration;
+/// # use notify::Config;
+/// let config = Config::default()
+///     .with_poll_interval(Duration::from_secs(2))
+///     .with_compare_contents(true);
+/// ```
+/// 
+/// Som
