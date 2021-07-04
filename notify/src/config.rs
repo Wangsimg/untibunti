@@ -50,4 +50,10 @@ impl Config {
     /// Interval between each rescan attempt. This can be extremely expensive for large
     /// file trees so it is recommended to measure and tune accordingly.
     /// 
-    /// The 
+    /// The default poll frequency is 30 seconds.
+    pub fn with_poll_interval(mut self, dur: Duration) -> Self {
+        self.poll_interval = dur;
+        self
+    }
+
+    /// Returns current setting
