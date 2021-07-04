@@ -63,4 +63,7 @@ impl Config {
 
     /// For [crate::PollWatcher]
     /// 
-    /// Optional feature that will evaluate the contents of changed files
+    /// Optional feature that will evaluate the contents of changed files to determine if
+    /// they have indeed changed using a fast hashing algorithm.  This is especially important
+    /// for pseudo filesystems like those on Linux under /sys and /proc which are not obligated
+   
