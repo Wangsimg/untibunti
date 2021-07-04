@@ -34,4 +34,7 @@ impl RecursiveMode {
 ///     .with_compare_contents(true);
 /// ```
 /// 
-/// Som
+/// Some options can be changed during runtime, others have to be set when creating the watcher backend.
+#[derive(Copy, Clone, PartialEq, Eq, Debug, Hash)]
+pub struct Config {
+    /// See [BackendConfig::with_poll_interval]
