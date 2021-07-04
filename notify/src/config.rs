@@ -47,4 +47,7 @@ pub struct Config {
 impl Config {
     /// For [crate::PollWatcher]
     /// 
-    /// Interval between each resc
+    /// Interval between each rescan attempt. This can be extremely expensive for large
+    /// file trees so it is recommended to measure and tune accordingly.
+    /// 
+    /// The 
