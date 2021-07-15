@@ -66,4 +66,5 @@ impl Config {
     /// Optional feature that will evaluate the contents of changed files to determine if
     /// they have indeed changed using a fast hashing algorithm.  This is especially important
     /// for pseudo filesystems like those on Linux under /sys and /proc which are not obligated
-   
+    /// to respect any other filesystem norms such as modification timestamps, file sizes, etc.
+    /// By enabling this feature, performance will be significantly impacte
