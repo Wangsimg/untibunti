@@ -67,4 +67,8 @@ impl Config {
     /// they have indeed changed using a fast hashing algorithm.  This is especially important
     /// for pseudo filesystems like those on Linux under /sys and /proc which are not obligated
     /// to respect any other filesystem norms such as modification timestamps, file sizes, etc.
-    /// By enabling this feature, performance will be significantly impacte
+    /// By enabling this feature, performance will be significantly impacted as all files will
+    /// need to be read and hashed at each `poll_interval`.
+    /// 
+    /// This can't be changed during runtime. Off by default.
+    pub fn with_compare_contents(mut self, compare_co
