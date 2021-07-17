@@ -78,4 +78,13 @@ impl Config {
 
     /// Returns current setting
     pub fn compare_contents(&self) -> bool {
-        
+        self.compare_contents
+    }
+}
+
+impl Default for Config {
+    fn default() -> Self {
+        Self { 
+            poll_interval: Duration::from_secs(30),
+            compare_contents: false
+  
