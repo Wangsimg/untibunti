@@ -87,4 +87,6 @@ impl Default for Config {
         Self { 
             poll_interval: Duration::from_secs(30),
             compare_contents: false
-  
+        }
+    }
+}
