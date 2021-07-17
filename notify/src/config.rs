@@ -71,4 +71,11 @@ impl Config {
     /// need to be read and hashed at each `poll_interval`.
     /// 
     /// This can't be changed during runtime. Off by default.
-    pub fn with_compare_contents(mut self, compare_co
+    pub fn with_compare_contents(mut self, compare_contents: bool) -> Self {
+        self.compare_contents = compare_contents;
+        self
+    }
+
+    /// Returns current setting
+    pub fn compare_contents(&self) -> bool {
+        
