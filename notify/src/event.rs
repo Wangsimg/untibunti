@@ -15,4 +15,8 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
-pub en
+pub enum AccessMode {
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event emitted when the file is executed, or the fo
