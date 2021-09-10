@@ -19,4 +19,13 @@ pub enum AccessMode {
     /// The catch-all case, to be used when the specific kind of event is unknown.
     Any,
 
-    /// An event emitted when the file is executed, or the fo
+    /// An event emitted when the file is executed, or the folder opened.
+    Execute,
+
+    /// An event emitted when the file is opened for reading.
+    Read,
+
+    /// An event emitted when the file is opened for writing.
+    Write,
+
+    //
