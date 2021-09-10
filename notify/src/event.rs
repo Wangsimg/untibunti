@@ -28,4 +28,9 @@ pub enum AccessMode {
     /// An event emitted when the file is opened for writing.
     Write,
 
-    //
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event describing non-mutating access operations on files.
+#[derive(Clone, Copy, Debug, Eq, Hash, Partia
