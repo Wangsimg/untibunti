@@ -44,4 +44,10 @@ pub enum AccessKind {
     /// An event emitted when the file is read.
     Read,
 
-    /// An event emitted when the fi
+    /// An event emitted when the file, or a handle to the file, is opened.
+    Open(AccessMode),
+
+    /// An event emitted when the file, or a handle to the file, is closed.
+    Close(AccessMode),
+
+    /// An event whic
