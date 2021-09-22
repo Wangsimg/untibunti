@@ -50,4 +50,10 @@ pub enum AccessKind {
     /// An event emitted when the file, or a handle to the file, is closed.
     Close(AccessMode),
 
-    /// An event whic
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event describing creation operations on files.
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "
