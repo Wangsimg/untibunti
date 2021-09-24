@@ -56,4 +56,8 @@ pub enum AccessKind {
 
 /// An event describing creation operations on files.
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
-#[cfg_attr(feature = "
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(tag = "kind"))]
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum CreateKind {
+    /// The catch-all c
