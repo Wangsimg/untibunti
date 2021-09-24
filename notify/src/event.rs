@@ -60,4 +60,10 @@ pub enum AccessKind {
 #[cfg_attr(feature = "serde", serde(tag = "kind"))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
 pub enum CreateKind {
-    /// The catch-all c
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event which results in the creation of a file.
+    File,
+
+    /// An event which results in the creation of 
