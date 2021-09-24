@@ -66,4 +66,11 @@ pub enum CreateKind {
     /// An event which results in the creation of a file.
     File,
 
-    /// An event which results in the creation of 
+    /// An event which results in the creation of a folder.
+    Folder,
+
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event emitted when the data content of a file is changed.
