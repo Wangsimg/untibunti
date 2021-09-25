@@ -74,3 +74,7 @@ pub enum CreateKind {
 }
 
 /// An event emitted when the data content of a file is changed.
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum Da
