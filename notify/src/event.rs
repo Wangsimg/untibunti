@@ -91,4 +91,7 @@ pub enum DataChange {
     Other,
 }
 
-/// An event emitted when the metad
+/// An event emitted when the metadata of a file or folder is changed.
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serd
