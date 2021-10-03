@@ -77,4 +77,11 @@ pub enum CreateKind {
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
-pub enum Da
+pub enum DataChange {
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event emitted when the size of the data is changed.
+    Size,
+
+    /// An event emit
