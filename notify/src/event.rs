@@ -84,4 +84,11 @@ pub enum DataChange {
     /// An event emitted when the size of the data is changed.
     Size,
 
-    /// An event emit
+    /// An event emitted when the content of the data is changed.
+    Content,
+
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event emitted when the metad
