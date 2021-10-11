@@ -94,4 +94,9 @@ pub enum DataChange {
 /// An event emitted when the metadata of a file or folder is changed.
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "serd
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum MetadataKind {
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event emitted when the a
