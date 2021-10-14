@@ -99,4 +99,10 @@ pub enum MetadataKind {
     /// The catch-all case, to be used when the specific kind of event is unknown.
     Any,
 
-    /// An event emitted when the a
+    /// An event emitted when the access time of the file or folder is changed.
+    AccessTime,
+
+    /// An event emitted when the write or modify time of the file or folder is changed.
+    WriteTime,
+
+    /// An eve
