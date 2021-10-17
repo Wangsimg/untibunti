@@ -105,4 +105,10 @@ pub enum MetadataKind {
     /// An event emitted when the write or modify time of the file or folder is changed.
     WriteTime,
 
-    /// An eve
+    /// An event emitted when the permissions of the file or folder are changed.
+    Permissions,
+
+    /// An event emitted when the ownership of the file or folder is changed.
+    Ownership,
+
+    /// An even
