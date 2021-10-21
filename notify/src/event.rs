@@ -132,4 +132,9 @@ pub enum RenameMode {
     /// An event emitted on the file or folder resulting from a rename.
     To,
 
-    /// An ev
+    /// An event emitted on the file or folder that was renamed.
+    From,
+
+    /// A single event emitted with both the `From` and `To` paths.
+    ///
+    /// This event should be emitted when both source and target are kn
