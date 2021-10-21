@@ -122,4 +122,8 @@ pub enum MetadataKind {
 }
 
 /// An event emitted when the name of a file or folder is changed.
-#[derive(Clone, Copy, D
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum RenameMode {
+ 
