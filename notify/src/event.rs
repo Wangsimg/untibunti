@@ -114,4 +114,12 @@ pub enum MetadataKind {
     /// An event emitted when an extended attribute of the file or folder is changed.
     ///
     /// If the extended attribute's name or type is known, it should be provided in the
-    /// `Info` event at
+    /// `Info` event attribute.
+    Extended,
+
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event emitted when the name of a file or folder is changed.
+#[derive(Clone, Copy, D
