@@ -137,4 +137,12 @@ pub enum RenameMode {
 
     /// A single event emitted with both the `From` and `To` paths.
     ///
-    /// This event should be emitted when both source and target are kn
+    /// This event should be emitted when both source and target are known. The paths should be
+    /// provided in this exact order (from, to).
+    Both,
+
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event describ
