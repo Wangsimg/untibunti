@@ -145,4 +145,7 @@ pub enum RenameMode {
     Other,
 }
 
-/// An event describ
+/// An event describing mutation of content, name, or metadata.
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature 
