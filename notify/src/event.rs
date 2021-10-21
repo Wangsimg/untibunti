@@ -126,4 +126,10 @@ pub enum MetadataKind {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
 pub enum RenameMode {
- 
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event emitted on the file or folder resulting from a rename.
+    To,
+
+    /// An ev
