@@ -111,4 +111,7 @@ pub enum MetadataKind {
     /// An event emitted when the ownership of the file or folder is changed.
     Ownership,
 
-    /// An even
+    /// An event emitted when an extended attribute of the file or folder is changed.
+    ///
+    /// If the extended attribute's name or type is known, it should be provided in the
+    /// `Info` event at
