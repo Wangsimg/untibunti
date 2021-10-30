@@ -148,4 +148,7 @@ pub enum RenameMode {
 /// An event describing mutation of content, name, or metadata.
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature 
+#[cfg_attr(feature = "serde", serde(tag = "kind", content = "mode"))]
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum ModifyKind {
+    /// The catch-all case, to be used when the specific
