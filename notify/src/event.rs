@@ -157,4 +157,11 @@ pub enum ModifyKind {
     /// An event emitted when the data content of a file is changed.
     Data(DataChange),
 
-    /// An event emitted when the metadata of a file or folder is changed
+    /// An event emitted when the metadata of a file or folder is changed.
+    Metadata(MetadataKind),
+
+    /// An event emitted when the name of a file or folder is changed.
+    #[cfg_attr(feature = "serde", serde(rename = "rename"))]
+    Name(RenameMode),
+
+    //
