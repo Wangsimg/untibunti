@@ -151,4 +151,10 @@ pub enum RenameMode {
 #[cfg_attr(feature = "serde", serde(tag = "kind", content = "mode"))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
 pub enum ModifyKind {
-    /// The catch-all case, to be used when the specific
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event emitted when the data content of a file is changed.
+    Data(DataChange),
+
+    /// An event emitted when the metadata of a file or folder is changed
