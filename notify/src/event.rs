@@ -169,4 +169,8 @@ pub enum ModifyKind {
 }
 
 /// An event describing removal operations on files.
-#[derive(Clone, Copy, Debug, Eq, Hash, Partia
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(tag = "kind"))]
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum Remove
