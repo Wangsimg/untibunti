@@ -173,4 +173,11 @@ pub enum ModifyKind {
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "serde", serde(tag = "kind"))]
 #[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
-pub enum Remove
+pub enum RemoveKind {
+    /// The catch-all case, to be used when the specific kind of event is unknown.
+    Any,
+
+    /// An event emitted when a file is removed.
+    File,
+
+    /// An event emitted when a 
