@@ -164,4 +164,9 @@ pub enum ModifyKind {
     #[cfg_attr(feature = "serde", serde(rename = "rename"))]
     Name(RenameMode),
 
-    //
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// An event describing removal operations on files.
+#[derive(Clone, Copy, Debug, Eq, Hash, Partia
