@@ -193,4 +193,9 @@ pub enum RemoveKind {
 /// represent details that may or may not be available for any particular backend, but most tools
 /// and Notify systems will only care about which of these four general kinds an event is about.
 #[derive(Clone, Debug, Eq, Hash, PartialEq)]
-#[cfg_attr(feature = "serde", derive(Serialize, Deserial
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "serde", serde(rename_all = "kebab-case"))]
+pub enum EventKind {
+    /// The catch-all event kind, for unsupported/unknown events.
+    ///
+    /// Th
