@@ -180,4 +180,13 @@ pub enum RemoveKind {
     /// An event emitted when a file is removed.
     File,
 
-    /// An event emitted when a 
+    /// An event emitted when a folder is removed.
+    Folder,
+
+    /// An event which specific kind is known but cannot be represented otherwise.
+    Other,
+}
+
+/// Top-level event kind.
+///
+/// This is arguably the most importa
