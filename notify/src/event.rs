@@ -189,4 +189,6 @@ pub enum RemoveKind {
 
 /// Top-level event kind.
 ///
-/// This is arguably the most importa
+/// This is arguably the most important classification for events. All subkinds below this one
+/// represent details that may or may not be available for any particular backend, but most tools
+/// and Notify systems will only c
