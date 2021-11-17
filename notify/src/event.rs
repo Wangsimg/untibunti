@@ -198,4 +198,5 @@ pub enum RemoveKind {
 pub enum EventKind {
     /// The catch-all event kind, for unsupported/unknown events.
     ///
-    /// Th
+    /// This variant should be used as the "else" case when mapping native kernel bitmasks or
+    /// bitmaps, such that if the mask is ever extended with new event types the backen
