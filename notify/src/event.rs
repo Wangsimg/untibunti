@@ -199,4 +199,10 @@ pub enum EventKind {
     /// The catch-all event kind, for unsupported/unknown events.
     ///
     /// This variant should be used as the "else" case when mapping native kernel bitmasks or
-    /// bitmaps, such that if the mask is ever extended with new event types the backen
+    /// bitmaps, such that if the mask is ever extended with new event types the backend will not
+    /// gain bugs due to not matching new unknown event types.
+    ///
+    /// This variant is also the default variant used when Notify is in "imprecise" mode.
+    Any,
+
+    /// An 
