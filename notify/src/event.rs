@@ -205,4 +205,7 @@ pub enum EventKind {
     /// This variant is also the default variant used when Notify is in "imprecise" mode.
     Any,
 
-    /// An 
+    /// An event describing non-mutating access operations on files.
+    ///
+    /// This event is about opening and closing file handles, as well as executing files, and any
+    /// other suc
