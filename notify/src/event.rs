@@ -212,4 +212,9 @@ pub enum EventKind {
     /// mutating them.
     ///
     /// Only some platforms are capable of generating these.
- 
+    Access(AccessKind),
+
+    /// An event describing creation operations on files.
+    ///
+    /// This event is about the creation of files, folders, or other structures but not about e.g.
+    /// wri
