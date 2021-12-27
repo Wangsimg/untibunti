@@ -217,4 +217,9 @@ pub enum EventKind {
     /// An event describing creation operations on files.
     ///
     /// This event is about the creation of files, folders, or other structures but not about e.g.
-    /// wri
+    /// writing new content into them.
+    Create(CreateKind),
+
+    /// An event describing mutation of content, name, or metadata.
+    ///
+    /// This event is about the mutation of files', fold
