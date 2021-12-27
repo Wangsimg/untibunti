@@ -208,4 +208,8 @@ pub enum EventKind {
     /// An event describing non-mutating access operations on files.
     ///
     /// This event is about opening and closing file handles, as well as executing files, and any
-    /// other suc
+    /// other such event that is about accessing files, folders, or other structures rather than
+    /// mutating them.
+    ///
+    /// Only some platforms are capable of generating these.
+ 
