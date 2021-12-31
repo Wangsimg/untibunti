@@ -222,4 +222,10 @@ pub enum EventKind {
 
     /// An event describing mutation of content, name, or metadata.
     ///
-    /// This event is about the mutation of files', fold
+    /// This event is about the mutation of files', folders', or other structures' content, name
+    /// (path), or associated metadata (attributes).
+    Modify(ModifyKind),
+
+    /// An event describing removal operations on files.
+    ///
+    /// This eve
