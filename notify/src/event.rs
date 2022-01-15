@@ -228,4 +228,7 @@ pub enum EventKind {
 
     /// An event describing removal operations on files.
     ///
-    /// This eve
+    /// This event is about the removal of files, folders, or other structures but not e.g. erasing
+    /// content from them. This may also be triggered for renames/moves that move files _out of the
+    /// watched subpath_.
+  
