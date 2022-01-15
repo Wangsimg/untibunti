@@ -231,4 +231,9 @@ pub enum EventKind {
     /// This event is about the removal of files, folders, or other structures but not e.g. erasing
     /// content from them. This may also be triggered for renames/moves that move files _out of the
     /// watched subpath_.
-  
+    ///
+    /// Some editors also trigger Remove events when saving files as they may opt for removing (or
+    /// renaming) the original then creating a new file in-place.
+    Remove(RemoveKind),
+
+    ///
