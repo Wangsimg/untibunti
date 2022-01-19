@@ -258,4 +258,9 @@ impl EventKind {
         matches!(self, EventKind::Modify(_))
     }
 
- 
+    /// Indicates whether an event is a Remove variant.
+    pub fn is_remove(&self) -> bool {
+        matches!(self, EventKind::Remove(_))
+    }
+
+    /// Indicates whether an event is a
