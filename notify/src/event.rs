@@ -243,4 +243,10 @@ pub enum EventKind {
 }
 
 impl EventKind {
-    /// Indicates whether an event is an Acces
+    /// Indicates whether an event is an Access variant.
+    pub fn is_access(&self) -> bool {
+        matches!(self, EventKind::Access(_))
+    }
+
+    /// Indicates whether an event is a Create variant.
+    pub fn is_create(&self) ->
