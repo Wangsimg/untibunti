@@ -249,4 +249,13 @@ impl EventKind {
     }
 
     /// Indicates whether an event is a Create variant.
-    pub fn is_create(&self) ->
+    pub fn is_create(&self) -> bool {
+        matches!(self, EventKind::Create(_))
+    }
+
+    /// Indicates whether an event is a Modify variant.
+    pub fn is_modify(&self) -> bool {
+        matches!(self, EventKind::Modify(_))
+    }
+
+ 
