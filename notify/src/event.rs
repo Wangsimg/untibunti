@@ -236,4 +236,11 @@ pub enum EventKind {
     /// renaming) the original then creating a new file in-place.
     Remove(RemoveKind),
 
+    /// An event not fitting in any of the above four categories.
     ///
+    /// This may be used for meta-events about the watch itself.
+    Other,
+}
+
+impl EventKind {
+    /// Indicates whether an event is an Acces
