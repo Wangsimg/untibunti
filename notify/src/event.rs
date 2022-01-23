@@ -263,4 +263,18 @@ impl EventKind {
         matches!(self, EventKind::Remove(_))
     }
 
-    /// Indicates whether an event is a
+    /// Indicates whether an event is an Other variant.
+    pub fn is_other(&self) -> bool {
+        matches!(self, EventKind::Other)
+    }
+}
+
+impl Default for EventKind {
+    fn default() -> Self {
+        EventKind::Any
+    }
+}
+
+/// Notify event.
+///
+/// 
