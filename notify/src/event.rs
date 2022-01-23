@@ -282,4 +282,7 @@ impl Default for EventKind {
 #[derive(Clone)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Event {
- 
+    /// Kind or type of the event.
+    ///
+    /// This is a hierarchy of enums describing the event as precisely as possible. All enums in
+    /// the hierarchy have two variants always pr
