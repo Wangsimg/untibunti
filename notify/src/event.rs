@@ -277,4 +277,9 @@ impl Default for EventKind {
 
 /// Notify event.
 ///
-/// 
+/// You might want to check [`Event::need_rescan`] to make sure no event was missed before you
+/// received this one.
+#[derive(Clone)]
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+pub struct Event {
+ 
