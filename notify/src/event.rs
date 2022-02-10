@@ -289,4 +289,7 @@ pub struct Event {
     /// more specific variants.
     ///
     /// `Any` should be used when more detail about the event is not known beyond the variant
-    /// already
+    /// already selected. For example, `AccessMode::Any` means a file has been accessed, but that's
+    /// all we know.
+    ///
+    /// `Other` should be used when more detail _is_ available, but ca
