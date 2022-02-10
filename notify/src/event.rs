@@ -285,4 +285,8 @@ pub struct Event {
     /// Kind or type of the event.
     ///
     /// This is a hierarchy of enums describing the event as precisely as possible. All enums in
-    /// the hierarchy have two variants always pr
+    /// the hierarchy have two variants always present, `Any` and `Other`, accompanied by one or
+    /// more specific variants.
+    ///
+    /// `Any` should be used when more detail about the event is not known beyond the variant
+    /// already
