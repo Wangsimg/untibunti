@@ -292,4 +292,6 @@ pub struct Event {
     /// already selected. For example, `AccessMode::Any` means a file has been accessed, but that's
     /// all we know.
     ///
-    /// `Other` should be used when more detail _is_ available, but ca
+    /// `Other` should be used when more detail _is_ available, but cannot be encoded as one of the
+    /// defined variants. When specifying `Other`, the event attributes should contain an `Info`
+    /// entry with a short string identifying this detail. That string is to b
