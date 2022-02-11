@@ -294,4 +294,8 @@ pub struct Event {
     ///
     /// `Other` should be used when more detail _is_ available, but cannot be encoded as one of the
     /// defined variants. When specifying `Other`, the event attributes should contain an `Info`
-    /// entry with a short string identifying this detail. That string is to b
+    /// entry with a short string identifying this detail. That string is to be considered part of
+    /// the interface of the backend (i.e. a change should probably be breaking).
+    ///
+    /// For example, `CreateKind::Other` with an `Info("mount")` may indicate the binding of a
+    /// mount. 
