@@ -309,4 +309,8 @@ pub struct Event {
 
     /// Paths the event is about, if known.
     ///
-    /// If an event con
+    /// If an event concerns two or more paths, and the paths are known at the time of event
+    /// creation, they should all go in this `Vec`. Otherwise, using the `Tracker` attr may be more
+    /// appropriate.
+    ///
+    /
