@@ -298,4 +298,7 @@ pub struct Event {
     /// the interface of the backend (i.e. a change should probably be breaking).
     ///
     /// For example, `CreateKind::Other` with an `Info("mount")` may indicate the binding of a
-    /// mount. 
+    /// mount. The documentation of the particular backend should indicate if any `Other` events
+    /// are generated, and what their description means.
+    ///
+    /// The `EventKind::Any` variant shoul
