@@ -319,4 +319,6 @@ pub struct Event {
 
     // "What should be in the struct" and "what can go in the attrs" is an interesting question.
     //
-    // Technically, the paths could go in the attrs. Tha
+    // Technically, the paths could go in the attrs. That would reduce the type size to 4 pointer
+    // widths, instead of 7 like it is now. Anything 8 and below is probably good — on x64 that's
+    // the size of an L1 cache line. The entire kind cl
