@@ -325,3 +325,7 @@ pub struct Event {
     // is 3 pointers. A Vec<PathBuf> is another 3 pointers.
     //
     // Type size aside, what's behind these structures? A Vec and a PathBuf is stored on the heap.
+    // An AnyMap is stored on the heap. But a Vec is directly there, requiring about one access to
+    // get, while retrieving anything in the AnyMap requires some accesses as overhead.
+    //
+    // So things
