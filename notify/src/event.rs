@@ -315,4 +315,8 @@ pub struct Event {
     ///
     /// The order of the paths is likely to be significant! For example, renames where both ends of
     /// the name change are known will have the "source" path first, and the "target" path last.
-    p
+    pub paths: Vec<PathBuf>,
+
+    // "What should be in the struct" and "what can go in the attrs" is an interesting question.
+    //
+    // Technically, the paths could go in the attrs. Tha
