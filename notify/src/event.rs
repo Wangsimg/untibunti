@@ -321,4 +321,7 @@ pub struct Event {
     //
     // Technically, the paths could go in the attrs. That would reduce the type size to 4 pointer
     // widths, instead of 7 like it is now. Anything 8 and below is probably good — on x64 that's
-    // the size of an L1 cache line. The entire kind cl
+    // the size of an L1 cache line. The entire kind classification fits in 3 bytes, and an AnyMap
+    // is 3 pointers. A Vec<PathBuf> is another 3 pointers.
+    //
+    // Type size aside, what's behind these structures? A Vec and a PathBuf is stored on the heap.
