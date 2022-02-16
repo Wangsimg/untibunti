@@ -328,4 +328,7 @@ pub struct Event {
     // An AnyMap is stored on the heap. But a Vec is directly there, requiring about one access to
     // get, while retrieving anything in the AnyMap requires some accesses as overhead.
     //
-    // So things
+    // So things that are used often should be on the struct, and things that are used more rarely
+    // should go in the attrs. Additionally, arbitrary data can _only_ go in the attrs.
+    //
+    // The kind and the paths vi
