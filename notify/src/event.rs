@@ -334,4 +334,5 @@ pub struct Event {
     // The kind and the paths vie for first place on this scale, depending on how downstream wishes
     // to use the information. Everything else is secondary. So far, that's why paths live here.
     //
-    // In the future,
+    // In the future, it might be possible to have more data and to benchmark things properly, so
+    // the performance can be actually quantified. Also, it might turn out that I ha
