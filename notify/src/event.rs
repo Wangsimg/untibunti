@@ -331,4 +331,7 @@ pub struct Event {
     // So things that are used often should be on the struct, and things that are used more rarely
     // should go in the attrs. Additionally, arbitrary data can _only_ go in the attrs.
     //
-    // The kind and the paths vi
+    // The kind and the paths vie for first place on this scale, depending on how downstream wishes
+    // to use the information. Everything else is secondary. So far, that's why paths live here.
+    //
+    // In the future,
