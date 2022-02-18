@@ -342,4 +342,10 @@ pub struct Event {
     ///
     /// Arbitrary data may be added to this field, without restriction beyond the `Sync` and
     /// `Clone` properties. Some data added here is considered for comparing and hashing, but not
-    /// all: at this writing this is `Tracker`, `Flag`
+    /// all: at this writing this is `Tracker`, `Flag`, `Info`, and `Source`.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub attrs: EventAttributes,
+}
+
+/// Additional attributes of the event.
+#[derive(Clone, Default, Debug)]
