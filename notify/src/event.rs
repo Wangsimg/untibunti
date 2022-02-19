@@ -367,4 +367,11 @@ struct EventAttributesInner {
         feature = "serde",
         serde(default, skip_serializing_if = "Option::is_none")
     )]
-    tracker: Optio
+    tracker: Option<usize>,
+
+    /// Special Notify flag on the event.
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none")
+    )]
+    flag
