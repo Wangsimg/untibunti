@@ -379,4 +379,7 @@ struct EventAttributesInner {
     /// Additional information on the event.
     ///
     /// This is to be used for all `Other` variants of the event kind hierarchy. The variant
-    /// 
+    /// indicates that a consumer should look into the `attrs` for an `Info` value; if that value
+    /// is missing it should be considered a backend bug.
+    ///
+    /// This attribute may also be p
