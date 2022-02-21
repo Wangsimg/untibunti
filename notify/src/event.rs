@@ -374,4 +374,9 @@ struct EventAttributesInner {
         feature = "serde",
         serde(default, skip_serializing_if = "Option::is_none")
     )]
-    flag
+    flag: Option<Flag>,
+
+    /// Additional information on the event.
+    ///
+    /// This is to be used for all `Other` variants of the event kind hierarchy. The variant
+    /// 
