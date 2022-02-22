@@ -384,4 +384,8 @@ struct EventAttributesInner {
     ///
     /// This attribute may also be present for non-`Other` variants of the event kind, if doing so
     /// provides useful precision. For example, the `Modify(Metadata(Extended))` kind suggests
-    /// using this attri
+    /// using this attribute when information about _what_ extended metadata changed is available.
+    ///
+    /// This should be a short string, and changes may be considered breaking.
+    #[cfg_attr(
+   
