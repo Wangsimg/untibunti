@@ -388,4 +388,11 @@ struct EventAttributesInner {
     ///
     /// This should be a short string, and changes may be considered breaking.
     #[cfg_attr(
-   
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none")
+    )]
+    info: Option<String>,
+
+    /// The source of the event.
+    ///
+    /// In most cases this should be a short
