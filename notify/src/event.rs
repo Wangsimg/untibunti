@@ -382,4 +382,6 @@ struct EventAttributesInner {
     /// indicates that a consumer should look into the `attrs` for an `Info` value; if that value
     /// is missing it should be considered a backend bug.
     ///
-    /// This attribute may also be p
+    /// This attribute may also be present for non-`Other` variants of the event kind, if doing so
+    /// provides useful precision. For example, the `Modify(Metadata(Extended))` kind suggests
+    /// using this attri
