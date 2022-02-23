@@ -395,4 +395,7 @@ struct EventAttributesInner {
 
     /// The source of the event.
     ///
-    /// In most cases this should be a short
+    /// In most cases this should be a short string, identifying the backend unambiguously. In some
+    /// cases this may be dynamically generated, but should contain a prefix to make it unambiguous
+    /// between backends.
+    #
