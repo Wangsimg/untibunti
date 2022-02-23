@@ -398,4 +398,12 @@ struct EventAttributesInner {
     /// In most cases this should be a short string, identifying the backend unambiguously. In some
     /// cases this may be dynamically generated, but should contain a prefix to make it unambiguous
     /// between backends.
-    #
+    #[cfg_attr(
+        feature = "serde",
+        serde(default, skip_serializing_if = "Option::is_none")
+    )]
+    source: Option<String>,
+
+    /// The process ID of the originator of the event.
+    ///
+    /// This attr
