@@ -409,4 +409,11 @@ struct EventAttributesInner {
     /// This attribute is experimental and, while included in Notify itself, is not considered
     /// stable or standard enough to be part of the serde, eq, hash, and debug representations.
     #[cfg_attr(
-  
+        feature = "serde",
+        serde(default, skip_serializing, skip_deserializing)
+    )]
+    process_id: Option<u32>,
+}
+
+impl EventAttributes {
+    /// Creates a new `
