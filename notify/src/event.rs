@@ -406,4 +406,7 @@ struct EventAttributesInner {
 
     /// The process ID of the originator of the event.
     ///
-    /// This attr
+    /// This attribute is experimental and, while included in Notify itself, is not considered
+    /// stable or standard enough to be part of the serde, eq, hash, and debug representations.
+    #[cfg_attr(
+  
