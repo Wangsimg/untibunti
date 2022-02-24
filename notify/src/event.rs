@@ -422,4 +422,10 @@ impl EventAttributes {
     }
 
     /// Retrieves the tracker ID for an event directly, if present.
-    pub fn tracker(&self) -> O
+    pub fn tracker(&self) -> Option<usize> {
+        self.inner.as_ref().and_then(|inner| inner.tracker)
+    }
+
+    /// Retrieves the Notify flag for an event directly, if present.
+    pub fn flag(&self) -> Option<Flag> {
+        self.
