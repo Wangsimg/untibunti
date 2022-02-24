@@ -416,4 +416,10 @@ struct EventAttributesInner {
 }
 
 impl EventAttributes {
-    /// Creates a new `
+    /// Creates a new `EventAttributes`.
+    pub fn new() -> Self {
+        Self { inner: None }
+    }
+
+    /// Retrieves the tracker ID for an event directly, if present.
+    pub fn tracker(&self) -> O
