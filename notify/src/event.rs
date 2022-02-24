@@ -428,4 +428,9 @@ impl EventAttributes {
 
     /// Retrieves the Notify flag for an event directly, if present.
     pub fn flag(&self) -> Option<Flag> {
-        self.
+        self.inner.as_ref().and_then(|inner| inner.flag)
+    }
+
+    /// Retrieves the additional info for an event directly, if present.
+    pub fn info(&self) -> Option<&str> {
+        self.inner.as_ref().and_then(|inn
