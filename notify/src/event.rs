@@ -433,4 +433,10 @@ impl EventAttributes {
 
     /// Retrieves the additional info for an event directly, if present.
     pub fn info(&self) -> Option<&str> {
-        self.inner.as_ref().and_then(|inn
+        self.inner.as_ref().and_then(|inner| inner.info.as_deref())
+    }
+
+    /// Retrieves the source for an event directly, if present.
+    pub fn source(&self) -> Option<&str> {
+        self.inner
+       
