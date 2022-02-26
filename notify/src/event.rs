@@ -439,4 +439,10 @@ impl EventAttributes {
     /// Retrieves the source for an event directly, if present.
     pub fn source(&self) -> Option<&str> {
         self.inner
-       
+            .as_ref()
+            .and_then(|inner| inner.source.as_deref())
+    }
+
+    /// The process ID of the originator of the event.
+    ///
+    /// This attribute is experimental and
