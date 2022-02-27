@@ -447,4 +447,10 @@ impl EventAttributes {
     ///
     /// This attribute is experimental and, while included in Notify itself, is not considered
     /// stable or standard enough to be part of the serde, eq, hash, and debug representations.
-    pub fn process_id(&
+    pub fn process_id(&self) -> Option<u32> {
+        self.inner.as_ref().and_then(|inner| inner.process_id)
+    }
+
+    /// Sets the tracker.
+    pub fn set_tracker(&mut self, tracker: usize) {
+        self.inn
