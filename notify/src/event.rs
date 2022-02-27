@@ -453,4 +453,12 @@ impl EventAttributes {
 
     /// Sets the tracker.
     pub fn set_tracker(&mut self, tracker: usize) {
-        self.inn
+        self.inner_mut().tracker = Some(tracker);
+    }
+
+    /// Sets the Notify flag onto the event.
+    pub fn set_flag(&mut self, flag: Flag) {
+        self.inner_mut().flag = Some(flag);
+    }
+
+    /// Sets additional info onto
