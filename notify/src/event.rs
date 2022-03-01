@@ -473,4 +473,12 @@ impl EventAttributes {
 
     fn inner_mut(&mut self) -> &mut EventAttributesInner {
         self.inner
-            .get_or_insert_with(|| Box::new(Default::default()
+            .get_or_insert_with(|| Box::new(Default::default()))
+    }
+}
+
+/// Special Notify flag on the event.
+///
+/// This attribute is used to flag certain kinds of events that Notify either marks or generates in
+/// particular ways.
+#[derive(Clone, Copy, Debu
