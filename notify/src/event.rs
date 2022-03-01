@@ -461,4 +461,10 @@ impl EventAttributes {
         self.inner_mut().flag = Some(flag);
     }
 
-    /// Sets additional info onto
+    /// Sets additional info onto the event.
+    pub fn set_info(&mut self, info: &str) {
+        self.inner_mut().info = Some(info.to_string());
+    }
+
+    /// Sets the process id onto the event.
+    pub fn set_process_id(&mut s
