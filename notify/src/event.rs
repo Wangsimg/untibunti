@@ -467,4 +467,10 @@ impl EventAttributes {
     }
 
     /// Sets the process id onto the event.
-    pub fn set_process_id(&mut s
+    pub fn set_process_id(&mut self, process_id: u32) {
+        self.inner_mut().process_id = Some(process_id)
+    }
+
+    fn inner_mut(&mut self) -> &mut EventAttributesInner {
+        self.inner
+            .get_or_insert_with(|| Box::new(Default::default()
