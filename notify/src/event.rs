@@ -481,4 +481,8 @@ impl EventAttributes {
 ///
 /// This attribute is used to flag certain kinds of events that Notify either marks or generates in
 /// particular ways.
-#[derive(Clone, Copy, Debu
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+pub enum Flag {
+    /*
+        /// Event notices are emitted by debounced watchers 
