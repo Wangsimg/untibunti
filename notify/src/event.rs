@@ -485,4 +485,7 @@ impl EventAttributes {
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 pub enum Flag {
     /*
-        /// Event notices are emitted by debounced watchers 
+        /// Event notices are emitted by debounced watchers immediately after the _first_ event of that
+        /// kind is received on a path to indicate activity to a path within the interval of a debounce.
+        ///
+        /// Event notices are a runtime option an
