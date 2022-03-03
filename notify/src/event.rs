@@ -495,4 +495,7 @@ pub enum Flag {
         /// debouncing delay to indicate ongoing activity to a path within the interval of a debounce.
         ///
         /// Ongoing event notices are a runtime option and are disabled by default.
-        O
+        Ongoing,
+    */
+    /// Rescan notices are emitted by some platforms (and may also be emitted by Notify itself).
+    /// They indicate either a lapse in the events or a change in t
