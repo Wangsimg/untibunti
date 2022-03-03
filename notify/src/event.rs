@@ -488,4 +488,8 @@ pub enum Flag {
         /// Event notices are emitted by debounced watchers immediately after the _first_ event of that
         /// kind is received on a path to indicate activity to a path within the interval of a debounce.
         ///
-        /// Event notices are a runtime option an
+        /// Event notices are a runtime option and are disabled by default. (TODO)
+        Notice,
+
+        /// Ongoing event notices are emitted by debounced watchers on a higher frequency than the
+        /// debouncing delay 
