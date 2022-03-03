@@ -492,4 +492,7 @@ pub enum Flag {
         Notice,
 
         /// Ongoing event notices are emitted by debounced watchers on a higher frequency than the
-        /// debouncing delay 
+        /// debouncing delay to indicate ongoing activity to a path within the interval of a debounce.
+        ///
+        /// Ongoing event notices are a runtime option and are disabled by default.
+        O
