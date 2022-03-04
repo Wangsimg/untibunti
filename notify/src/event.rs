@@ -498,4 +498,7 @@ pub enum Flag {
         Ongoing,
     */
     /// Rescan notices are emitted by some platforms (and may also be emitted by Notify itself).
-    /// They indicate either a lapse in the events or a change in t
+    /// They indicate either a lapse in the events or a change in the filesystem such that events
+    /// received so far can no longer be relied on to represent the state of the filesystem now.
+    ///
+    /// An application that simply reacts to file chan
