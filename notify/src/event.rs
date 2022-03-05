@@ -503,4 +503,12 @@ pub enum Flag {
     ///
     /// An application that simply reacts to file changes may not care about this. An application
     /// that keeps an in-memory representation of the filesystem will need to care, and will need
-    /// to refresh that representation directly from t
+    /// to refresh that representation directly from the filesystem.
+    Rescan,
+}
+
+impl Event {
+    /// Returns whether some events may have been missed. If true, you should assume any file or
+    /// folder might have been modified.
+    ///
+    //
