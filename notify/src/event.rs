@@ -511,4 +511,8 @@ impl Event {
     /// Returns whether some events may have been missed. If true, you should assume any file or
     /// folder might have been modified.
     ///
-    //
+    /// See [`Flag::Rescan`] for more information.
+    pub fn need_rescan(&self) -> bool {
+        matches!(self.flag(), Some(Flag::Rescan))
+    }
+    /// Retrieves the tracker ID for an e
