@@ -515,4 +515,10 @@ impl Event {
     pub fn need_rescan(&self) -> bool {
         matches!(self.flag(), Some(Flag::Rescan))
     }
-    /// Retrieves the tracker ID for an e
+    /// Retrieves the tracker ID for an event directly, if present.
+    pub fn tracker(&self) -> Option<usize> {
+        self.attrs.tracker()
+    }
+
+    /// Retrieves the Notify flag for an event directly, if present.
+    pub fn flag(
