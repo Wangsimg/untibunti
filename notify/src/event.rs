@@ -527,4 +527,12 @@ impl Event {
 
     /// Retrieves the additional info for an event directly, if present.
     pub fn info(&self) -> Option<&str> {
-        s
+        self.attrs.info()
+    }
+
+    /// Retrieves the source for an event directly, if present.
+    pub fn source(&self) -> Option<&str> {
+        self.attrs.source()
+    }
+
+    /// Creates a new `Eve
