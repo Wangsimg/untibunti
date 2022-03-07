@@ -521,4 +521,10 @@ impl Event {
     }
 
     /// Retrieves the Notify flag for an event directly, if present.
-    pub fn flag(
+    pub fn flag(&self) -> Option<Flag> {
+        self.attrs.flag()
+    }
+
+    /// Retrieves the additional info for an event directly, if present.
+    pub fn info(&self) -> Option<&str> {
+        s
