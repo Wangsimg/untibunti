@@ -535,4 +535,13 @@ impl Event {
         self.attrs.source()
     }
 
-    /// Creates a new `Eve
+    /// Creates a new `Event` given a kind.
+    pub fn new(kind: EventKind) -> Self {
+        Self {
+            kind,
+            paths: Vec::new(),
+            attrs: EventAttributes::new(),
+        }
+    }
+
+    ///
