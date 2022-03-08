@@ -551,4 +551,10 @@ impl Event {
     }
 
     /// Adds a path to the event.
-    pub fn add_path(mut self, path: PathBuf)
+    pub fn add_path(mut self, path: PathBuf) -> Self {
+        self.paths.push(path);
+        self
+    }
+
+    /// Adds a path to the event if the argument is Some.
+    pub fn add_some_path(self, path: Option<PathBuf>) ->
