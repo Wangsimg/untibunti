@@ -566,4 +566,10 @@ impl Event {
     }
 
     /// Sets the tracker.
-    pub fn set_tracker(mut sel
+    pub fn set_tracker(mut self, tracker: usize) -> Self {
+        self.attrs.set_tracker(tracker);
+        self
+    }
+
+    /// Sets additional info onto the event.
+    pub fn set_info(mut self, info: &str) -> Sel
