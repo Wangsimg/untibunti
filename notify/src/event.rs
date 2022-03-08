@@ -557,4 +557,13 @@ impl Event {
     }
 
     /// Adds a path to the event if the argument is Some.
-    pub fn add_some_path(self, path: Option<PathBuf>) ->
+    pub fn add_some_path(self, path: Option<PathBuf>) -> Self {
+        if let Some(path) = path {
+            self.add_path(path)
+        } else {
+            self
+        }
+    }
+
+    /// Sets the tracker.
+    pub fn set_tracker(mut sel
