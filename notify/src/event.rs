@@ -572,4 +572,12 @@ impl Event {
     }
 
     /// Sets additional info onto the event.
-    pub fn set_info(mut self, info: &str) -> Sel
+    pub fn set_info(mut self, info: &str) -> Self {
+        self.attrs.set_info(info);
+        self
+    }
+
+    /// Sets the Notify flag onto the event.
+    pub fn set_flag(mut self, flag: Flag) -> Self {
+        self.attrs.set_flag(flag);
+       
