@@ -580,4 +580,14 @@ impl Event {
     /// Sets the Notify flag onto the event.
     pub fn set_flag(mut self, flag: Flag) -> Self {
         self.attrs.set_flag(flag);
-       
+        self
+    }
+
+    /// Sets the process id onto the event.
+    pub fn set_process_id(mut self, process_id: u32) -> Self {
+        self.attrs.set_process_id(process_id);
+        self
+    }
+}
+
+imp
