@@ -590,4 +590,8 @@ impl Event {
     }
 }
 
-imp
+impl fmt::Debug for Event {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        f.debug_struct("Event")
+            .field("kind", &self.kind)
+            .field("p
