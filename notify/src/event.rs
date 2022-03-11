@@ -598,4 +598,13 @@ impl fmt::Debug for Event {
             .field("attr:tracker", &self.tracker())
             .field("attr:flag", &self.flag())
             .field("attr:info", &self.info())
-            .field("attr:source", 
+            .field("attr:source", &self.source())
+            .finish()
+    }
+}
+impl Default for Event {
+    fn default() -> Self {
+        Self {
+            kind: EventKind::default(),
+            paths: Vec::new(),
+     
