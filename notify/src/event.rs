@@ -607,4 +607,12 @@ impl Default for Event {
         Self {
             kind: EventKind::default(),
             paths: Vec::new(),
-     
+            attrs: EventAttributes::new(),
+        }
+    }
+}
+
+impl Eq for Event {}
+impl PartialEq for Event {
+    fn eq(&self, other: &Self) -> bool {
+        self.kind.eq(
