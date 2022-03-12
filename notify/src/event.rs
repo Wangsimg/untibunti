@@ -620,4 +620,12 @@ impl PartialEq for Event {
             && self.tracker().eq(&other.tracker())
             && self.flag().eq(&other.flag())
             && self.info().eq(&other.info())
-        
+            && self.source().eq(&other.source())
+    }
+}
+
+impl Hash for Event {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.kind.hash(state);
+        self.paths.hash(state);
+    
