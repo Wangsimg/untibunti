@@ -615,4 +615,9 @@ impl Default for Event {
 impl Eq for Event {}
 impl PartialEq for Event {
     fn eq(&self, other: &Self) -> bool {
-        self.kind.eq(
+        self.kind.eq(&other.kind)
+            && self.paths.eq(&other.paths)
+            && self.tracker().eq(&other.tracker())
+            && self.flag().eq(&other.flag())
+            && self.info().eq(&other.info())
+        
