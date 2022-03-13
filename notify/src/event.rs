@@ -628,4 +628,9 @@ impl Hash for Event {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.kind.hash(state);
         self.paths.hash(state);
-    
+        self.tracker().hash(state);
+        self.flag().hash(state);
+        self.info().hash(state);
+        self.source().hash(state);
+    }
+}
