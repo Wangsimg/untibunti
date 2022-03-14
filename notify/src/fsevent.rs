@@ -8,4 +8,10 @@
 //!
 //! For more information see the [FSEvents API reference][ref].
 //!
-//! TODO: doc
+//! TODO: document event translation
+//!
+//! [ref]: https://developer.apple.com/library/mac/documentation/Darwin/Reference/FSEvents_Ref/
+
+#![allow(non_upper_case_globals, dead_code)]
+
+use crate::ev
