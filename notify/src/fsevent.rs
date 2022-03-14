@@ -18,4 +18,13 @@ use crate::event::*;
 use crate::{unbounded, Config, Error, EventHandler, RecursiveMode, Result, Sender, Watcher};
 use fsevent_sys as fs;
 use fsevent_sys::core_foundation as cf;
-use std::coll
+use std::collections::HashMap;
+use std::ffi::CStr;
+use std::fmt;
+use std::os::raw;
+use std::path::{Path, PathBuf};
+use std::ptr;
+use std::sync::{Arc, Mutex};
+use std::thread;
+
+bitflag
