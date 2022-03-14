@@ -14,4 +14,8 @@
 
 #![allow(non_upper_case_globals, dead_code)]
 
-use crate::ev
+use crate::event::*;
+use crate::{unbounded, Config, Error, EventHandler, RecursiveMode, Result, Sender, Watcher};
+use fsevent_sys as fs;
+use fsevent_sys::core_foundation as cf;
+use std::coll
