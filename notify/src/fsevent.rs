@@ -32,4 +32,7 @@ bitflags::bitflags! {
   struct StreamFlags: u32 {
     const NONE = fs::kFSEventStreamEventFlagNone;
     const MUST_SCAN_SUBDIRS = fs::kFSEventStreamEventFlagMustScanSubDirs;
-    const USER
+    const USER_DROPPED = fs::kFSEventStreamEventFlagUserDropped;
+    const KERNEL_DROPPED = fs::kFSEventStreamEventFlagKernelDropped;
+    const IDS_WRAPPED = fs::kFSEventStreamEventFlagEventIdsWrapped;
+    con
