@@ -35,4 +35,7 @@ bitflags::bitflags! {
     const USER_DROPPED = fs::kFSEventStreamEventFlagUserDropped;
     const KERNEL_DROPPED = fs::kFSEventStreamEventFlagKernelDropped;
     const IDS_WRAPPED = fs::kFSEventStreamEventFlagEventIdsWrapped;
-    con
+    const HISTORY_DONE = fs::kFSEventStreamEventFlagHistoryDone;
+    const ROOT_CHANGED = fs::kFSEventStreamEventFlagRootChanged;
+    const MOUNT = fs::kFSEventStreamEventFlagMount;
+    const UNMOUNT
