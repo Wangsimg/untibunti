@@ -27,4 +27,9 @@ use std::ptr;
 use std::sync::{Arc, Mutex};
 use std::thread;
 
-bitflag
+bitflags::bitflags! {
+  #[repr(C)]
+  struct StreamFlags: u32 {
+    const NONE = fs::kFSEventStreamEventFlagNone;
+    const MUST_SCAN_SUBDIRS = fs::kFSEventStreamEventFlagMustScanSubDirs;
+    const USER
