@@ -44,4 +44,6 @@ bitflags::bitflags! {
     const INODE_META_MOD = fs::kFSEventStreamEventFlagItemInodeMetaMod;
     const ITEM_RENAMED = fs::kFSEventStreamEventFlagItemRenamed;
     const ITEM_MODIFIED = fs::kFSEventStreamEventFlagItemModified;
-    const FINDER_
+    const FINDER_INFO_MOD = fs::kFSEventStreamEventFlagItemFinderInfoMod;
+    const ITEM_CHANGE_OWNER = fs::kFSEventStreamEventFlagItemChangeOwner;
+    const ITEM_XATTR_MOD = fs::kFSEventStreamEventFlagItemX
