@@ -38,4 +38,7 @@ bitflags::bitflags! {
     const HISTORY_DONE = fs::kFSEventStreamEventFlagHistoryDone;
     const ROOT_CHANGED = fs::kFSEventStreamEventFlagRootChanged;
     const MOUNT = fs::kFSEventStreamEventFlagMount;
-    const UNMOUNT
+    const UNMOUNT = fs::kFSEventStreamEventFlagUnmount;
+    const ITEM_CREATED = fs::kFSEventStreamEventFlagItemCreated;
+    const ITEM_REMOVED = fs::kFSEventStreamEventFlagItemRemoved;
+    const INODE_META_MOD = fs::kFS
