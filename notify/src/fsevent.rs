@@ -41,4 +41,7 @@ bitflags::bitflags! {
     const UNMOUNT = fs::kFSEventStreamEventFlagUnmount;
     const ITEM_CREATED = fs::kFSEventStreamEventFlagItemCreated;
     const ITEM_REMOVED = fs::kFSEventStreamEventFlagItemRemoved;
-    const INODE_META_MOD = fs::kFS
+    const INODE_META_MOD = fs::kFSEventStreamEventFlagItemInodeMetaMod;
+    const ITEM_RENAMED = fs::kFSEventStreamEventFlagItemRenamed;
+    const ITEM_MODIFIED = fs::kFSEventStreamEventFlagItemModified;
+    const FINDER_
