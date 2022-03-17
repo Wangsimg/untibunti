@@ -50,4 +50,6 @@ bitflags::bitflags! {
     const IS_FILE = fs::kFSEventStreamEventFlagItemIsFile;
     const IS_DIR = fs::kFSEventStreamEventFlagItemIsDir;
     const IS_SYMLINK = fs::kFSEventStreamEventFlagItemIsSymlink;
-    
+    const OWN_EVENT = fs::kFSEventStreamEventFlagOwnEvent;
+    const IS_HARDLINK = fs::kFSEventStreamEventFlagItemIsHardlink;
+    const IS_LAST_HARDLINK = fs::kFSEventStreamEventFlagItem
