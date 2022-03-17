@@ -52,4 +52,11 @@ bitflags::bitflags! {
     const IS_SYMLINK = fs::kFSEventStreamEventFlagItemIsSymlink;
     const OWN_EVENT = fs::kFSEventStreamEventFlagOwnEvent;
     const IS_HARDLINK = fs::kFSEventStreamEventFlagItemIsHardlink;
-    const IS_LAST_HARDLINK = fs::kFSEventStreamEventFlagItem
+    const IS_LAST_HARDLINK = fs::kFSEventStreamEventFlagItemIsLastHardlink;
+    const ITEM_CLONED = fs::kFSEventStreamEventFlagItemCloned;
+  }
+}
+
+/// FSEvents-based `Watcher` implementation
+pub struct FsEventWatcher {
+    paths: cf::CFMut
