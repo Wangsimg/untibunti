@@ -46,4 +46,8 @@ bitflags::bitflags! {
     const ITEM_MODIFIED = fs::kFSEventStreamEventFlagItemModified;
     const FINDER_INFO_MOD = fs::kFSEventStreamEventFlagItemFinderInfoMod;
     const ITEM_CHANGE_OWNER = fs::kFSEventStreamEventFlagItemChangeOwner;
-    const ITEM_XATTR_MOD = fs::kFSEventStreamEventFlagItemX
+    const ITEM_XATTR_MOD = fs::kFSEventStreamEventFlagItemXattrMod;
+    const IS_FILE = fs::kFSEventStreamEventFlagItemIsFile;
+    const IS_DIR = fs::kFSEventStreamEventFlagItemIsDir;
+    const IS_SYMLINK = fs::kFSEventStreamEventFlagItemIsSymlink;
+    
