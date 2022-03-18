@@ -59,4 +59,9 @@ bitflags::bitflags! {
 
 /// FSEvents-based `Watcher` implementation
 pub struct FsEventWatcher {
-    paths: cf::CFMut
+    paths: cf::CFMutableArrayRef,
+    since_when: fs::FSEventStreamEventId,
+    latency: cf::CFTimeInterval,
+    flags: fs::FSEventStreamCreateFlags,
+    event_handler: Arc<Mutex<dyn EventHandler>>,
+    runloop: Option<(cf:
