@@ -70,4 +70,8 @@ pub struct FsEventWatcher {
 
 impl fmt::Debug for FsEventWatcher {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.d
+        f.debug_struct("FsEventWatcher")
+            .field("paths", &self.paths)
+            .field("since_when", &self.since_when)
+            .field("latency", &self.latency)
+            .field
