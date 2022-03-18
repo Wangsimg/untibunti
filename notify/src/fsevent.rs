@@ -64,4 +64,10 @@ pub struct FsEventWatcher {
     latency: cf::CFTimeInterval,
     flags: fs::FSEventStreamCreateFlags,
     event_handler: Arc<Mutex<dyn EventHandler>>,
-    runloop: Option<(cf:
+    runloop: Option<(cf::CFRunLoopRef, thread::JoinHandle<()>)>,
+    recursive_info: HashMap<PathBuf, bool>,
+}
+
+impl fmt::Debug for FsEventWatcher {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        f.d
