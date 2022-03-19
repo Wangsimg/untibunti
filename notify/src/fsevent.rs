@@ -74,4 +74,8 @@ impl fmt::Debug for FsEventWatcher {
             .field("paths", &self.paths)
             .field("since_when", &self.since_when)
             .field("latency", &self.latency)
-            .field
+            .field("flags", &self.flags)
+            .field("event_handler", &Arc::as_ptr(&self.event_handler))
+            .field("runloop", &self.runloop)
+            .field("recursive_info", &self.recursive_info)
+  
