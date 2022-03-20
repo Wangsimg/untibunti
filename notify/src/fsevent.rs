@@ -78,4 +78,9 @@ impl fmt::Debug for FsEventWatcher {
             .field("event_handler", &Arc::as_ptr(&self.event_handler))
             .field("runloop", &self.runloop)
             .field("recursive_info", &self.recursive_info)
-  
+            .finish()
+    }
+}
+
+// CFMutableArrayRef is a type alias to *mut libc::c_void, so FsEventWatcher is not Send/Sync
+// automatically. It's Send because the pointer is not used in other 
