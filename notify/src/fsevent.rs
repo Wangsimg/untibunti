@@ -83,4 +83,10 @@ impl fmt::Debug for FsEventWatcher {
 }
 
 // CFMutableArrayRef is a type alias to *mut libc::c_void, so FsEventWatcher is not Send/Sync
-// automatically. It's Send because the pointer is not used in other 
+// automatically. It's Send because the pointer is not used in other threads.
+unsafe impl Send for FsEventWatcher {}
+
+// It's Sync because all methods that change the mutable state use `&mut self`.
+unsafe impl Sync for FsEventWatcher {}
+
+fn translate_flag
