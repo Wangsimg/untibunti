@@ -89,4 +89,8 @@ unsafe impl Send for FsEventWatcher {}
 // It's Sync because all methods that change the mutable state use `&mut self`.
 unsafe impl Sync for FsEventWatcher {}
 
-fn translate_flag
+fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
+    let mut evs = Vec::new();
+
+    // «Denotes a sentinel event sent to mark the end of the "historical" events
+    // sent as a result o
