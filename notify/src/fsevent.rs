@@ -93,4 +93,6 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     let mut evs = Vec::new();
 
     // «Denotes a sentinel event sent to mark the end of the "historical" events
-    // sent as a result o
+    // sent as a result of specifying a `sinceWhen` value in the FSEvents.Create
+    // call that created this event stream. After invoking the client's callback
+    // with all the "historical" events that occurred before now, the 
