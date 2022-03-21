@@ -98,4 +98,7 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     // with all the "historical" events that occurred before now, the client's
     // callback will be invoked with an event where the HistoryDone flag is set.
     // The client should ignore the path supplied in this callback.»
-    // — https://www
+    // — https://www.mbsplugins.eu/FSEventsNextEvent.shtml
+    //
+    // As a result, we just stop processing here and return an empty vec, which
+    // will ignore this completely and not emit any Eve
