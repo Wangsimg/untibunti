@@ -101,4 +101,10 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     // — https://www.mbsplugins.eu/FSEventsNextEvent.shtml
     //
     // As a result, we just stop processing here and return an empty vec, which
-    // will ignore this completely and not emit any Eve
+    // will ignore this completely and not emit any Events whatsoever.
+    if flags.contains(StreamFlags::HISTORY_DONE) {
+        return evs;
+    }
+
+    // FSEvents provides two possible hints as to why events were dropped,
+    // however docume
