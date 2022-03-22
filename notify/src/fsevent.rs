@@ -109,4 +109,7 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     // FSEvents provides two possible hints as to why events were dropped,
     // however documentation on what those mean is scant, so we just pass them
     // through in the info attr field. The intent is clear enough, and the
-    // additional information is provided if the use
+    // additional information is provided if the user wants it.
+    if flags.contains(StreamFlags::MUST_SCAN_SUBDIRS) {
+        let e = Event::new(EventKind::Other).set_flag(Flag::Rescan);
+        evs.push(if flags.contains(Stre
