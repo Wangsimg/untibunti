@@ -115,4 +115,11 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
         evs.push(if flags.contains(StreamFlags::USER_DROPPED) {
             e.set_info("rescan: user dropped")
         } else if flags.contains(StreamFlags::KERNEL_DROPPED) {
-            e.set_info("rescan: kerne
+            e.set_info("rescan: kernel dropped")
+        } else {
+            e
+        });
+    }
+
+    // In imprecise mode, let's not even bother parsing the kind of the event
+    // except for the above very special events.
