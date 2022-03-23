@@ -123,3 +123,10 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
     // In imprecise mode, let's not even bother parsing the kind of the event
     // except for the above very special events.
+    if !precise {
+        evs.push(Event::new(EventKind::Any));
+        return evs;
+    }
+
+    // This is most likely a rename or a removal. We assume rename but may want
+    // t
