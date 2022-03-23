@@ -129,4 +129,8 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     }
 
     // This is most likely a rename or a removal. We assume rename but may want
-    // t
+    // to figure out if it was a removal some way later (TODO). To denote the
+    // special nature of the event, we add an info string.
+    if flags.contains(StreamFlags::ROOT_CHANGED) {
+        evs.push(
+  
