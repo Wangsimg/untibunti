@@ -143,4 +143,9 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
         evs.push(Event::new(EventKind::Create(CreateKind::Other)).set_info("mount"));
     }
 
-    // A path was unmounted at t
+    // A path was unmounted at the event path; we treat that as a remove.
+    if flags.contains(StreamFlags::UNMOUNT) {
+        evs.push(Event::new(EventKind::Remove(RemoveKind::Other)).set_info("mount"));
+    }
+
+    if flags.contains(StreamFla
