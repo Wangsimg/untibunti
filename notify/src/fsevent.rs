@@ -133,4 +133,9 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     // special nature of the event, we add an info string.
     if flags.contains(StreamFlags::ROOT_CHANGED) {
         evs.push(
-  
+            Event::new(EventKind::Modify(ModifyKind::Name(RenameMode::From)))
+                .set_info("root changed"),
+        );
+    }
+
+    // A path was mounted at the event path; we treat that
