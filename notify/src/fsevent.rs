@@ -138,4 +138,9 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
         );
     }
 
-    // A path was mounted at the event path; we treat that
+    // A path was mounted at the event path; we treat that as a create.
+    if flags.contains(StreamFlags::MOUNT) {
+        evs.push(Event::new(EventKind::Create(CreateKind::Other)).set_info("mount"));
+    }
+
+    // A path was unmounted at t
