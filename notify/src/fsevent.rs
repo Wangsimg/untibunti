@@ -148,4 +148,7 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
         evs.push(Event::new(EventKind::Remove(RemoveKind::Other)).set_info("mount"));
     }
 
-    if flags.contains(StreamFla
+    if flags.contains(StreamFlags::ITEM_CREATED) {
+        evs.push(if flags.contains(StreamFlags::IS_DIR) {
+            Event::new(EventKind::Create(CreateKind::Folder))
+        } else if flags.contains(StreamFlags::IS_FILE
