@@ -155,4 +155,8 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
             Event::new(EventKind::Create(CreateKind::File))
         } else {
             let e = Event::new(EventKind::Create(CreateKind::Other));
-            if flags.contains
+            if flags.contains(StreamFlags::IS_SYMLINK) {
+                e.set_info("is: symlink")
+            } else if flags.contains(StreamFlags::IS_HARDLINK) {
+                e.set_info("is: hardlink")
+         
