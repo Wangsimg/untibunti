@@ -151,4 +151,8 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     if flags.contains(StreamFlags::ITEM_CREATED) {
         evs.push(if flags.contains(StreamFlags::IS_DIR) {
             Event::new(EventKind::Create(CreateKind::Folder))
-        } else if flags.contains(StreamFlags::IS_FILE
+        } else if flags.contains(StreamFlags::IS_FILE) {
+            Event::new(EventKind::Create(CreateKind::File))
+        } else {
+            let e = Event::new(EventKind::Create(CreateKind::Other));
+            if flags.contains
