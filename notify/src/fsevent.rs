@@ -169,4 +169,8 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
     if flags.contains(StreamFlags::ITEM_REMOVED) {
         evs.push(if flags.contains(StreamFlags::IS_DIR) {
-            Event::new(EventKind::Remove(RemoveK
+            Event::new(EventKind::Remove(RemoveKind::Folder))
+        } else if flags.contains(StreamFlags::IS_FILE) {
+            Event::new(EventKind::Remove(RemoveKind::File))
+        } else {
+            let
