@@ -163,4 +163,10 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
                 e.set_info("is: clone")
             } else {
                 Event::new(EventKind::Create(CreateKind::Any))
-   
+            }
+        });
+    }
+
+    if flags.contains(StreamFlags::ITEM_REMOVED) {
+        evs.push(if flags.contains(StreamFlags::IS_DIR) {
+            Event::new(EventKind::Remove(RemoveK
