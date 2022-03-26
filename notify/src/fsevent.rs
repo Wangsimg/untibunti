@@ -173,4 +173,7 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
         } else if flags.contains(StreamFlags::IS_FILE) {
             Event::new(EventKind::Remove(RemoveKind::File))
         } else {
-            let
+            let e = Event::new(EventKind::Remove(RemoveKind::Other));
+            if flags.contains(StreamFlags::IS_SYMLINK) {
+                e.set_info("is: symlink")
+            } else if fl
