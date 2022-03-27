@@ -176,4 +176,7 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
             let e = Event::new(EventKind::Remove(RemoveKind::Other));
             if flags.contains(StreamFlags::IS_SYMLINK) {
                 e.set_info("is: symlink")
-            } else if fl
+            } else if flags.contains(StreamFlags::IS_HARDLINK) {
+                e.set_info("is: hardlink")
+            } else if flags.contains(StreamFlags::ITEM_CLONED) {
+                e.set_info("is: c
