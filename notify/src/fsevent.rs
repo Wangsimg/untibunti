@@ -187,4 +187,11 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     }
 
     // FSEvents provides no mechanism to associate the old and new sides of a
-    // re
+    // rename event.
+    if flags.contains(StreamFlags::ITEM_RENAMED) {
+        evs.push(Event::new(EventKind::Modify(ModifyKind::Name(
+            RenameMode::Any,
+        ))));
+    }
+
+    // This is only
