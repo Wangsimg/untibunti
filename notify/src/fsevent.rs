@@ -179,4 +179,12 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
             } else if flags.contains(StreamFlags::IS_HARDLINK) {
                 e.set_info("is: hardlink")
             } else if flags.contains(StreamFlags::ITEM_CLONED) {
-                e.set_info("is: c
+                e.set_info("is: clone")
+            } else {
+                Event::new(EventKind::Remove(RemoveKind::Any))
+            }
+        });
+    }
+
+    // FSEvents provides no mechanism to associate the old and new sides of a
+    // re
