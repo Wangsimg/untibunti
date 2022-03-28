@@ -194,4 +194,6 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
         ))));
     }
 
-    // This is only
+    // This is only described as "metadata changed", but it may be that it's
+    // only emitted for some more precise subset of events... if so, will need
+    // amending, but for no
