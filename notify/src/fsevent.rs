@@ -199,4 +199,11 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     // amending, but for now we have an Any-shaped bucket to put it in.
     if flags.contains(StreamFlags::INODE_META_MOD) {
         evs.push(Event::new(EventKind::Modify(ModifyKind::Metadata(
-            MetadataK
+            MetadataKind::Any,
+        ))));
+    }
+
+    if flags.contains(StreamFlags::FINDER_INFO_MOD) {
+        evs.push(
+            Event::new(EventKind::Modify(ModifyKind::Metadata(MetadataKind::Other)))
+                
