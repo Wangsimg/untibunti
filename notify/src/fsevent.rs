@@ -196,4 +196,7 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
     // This is only described as "metadata changed", but it may be that it's
     // only emitted for some more precise subset of events... if so, will need
-    // amending, but for no
+    // amending, but for now we have an Any-shaped bucket to put it in.
+    if flags.contains(StreamFlags::INODE_META_MOD) {
+        evs.push(Event::new(EventKind::Modify(ModifyKind::Metadata(
+            MetadataK
