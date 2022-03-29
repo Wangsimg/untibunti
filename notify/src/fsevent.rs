@@ -206,4 +206,10 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     if flags.contains(StreamFlags::FINDER_INFO_MOD) {
         evs.push(
             Event::new(EventKind::Modify(ModifyKind::Metadata(MetadataKind::Other)))
-                
+                .set_info("meta: finder info"),
+        );
+    }
+
+    if flags.contains(StreamFlags::ITEM_CHANGE_OWNER) {
+        evs.push(Event::new(EventKind::Modify(ModifyKind::Metadata(
+         
