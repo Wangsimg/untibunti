@@ -212,4 +212,10 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
     if flags.contains(StreamFlags::ITEM_CHANGE_OWNER) {
         evs.push(Event::new(EventKind::Modify(ModifyKind::Metadata(
-         
+            MetadataKind::Ownership,
+        ))));
+    }
+
+    if flags.contains(StreamFlags::ITEM_XATTR_MOD) {
+        evs.push(Event::new(EventKind::Modify(ModifyKind::Metadata(
+            MetadataKind:
