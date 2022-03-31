@@ -232,4 +232,13 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
     if flags.contains(StreamFlags::OWN_EVENT) {
         for ev in &mut evs {
-  
+            *ev = std::mem::take(ev).set_process_id(std::process::id());
+        }
+    }
+
+    evs
+}
+
+struct StreamContextInfo {
+    event_handler: Arc<Mutex<dyn EventHandler>>,
+    recursi
