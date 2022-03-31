@@ -218,4 +218,10 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
     if flags.contains(StreamFlags::ITEM_XATTR_MOD) {
         evs.push(Event::new(EventKind::Modify(ModifyKind::Metadata(
-            MetadataKind:
+            MetadataKind::Extended,
+        ))));
+    }
+
+    // This is specifically described as a data change, which we take to mean
+    // is a content change.
+    if flags.contains(StreamFlags::ITEM_MODIFIED) {
