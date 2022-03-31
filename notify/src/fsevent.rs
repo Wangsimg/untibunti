@@ -225,3 +225,11 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
     // This is specifically described as a data change, which we take to mean
     // is a content change.
     if flags.contains(StreamFlags::ITEM_MODIFIED) {
+        evs.push(Event::new(EventKind::Modify(ModifyKind::Data(
+            DataChange::Content,
+        ))));
+    }
+
+    if flags.contains(StreamFlags::OWN_EVENT) {
+        for ev in &mut evs {
+  
