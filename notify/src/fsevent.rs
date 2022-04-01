@@ -241,4 +241,9 @@ fn translate_flags(flags: StreamFlags, precise: bool) -> Vec<Event> {
 
 struct StreamContextInfo {
     event_handler: Arc<Mutex<dyn EventHandler>>,
-    recursi
+    recursive_info: HashMap<PathBuf, bool>,
+}
+
+// Free the context when the stream created by `FSEventStreamCreate` is released.
+extern "C" fn release_context(info: *const libc::c_void) {
+    // Safety
