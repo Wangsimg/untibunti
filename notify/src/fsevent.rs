@@ -249,4 +249,9 @@ extern "C" fn release_context(info: *const libc::c_void) {
     // Safety:
     // - The [documentation] for `FSEventStreamContext` states that `release` is only
     //   called when the stream is deallocated, so it is safe to convert `info` back into a
-    
+    //   box and drop it.
+    //
+    // [docs]: https://developer.apple.com/documentation/coreservices/fseventstreamcontext?language=objc
+    unsafe {
+        drop(Box::from_raw(
+            info as *const StreamCo
