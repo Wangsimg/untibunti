@@ -246,4 +246,7 @@ struct StreamContextInfo {
 
 // Free the context when the stream created by `FSEventStreamCreate` is released.
 extern "C" fn release_context(info: *const libc::c_void) {
-    // Safety
+    // Safety:
+    // - The [documentation] for `FSEventStreamContext` states that `release` is only
+    //   called when the stream is deallocated, so it is safe to convert `info` back into a
+    
