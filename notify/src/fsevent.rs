@@ -261,4 +261,11 @@ extern "C" fn release_context(info: *const libc::c_void) {
 
 extern "C" {
     /// Indicates whether the run loop is waiting for an event.
-    fn CFRunLoopIsWaiting(runloop: cf::CFRunLoopRef) -> cf::Boolean
+    fn CFRunLoopIsWaiting(runloop: cf::CFRunLoopRef) -> cf::Boolean;
+}
+
+impl FsEventWatcher {
+    fn from_event_handler(event_handler: Arc<Mutex<dyn EventHandler>>) -> Result<Self> {
+        Ok(FsEventWatcher {
+            paths: unsafe {
+                c
