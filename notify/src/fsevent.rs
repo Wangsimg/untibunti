@@ -268,4 +268,8 @@ impl FsEventWatcher {
     fn from_event_handler(event_handler: Arc<Mutex<dyn EventHandler>>) -> Result<Self> {
         Ok(FsEventWatcher {
             paths: unsafe {
-                c
+                cf::CFArrayCreateMutable(cf::kCFAllocatorDefault, 0, &cf::kCFTypeArrayCallBacks)
+            },
+            since_when: fs::kFSEventStreamEventIdSinceNow,
+            latency: 0.0,
+            flags:
