@@ -254,4 +254,11 @@ extern "C" fn release_context(info: *const libc::c_void) {
     // [docs]: https://developer.apple.com/documentation/coreservices/fseventstreamcontext?language=objc
     unsafe {
         drop(Box::from_raw(
-            info as *const StreamCo
+            info as *const StreamContextInfo as *mut StreamContextInfo,
+        ));
+    }
+}
+
+extern "C" {
+    /// Indicates whether the run loop is waiting for an event.
+    fn CFRunLoopIsWaiting(runloop: cf::CFRunLoopRef) -> cf::Boolean
