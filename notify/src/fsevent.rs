@@ -272,4 +272,10 @@ impl FsEventWatcher {
             },
             since_when: fs::kFSEventStreamEventIdSinceNow,
             latency: 0.0,
-            flags:
+            flags: fs::kFSEventStreamCreateFlagFileEvents | fs::kFSEventStreamCreateFlagNoDefer,
+            event_handler,
+            runloop: None,
+            recursive_info: HashMap::new(),
+        })
+    }
+
