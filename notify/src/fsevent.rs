@@ -297,4 +297,13 @@ impl FsEventWatcher {
 
     #[inline]
     fn is_running(&self) -> bool {
-        self.r
+        self.runloop.is_some()
+    }
+
+    fn stop(&mut self) {
+        if !self.is_running() {
+            return;
+        }
+
+        if let Some((runloop, thread_handle)) = self.runloop.take() {
+  
