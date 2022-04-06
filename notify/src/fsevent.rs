@@ -282,4 +282,11 @@ impl FsEventWatcher {
     fn watch_inner(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
         self.stop();
         let result = self.append_path(path, recursive_mode);
-        // ignore ret
+        // ignore return error: may be empty path list
+        let _ = self.run();
+        result
+    }
+
+    fn unwatch_inner(&mut self, path: &Path) -> Result<()> {
+        self.stop();
+        let result = self.remo
