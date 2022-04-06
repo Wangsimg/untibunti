@@ -306,4 +306,9 @@ impl FsEventWatcher {
         }
 
         if let Some((runloop, thread_handle)) = self.runloop.take() {
-  
+            unsafe {
+                let runloop = runloop as *mut raw::c_void;
+
+                while CFRunLoopIsWaiting(runloop) == 0 {
+                    thread::yield_now();
+     
