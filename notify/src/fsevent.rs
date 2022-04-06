@@ -289,4 +289,12 @@ impl FsEventWatcher {
 
     fn unwatch_inner(&mut self, path: &Path) -> Result<()> {
         self.stop();
-        let result = self.remo
+        let result = self.remove_path(path);
+        // ignore return error: may be empty path list
+        let _ = self.run();
+        result
+    }
+
+    #[inline]
+    fn is_running(&self) -> bool {
+        self.r
