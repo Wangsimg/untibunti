@@ -311,4 +311,12 @@ impl FsEventWatcher {
 
                 while CFRunLoopIsWaiting(runloop) == 0 {
                     thread::yield_now();
-     
+                }
+
+                cf::CFRunLoopStop(runloop);
+            }
+
+            // Wait for the thread to shut down.
+            thread_handle.join().expect("thread to shut down");
+        }
+   
