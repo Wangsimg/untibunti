@@ -319,4 +319,9 @@ impl FsEventWatcher {
             // Wait for the thread to shut down.
             thread_handle.join().expect("thread to shut down");
         }
-   
+    }
+
+    fn remove_path(&mut self, path: &Path) -> Result<()> {
+        let str_path = path.to_str().unwrap();
+        unsafe {
+            let mut err
