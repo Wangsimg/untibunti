@@ -324,4 +324,7 @@ impl FsEventWatcher {
     fn remove_path(&mut self, path: &Path) -> Result<()> {
         let str_path = path.to_str().unwrap();
         unsafe {
-            let mut err
+            let mut err: cf::CFErrorRef = ptr::null_mut();
+            let cf_path = cf::str_path_to_cfstring_ref(str_path, &mut err);
+            if cf_path.is_null() {
+                cf::CFRelease(err as cf::CFR
