@@ -335,4 +335,12 @@ impl FsEventWatcher {
             for idx in 0..cf::CFArrayGetCount(self.paths) {
                 let item = cf::CFArrayGetValueAtIndex(self.paths, idx);
                 if cf::CFStringCompare(item, cf_path, cf::kCFCompareCaseInsensitive)
-             
+                    == cf::kCFCompareEqualTo
+                {
+                    to_remove.push(idx);
+                }
+            }
+
+            cf::CFRelease(cf_path);
+
+            for idx in to_remove.i
