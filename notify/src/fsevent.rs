@@ -332,4 +332,7 @@ impl FsEventWatcher {
             }
 
             let mut to_remove = Vec::new();
-            for idx in 0..cf::CFArrayGe
+            for idx in 0..cf::CFArrayGetCount(self.paths) {
+                let item = cf::CFArrayGetValueAtIndex(self.paths, idx);
+                if cf::CFStringCompare(item, cf_path, cf::kCFCompareCaseInsensitive)
+             
