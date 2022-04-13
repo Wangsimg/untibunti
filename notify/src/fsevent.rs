@@ -327,4 +327,9 @@ impl FsEventWatcher {
             let mut err: cf::CFErrorRef = ptr::null_mut();
             let cf_path = cf::str_path_to_cfstring_ref(str_path, &mut err);
             if cf_path.is_null() {
-                cf::CFRelease(err as cf::CFR
+                cf::CFRelease(err as cf::CFRef);
+                return Err(Error::watch_not_found().add_path(path.into()));
+            }
+
+            let mut to_remove = Vec::new();
+            for idx in 0..cf::CFArrayGe
