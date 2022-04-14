@@ -343,4 +343,9 @@ impl FsEventWatcher {
 
             cf::CFRelease(cf_path);
 
-            for idx in to_remove.i
+            for idx in to_remove.iter().rev() {
+                cf::CFArrayRemoveValueAtIndex(self.paths, *idx);
+            }
+        }
+        let p = if let Ok(canonicalized_path) = path.canonicalize() {
+            canon
