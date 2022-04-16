@@ -348,4 +348,11 @@ impl FsEventWatcher {
             }
         }
         let p = if let Ok(canonicalized_path) = path.canonicalize() {
-            canon
+            canonicalized_path
+        } else {
+            path.to_owned()
+        };
+        match self.recursive_info.remove(&p) {
+            Some(_) => Ok(()),
+            None => Err(Error::watch_not_found()),
+      
