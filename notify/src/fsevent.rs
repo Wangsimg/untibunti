@@ -355,4 +355,10 @@ impl FsEventWatcher {
         match self.recursive_info.remove(&p) {
             Some(_) => Ok(()),
             None => Err(Error::watch_not_found()),
-      
+        }
+    }
+
+    // https://github.com/thibaudgg/rb-fsevent/blob/master/ext/fsevent_watch/main.c
+    fn append_path(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+        if !path.exists() {
+         
