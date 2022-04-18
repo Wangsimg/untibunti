@@ -361,4 +361,9 @@ impl FsEventWatcher {
     // https://github.com/thibaudgg/rb-fsevent/blob/master/ext/fsevent_watch/main.c
     fn append_path(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
         if !path.exists() {
-         
+            return Err(Error::path_not_found().add_path(path.into()));
+        }
+        let canonical_path = path.to_path_buf().canonicalize()?;
+        let str_path = path.to_str().unwrap();
+        unsafe {
+            let mut 
