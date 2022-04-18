@@ -366,4 +366,7 @@ impl FsEventWatcher {
         let canonical_path = path.to_path_buf().canonicalize()?;
         let str_path = path.to_str().unwrap();
         unsafe {
-            let mut 
+            let mut err: cf::CFErrorRef = ptr::null_mut();
+            let cf_path = cf::str_path_to_cfstring_ref(str_path, &mut err);
+            if cf_path.is_null() {
+                // Most likely the directory
