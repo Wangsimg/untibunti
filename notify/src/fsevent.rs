@@ -378,4 +378,11 @@ impl FsEventWatcher {
             cf::CFRelease(cf_path);
         }
         self.recursive_info
-            .insert(canonical_path, recursi
+            .insert(canonical_path, recursive_mode.is_recursive());
+        Ok(())
+    }
+
+    fn run(&mut self) -> Result<()> {
+        if unsafe { cf::CFArrayGetCount(self.paths) } == 0 {
+            // TODO: Reconstruct and add paths to error
+            return Er
