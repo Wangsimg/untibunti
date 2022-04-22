@@ -369,4 +369,7 @@ impl FsEventWatcher {
             let mut err: cf::CFErrorRef = ptr::null_mut();
             let cf_path = cf::str_path_to_cfstring_ref(str_path, &mut err);
             if cf_path.is_null() {
-                // Most likely the directory
+                // Most likely the directory was deleted, or permissions changed,
+                // while the above code was running.
+                cf::CFRelease(err as cf::CFRef);
+                return Err(Error::path_not_found().add
