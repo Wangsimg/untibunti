@@ -372,4 +372,10 @@ impl FsEventWatcher {
                 // Most likely the directory was deleted, or permissions changed,
                 // while the above code was running.
                 cf::CFRelease(err as cf::CFRef);
-                return Err(Error::path_not_found().add
+                return Err(Error::path_not_found().add_path(path.into()));
+            }
+            cf::CFArrayAppendValue(self.paths, cf_path);
+            cf::CFRelease(cf_path);
+        }
+        self.recursive_info
+            .insert(canonical_path, recursi
