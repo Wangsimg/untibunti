@@ -385,4 +385,8 @@ impl FsEventWatcher {
     fn run(&mut self) -> Result<()> {
         if unsafe { cf::CFArrayGetCount(self.paths) } == 0 {
             // TODO: Reconstruct and add paths to error
-            return Er
+            return Err(Error::path_not_found());
+        }
+
+        // We need to associate the stream context with our callback in order to propagate events
+        // to the rest of the system. This will be owned by
