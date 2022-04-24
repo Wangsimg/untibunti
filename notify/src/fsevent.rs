@@ -397,4 +397,8 @@ impl FsEventWatcher {
             recursive_info: self.recursive_info.clone(),
         }));
 
-        let stream_context
+        let stream_context = fs::FSEventStreamContext {
+            version: 0,
+            info: context as *mut libc::c_void,
+            retain: None,
+            release: Some(release
