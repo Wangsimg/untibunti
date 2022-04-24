@@ -401,4 +401,12 @@ impl FsEventWatcher {
             version: 0,
             info: context as *mut libc::c_void,
             retain: None,
-            release: Some(release
+            release: Some(release_context),
+            copy_description: None,
+        };
+
+        let stream = unsafe {
+            fs::FSEventStreamCreate(
+                cf::kCFAllocatorDefault,
+                callback,
+       
