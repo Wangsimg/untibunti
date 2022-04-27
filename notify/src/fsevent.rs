@@ -417,4 +417,8 @@ impl FsEventWatcher {
             )
         };
 
-        // Wrapper to help send
+        // Wrapper to help send CFRef types across threads.
+        struct CFSendWrapper(cf::CFRef);
+
+        // Safety:
+        // - According to the Apple documentation, it's safe to move `CFRef`s across 
