@@ -421,4 +421,6 @@ impl FsEventWatcher {
         struct CFSendWrapper(cf::CFRef);
 
         // Safety:
-        // - According to the Apple documentation, it's safe to move `CFRef`s across 
+        // - According to the Apple documentation, it's safe to move `CFRef`s across threads.
+        //   https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
+        unsafe impl Send for CFSe
