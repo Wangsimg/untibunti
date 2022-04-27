@@ -409,4 +409,12 @@ impl FsEventWatcher {
             fs::FSEventStreamCreate(
                 cf::kCFAllocatorDefault,
                 callback,
-       
+                &stream_context,
+                self.paths,
+                self.since_when,
+                self.latency,
+                self.flags,
+            )
+        };
+
+        // Wrapper to help send
