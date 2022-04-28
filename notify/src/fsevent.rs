@@ -423,4 +423,12 @@ impl FsEventWatcher {
         // Safety:
         // - According to the Apple documentation, it's safe to move `CFRef`s across threads.
         //   https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Multithreading/ThreadSafetySummary/ThreadSafetySummary.html
-        unsafe impl Send for CFSe
+        unsafe impl Send for CFSendWrapper {}
+
+        // move into thread
+        let stream = CFSendWrapper(stream);
+
+        // channel to pass runloop around
+        let (rl_tx, rl_rx) = unbounded();
+
+        let thread
