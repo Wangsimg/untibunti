@@ -431,4 +431,10 @@ impl FsEventWatcher {
         // channel to pass runloop around
         let (rl_tx, rl_rx) = unbounded();
 
-        let thread
+        let thread_handle = thread::Builder::new()
+            .name("notify-rs fsevents loop".to_string())
+            .spawn(move || {
+                let _ = &stream;
+                let stream = stream.0;
+
+  
