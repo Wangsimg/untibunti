@@ -437,4 +437,8 @@ impl FsEventWatcher {
                 let _ = &stream;
                 let stream = stream.0;
 
-  
+                unsafe {
+                    let cur_runloop = cf::CFRunLoopGetCurrent();
+
+                    fs::FSEventStreamScheduleWithRunLoop(
+                 
