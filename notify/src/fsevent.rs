@@ -441,4 +441,10 @@ impl FsEventWatcher {
                     let cur_runloop = cf::CFRunLoopGetCurrent();
 
                     fs::FSEventStreamScheduleWithRunLoop(
-                 
+                        stream,
+                        cur_runloop,
+                        cf::kCFRunLoopDefaultMode,
+                    );
+                    fs::FSEventStreamStart(stream);
+
+                    // the calling to CFRunL
