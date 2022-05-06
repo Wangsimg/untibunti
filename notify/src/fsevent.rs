@@ -450,4 +450,9 @@ impl FsEventWatcher {
                     // the calling to CFRunLoopRun will be terminated by CFRunLoopStop call in drop()
                     rl_tx
                         .send(CFSendWrapper(cur_runloop))
-                        .expect("Unable to send runloo
+                        .expect("Unable to send runloop to watcher");
+
+                    cf::CFRunLoopRun();
+                    fs::FSEventStreamStop(stream);
+                    fs::FSEventStreamInvalidate(stream);
+                    fs::FSEventStreamRelease(stream
