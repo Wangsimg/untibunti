@@ -455,4 +455,13 @@ impl FsEventWatcher {
                     cf::CFRunLoopRun();
                     fs::FSEventStreamStop(stream);
                     fs::FSEventStreamInvalidate(stream);
-                    fs::FSEventStreamRelease(stream
+                    fs::FSEventStreamRelease(stream);
+                }
+            })?;
+        // block until runloop has been sent
+        self.runloop = Some((rl_rx.recv().unwrap().0, thread_handle));
+
+        Ok(())
+    }
+
+ 
