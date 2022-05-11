@@ -474,4 +474,6 @@ extern "C" fn callback(
     stream_ref: fs::FSEventStreamRef,
     info: *mut libc::c_void,
     num_events: libc::size_t,                        // size_t numEvents
-    event_paths: *mut libc::c_void,  
+    event_paths: *mut libc::c_void,                  // void *eventPaths
+    event_flags: *const fs::FSEventStreamEventFlags, // const FSEventStreamEventFlags eventFlags[]
+    event_ids: *const fs::FSEventStreamEventId,      // const
