@@ -464,4 +464,10 @@ impl FsEventWatcher {
         Ok(())
     }
 
- 
+    fn configure_raw_mode(&mut self, _config: Config, tx: Sender<Result<bool>>) {
+        tx.send(Ok(false))
+            .expect("configuration channel disconnect");
+    }
+}
+
+exte
