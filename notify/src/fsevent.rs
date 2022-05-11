@@ -470,4 +470,8 @@ impl FsEventWatcher {
     }
 }
 
-exte
+extern "C" fn callback(
+    stream_ref: fs::FSEventStreamRef,
+    info: *mut libc::c_void,
+    num_events: libc::size_t,                        // size_t numEvents
+    event_paths: *mut libc::c_void,  
