@@ -484,4 +484,13 @@ extern "C" fn callback(
             info,
             num_events,
             event_paths,
-        
+            event_flags,
+            event_ids,
+        )
+    }
+}
+
+unsafe fn callback_impl(
+    _stream_ref: fs::FSEventStreamRef,
+    info: *mut libc::c_void,
+    num_events: libc::size_t,
