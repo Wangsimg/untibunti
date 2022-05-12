@@ -476,4 +476,12 @@ extern "C" fn callback(
     num_events: libc::size_t,                        // size_t numEvents
     event_paths: *mut libc::c_void,                  // void *eventPaths
     event_flags: *const fs::FSEventStreamEventFlags, // const FSEventStreamEventFlags eventFlags[]
-    event_ids: *const fs::FSEventStreamEventId,      // const
+    event_ids: *const fs::FSEventStreamEventId,      // const FSEventStreamEventId eventIds[]
+) {
+    unsafe {
+        callback_impl(
+            stream_ref,
+            info,
+            num_events,
+            event_paths,
+        
