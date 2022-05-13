@@ -505,4 +505,9 @@ unsafe fn callback_impl(
     for p in 0..num_events {
         let path = CStr::from_ptr(*event_paths.add(p))
             .to_str()
-            .expect("Invalid 
+            .expect("Invalid UTF8 string.");
+        let path = PathBuf::from(path);
+
+        let flag = *event_flags.add(p);
+        let flag = StreamFlags::from_bits(flag).unwrap_or_else(|| {
+     
