@@ -499,4 +499,10 @@ unsafe fn callback_impl(
     _event_ids: *const fs::FSEventStreamEventId,     // const FSEventStreamEventId eventIds[]
 ) {
     let event_paths = event_paths as *const *const libc::c_char;
-    let info = info as *const St
+    let info = info as *const StreamContextInfo;
+    let event_handler = &(*info).event_handler;
+
+    for p in 0..num_events {
+        let path = CStr::from_ptr(*event_paths.add(p))
+            .to_str()
+            .expect("Invalid 
