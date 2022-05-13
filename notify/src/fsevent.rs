@@ -495,4 +495,8 @@ unsafe fn callback_impl(
     info: *mut libc::c_void,
     num_events: libc::size_t,                        // size_t numEvents
     event_paths: *mut libc::c_void,                  // void *eventPaths
-    event_flags: *const fs::FSEventStreamEventFlags, // const FSEventSt
+    event_flags: *const fs::FSEventStreamEventFlags, // const FSEventStreamEventFlags eventFlags[]
+    _event_ids: *const fs::FSEventStreamEventId,     // const FSEventStreamEventId eventIds[]
+) {
+    let event_paths = event_paths as *const *const libc::c_char;
+    let info = info as *const St
