@@ -510,4 +510,9 @@ unsafe fn callback_impl(
 
         let flag = *event_flags.add(p);
         let flag = StreamFlags::from_bits(flag).unwrap_or_else(|| {
-     
+            panic!("Unable to decode StreamFlags: {}", flag);
+        });
+
+        let mut handle_event = false;
+        for (p, r) in &(*info).recursive_info {
+            if
