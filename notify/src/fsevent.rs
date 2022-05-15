@@ -528,4 +528,10 @@ unsafe fn callback_impl(
             }
         }
 
-        if !handle_eve
+        if !handle_event {
+            continue;
+        }
+
+        for ev in translate_flags(flag, true).into_iter() {
+            // TODO: precise
+            let ev = ev.add_path(path.clone())
