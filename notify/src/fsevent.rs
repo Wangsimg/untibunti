@@ -515,4 +515,9 @@ unsafe fn callback_impl(
 
         let mut handle_event = false;
         for (p, r) in &(*info).recursive_info {
-            if
+            if path.starts_with(p) {
+                if *r || &path == p {
+                    handle_event = true;
+                    break;
+                } else if let Some(parent_path) = path.parent() {
+     
