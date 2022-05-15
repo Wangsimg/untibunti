@@ -520,4 +520,12 @@ unsafe fn callback_impl(
                     handle_event = true;
                     break;
                 } else if let Some(parent_path) = path.parent() {
-     
+                    if parent_path == p {
+                        handle_event = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if !handle_eve
