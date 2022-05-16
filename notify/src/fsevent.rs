@@ -551,4 +551,10 @@ impl Watcher for FsEventWatcher {
         self.watch_inner(path, recursive_mode)
     }
 
-    fn unwatch(&mut self, path: &Path) -> Result
+    fn unwatch(&mut self, path: &Path) -> Result<()> {
+        self.unwatch_inner(path)
+    }
+
+    fn configure(&mut self, config: Config) -> Result<bool> {
+        let (tx, rx) = unbounded();
+        self.configure_raw_mode(con
