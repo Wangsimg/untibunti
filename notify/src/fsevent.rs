@@ -580,4 +580,10 @@ fn test_fsevent_watcher_drop() {
     use super::*;
     use std::time::Duration;
 
-    let dir 
+    let dir = tempfile::tempdir().unwrap();
+
+    let (tx, rx) = std::sync::mpsc::channel();
+
+    {
+        let mut watcher = FsEventWatcher::new(tx, Default::default()).unwrap();
+        watcher.watch(dir.path(), Recur
