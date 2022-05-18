@@ -557,4 +557,15 @@ impl Watcher for FsEventWatcher {
 
     fn configure(&mut self, config: Config) -> Result<bool> {
         let (tx, rx) = unbounded();
-        self.configure_raw_mode(con
+        self.configure_raw_mode(config, tx);
+        rx.recv()?
+    }
+
+    fn kind() -> crate::WatcherKind {
+        crate::WatcherKind::Fsevent
+    }
+}
+
+impl Drop for FsEventWatcher {
+    fn drop(&mut self) {
+  
