@@ -568,4 +568,16 @@ impl Watcher for FsEventWatcher {
 
 impl Drop for FsEventWatcher {
     fn drop(&mut self) {
-  
+        self.stop();
+        unsafe {
+            cf::CFRelease(self.paths);
+        }
+    }
+}
+
+#[test]
+fn test_fsevent_watcher_drop() {
+    use super::*;
+    use std::time::Duration;
+
+    let dir 
