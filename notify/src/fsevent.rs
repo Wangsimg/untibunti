@@ -591,4 +591,11 @@ fn test_fsevent_watcher_drop() {
         println!("is running -> {}", watcher.is_running());
 
         thread::sleep(Duration::from_millis(1000));
- 
+        watcher.unwatch(dir.path()).unwrap();
+        println!("is running -> {}", watcher.is_running());
+    }
+
+    thread::sleep(Duration::from_millis(1000));
+
+    for res in rx {
+        le
