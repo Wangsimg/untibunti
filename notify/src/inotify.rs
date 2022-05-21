@@ -290,3 +290,210 @@ impl EventLoop {
                                                     CreateKind::Folder
                                                 } else {
                                                     CreateKind::File
+                                                },
+                                            ))
+                                            .add_some_path(path.clone()),
+                                        );
+                                    }
+                                    add_watch_by_event(
+                                        &path,
+                                        &event,
+                                        &self.watches,
+                                        &mut add_watches,
+                                    );
+                                }
+                                if event.mask.contains(EventMask::MOVE_SELF) {
+                                    evs.push(
+                                        Event::new(EventKind::Modify(ModifyKind::Name(
+                                            RenameMode::From,
+                                        )))
+                                        .add_some_path(path.clone()),
+                                    );
+                                    // TODO stat the path and get to new path
+                                    // - emit To and Both events
+                                    // - change prefix for further events
+                                }
+                                if event.mask.contains(EventMask::CREATE) {
+                                    evs.push(
+                                        Event::new(EventKind::Create(
+                                            if event.mask.contains(EventMask::ISDIR) {
+                                                CreateKind::Folder
+                                            } else {
+                                                CreateKind::File
+                                            },
+                                        ))
+                                        .add_some_path(path.clone()),
+                                    );
+                                    add_watch_by_event(
+                                        &path,
+                                        &event,
+                                        &self.watches,
+                                        &mut add_watches,
+                                    );
+                                }
+                                if event.mask.contains(EventMask::DELETE_SELF)
+                                    || event.mask.contains(EventMask::DELETE)
+                                {
+                                    evs.push(
+                                        Event::new(EventKind::Remove(
+                                            if event.mask.contains(EventMask::ISDIR) {
+                                                RemoveKind::Folder
+                                            } else {
+                                                RemoveKind::File
+                                            },
+                                        ))
+                                        .add_some_path(path.clone()),
+                                    );
+                                    remove_watch_by_event(
+                                        &path,
+                                        &self.watches,
+                                        &mut remove_watches,
+                                    );
+                                }
+                                if event.mask.contains(EventMask::MODIFY) {
+                                    evs.push(
+                                        Event::new(EventKind::Modify(ModifyKind::Data(
+                                            DataChange::Any,
+                                        )))
+                                        .add_some_path(path.clone()),
+                                    );
+                                }
+                                if event.mask.contains(EventMask::CLOSE_WRITE) {
+                                    evs.push(
+                                        Event::new(EventKind::Access(AccessKind::Close(
+                                            AccessMode::Write,
+                                        )))
+                                        .add_some_path(path.clone()),
+                                    );
+                                }
+                                if event.mask.contains(EventMask::CLOSE_NOWRITE) {
+                                    evs.push(
+                                        Event::new(EventKind::Access(AccessKind::Close(
+                                            AccessMode::Read,
+                                        )))
+                                        .add_some_path(path.clone()),
+                                    );
+                                }
+                                if event.mask.contains(EventMask::ATTRIB) {
+                                    evs.push(
+                                        Event::new(EventKind::Modify(ModifyKind::Metadata(
+                                            MetadataKind::Any,
+                                        )))
+                                        .add_some_path(path.clone()),
+                                    );
+                                }
+                                if event.mask.contains(EventMask::OPEN) {
+                                    evs.push(
+                                        Event::new(EventKind::Access(AccessKind::Open(
+                                            AccessMode::Any,
+                                        )))
+                                        .add_some_path(path.clone()),
+                                    );
+                                }
+
+                                if !evs.is_empty() {
+                                    send_pending_rename_event(
+                                        &mut self.rename_event,
+                                        &mut *self.event_handler,
+                                    );
+                                }
+
+                                for ev in evs {
+                                    self.event_handler.handle_event(Ok(ev));
+                                }
+                            }
+                        }
+
+                        // All events read. Break out.
+                        if num_events == 0 {
+                            break;
+                        }
+
+                        // When receiving only the first part of a move event (IN_MOVED_FROM) it is unclear
+                        // whether the second part (IN_MOVED_TO) will arrive because the file or directory
+                        // could just have been moved out of the watched directory. So it's necessary to wait
+                        // for possible subsequent events in case it's a complete move event but also to make sure
+                        // that the first part of the event is handled in a timely manner in case no subsequent events arrive.
+                        // TODO: don't do this here, instead leave it entirely to the debounce
+                        // -> related to some rename events being reported as creates.
+
+                        if let Some(ref rename_event) = self.rename_event {
+                            let event_loop_tx = self.event_loop_tx.clone();
+                            let waker = self.event_loop_waker.clone();
+                            let cookie = rename_event.tracker().unwrap(); // unwrap is safe because rename_event is always set with some cookie
+                            let _ = thread::Builder::new()
+                                .name("notify-rs inotify rename".to_string())
+                                .spawn(move || {
+                                    thread::sleep(Duration::from_millis(10)); // wait up to 10 ms for a subsequent event
+
+                                    // An error here means the other end of the channel was closed, a thing that can
+                                    // happen normally.
+                                    let _ = event_loop_tx.send(EventLoopMsg::RenameTimeout(cookie));
+                                    let _ = waker.wake();
+                                });
+                        }
+                    }
+                    Err(e) => {
+                        self.event_handler.handle_event(Err(Error::io(e)));
+                    }
+                }
+            }
+        }
+
+        for path in remove_watches {
+            self.remove_watch(path, true).ok();
+        }
+
+        for path in add_watches {
+            self.add_watch(path, true, false).ok();
+        }
+    }
+
+    fn add_watch(&mut self, path: PathBuf, is_recursive: bool, mut watch_self: bool) -> Result<()> {
+        // If the watch is not recursive, or if we determine (by stat'ing the path to get its
+        // metadata) that the watched path is not a directory, add a single path watch.
+        if !is_recursive || !metadata(&path).map_err(Error::io)?.is_dir() {
+            return self.add_single_watch(path, false, true);
+        }
+
+        for entry in WalkDir::new(path)
+            .follow_links(true)
+            .into_iter()
+            .filter_map(filter_dir)
+        {
+            self.add_single_watch(entry.path().to_path_buf(), is_recursive, watch_self)?;
+            watch_self = false;
+        }
+
+        Ok(())
+    }
+
+    fn add_single_watch(
+        &mut self,
+        path: PathBuf,
+        is_recursive: bool,
+        watch_self: bool,
+    ) -> Result<()> {
+        let mut watchmask = WatchMask::ATTRIB
+            | WatchMask::CREATE
+            | WatchMask::DELETE
+            | WatchMask::CLOSE_WRITE
+            | WatchMask::MODIFY
+            | WatchMask::MOVED_FROM
+            | WatchMask::MOVED_TO;
+
+        if watch_self {
+            watchmask.insert(WatchMask::DELETE_SELF);
+            watchmask.insert(WatchMask::MOVE_SELF);
+        }
+
+        if let Some(&(_, old_watchmask, _)) = self.watches.get(&path) {
+            watchmask.insert(old_watchmask);
+            watchmask.insert(WatchMask::MASK_ADD);
+        }
+
+        if let Some(ref mut inotify) = self.inotify {
+            match inotify.add_watch(&path, watchmask) {
+                Err(e) => {
+                    Err(if e.raw_os_error() == Some(libc::ENOSPC) {
+                        // do not report inotify limits as "no more space" on linux #266
