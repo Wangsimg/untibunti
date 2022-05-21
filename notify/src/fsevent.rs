@@ -598,4 +598,13 @@ fn test_fsevent_watcher_drop() {
     thread::sleep(Duration::from_millis(1000));
 
     for res in rx {
-        le
+        let e = res.unwrap();
+        println!("debug => {:?} {:?}", e.kind, e.paths);
+    }
+
+    println!("in test: {} works", file!());
+}
+
+#[test]
+fn test_steam_context_info_send_and_sync() {
+    fn
