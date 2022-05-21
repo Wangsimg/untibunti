@@ -607,4 +607,6 @@ fn test_fsevent_watcher_drop() {
 
 #[test]
 fn test_steam_context_info_send_and_sync() {
-    fn
+    fn check_send<T: Send + Sync>() {}
+    check_send::<StreamContextInfo>();
+}
