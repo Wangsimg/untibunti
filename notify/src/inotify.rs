@@ -497,3 +497,161 @@ impl EventLoop {
                 Err(e) => {
                     Err(if e.raw_os_error() == Some(libc::ENOSPC) {
                         // do not report inotify limits as "no more space" on linux #266
+                        Error::new(ErrorKind::MaxFilesWatch)
+                    } else {
+                        Error::io(e)
+                    }
+                    .add_path(path))
+                }
+                Ok(w) => {
+                    watchmask.remove(WatchMask::MASK_ADD);
+                    self.watches
+                        .insert(path.clone(), (w.clone(), watchmask, is_recursive));
+                    self.paths.insert(w, path);
+                    Ok(())
+                }
+            }
+        } else {
+            Ok(())
+        }
+    }
+
+    fn remove_watch(&mut self, path: PathBuf, remove_recursive: bool) -> Result<()> {
+        match self.watches.remove(&path) {
+            None => return Err(Error::watch_not_found().add_path(path)),
+            Some((w, _, is_recursive)) => {
+                if let Some(ref mut inotify) = self.inotify {
+                    inotify
+                        .rm_watch(w.clone())
+                        .map_err(|e| Error::io(e).add_path(path.clone()))?;
+                    self.paths.remove(&w);
+
+                    if is_recursive || remove_recursive {
+                        let mut remove_list = Vec::new();
+                        for (w, p) in &self.paths {
+                            if p.starts_with(&path) {
+                                inotify
+                                    .rm_watch(w.clone())
+                                    .map_err(|e| Error::io(e).add_path(p.into()))?;
+                                self.watches.remove(p);
+                                remove_list.push(w.clone());
+                            }
+                        }
+                        for w in remove_list {
+                            self.paths.remove(&w);
+                        }
+                    }
+                }
+            }
+        }
+        Ok(())
+    }
+
+    fn remove_all_watches(&mut self) -> Result<()> {
+        if let Some(ref mut inotify) = self.inotify {
+            for (w, p) in &self.paths {
+                inotify
+                    .rm_watch(w.clone())
+                    .map_err(|e| Error::io(e).add_path(p.into()))?;
+            }
+            self.watches.clear();
+            self.paths.clear();
+        }
+        Ok(())
+    }
+}
+
+/// return `DirEntry` when it is a directory
+fn filter_dir(e: walkdir::Result<walkdir::DirEntry>) -> Option<walkdir::DirEntry> {
+    if let Ok(e) = e {
+        if let Ok(metadata) = e.metadata() {
+            if metadata.is_dir() {
+                return Some(e);
+            }
+        }
+    }
+    None
+}
+
+impl INotifyWatcher {
+    fn from_event_handler(event_handler: Box<dyn EventHandler>) -> Result<Self> {
+        let inotify = Inotify::init()?;
+        let event_loop = EventLoop::new(inotify, event_handler)?;
+        let channel = event_loop.event_loop_tx.clone();
+        let waker = event_loop.event_loop_waker.clone();
+        event_loop.run();
+        Ok(INotifyWatcher { channel, waker })
+    }
+
+    fn watch_inner(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+        let pb = if path.is_absolute() {
+            path.to_owned()
+        } else {
+            let p = env::current_dir().map_err(Error::io)?;
+            p.join(path)
+        };
+        let (tx, rx) = unbounded();
+        let msg = EventLoopMsg::AddWatch(pb, recursive_mode, tx);
+
+        // we expect the event loop to live and reply => unwraps must not panic
+        self.channel.send(msg).unwrap();
+        self.waker.wake().unwrap();
+        rx.recv().unwrap()
+    }
+
+    fn unwatch_inner(&mut self, path: &Path) -> Result<()> {
+        let pb = if path.is_absolute() {
+            path.to_owned()
+        } else {
+            let p = env::current_dir().map_err(Error::io)?;
+            p.join(path)
+        };
+        let (tx, rx) = unbounded();
+        let msg = EventLoopMsg::RemoveWatch(pb, tx);
+
+        // we expect the event loop to live and reply => unwraps must not panic
+        self.channel.send(msg).unwrap();
+        self.waker.wake().unwrap();
+        rx.recv().unwrap()
+    }
+}
+
+impl Watcher for INotifyWatcher {
+    /// Create a new watcher.
+    fn new<F: EventHandler>(event_handler: F, _config: Config) -> Result<Self> {
+        Self::from_event_handler(Box::new(event_handler))
+    }
+
+    fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+        self.watch_inner(path, recursive_mode)
+    }
+
+    fn unwatch(&mut self, path: &Path) -> Result<()> {
+        self.unwatch_inner(path)
+    }
+
+    fn configure(&mut self, config: Config) -> Result<bool> {
+        let (tx, rx) = bounded(1);
+        self.channel.send(EventLoopMsg::Configure(config, tx))?;
+        self.waker.wake()?;
+        rx.recv()?
+    }
+
+    fn kind() -> crate::WatcherKind {
+        crate::WatcherKind::Inotify
+    }
+}
+
+impl Drop for INotifyWatcher {
+    fn drop(&mut self) {
+        // we expect the event loop to live => unwrap must not panic
+        self.channel.send(EventLoopMsg::Shutdown).unwrap();
+        self.waker.wake().unwrap();
+    }
+}
+
+#[test]
+fn inotify_watcher_is_send_and_sync() {
+    fn check<T: Send + Sync>() {}
+    check::<INotifyWatcher>();
+}
