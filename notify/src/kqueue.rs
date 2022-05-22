@@ -2,4 +2,9 @@
 //!
 //! The kqueue() system call provides a generic method of notifying the user
 //! when an event happens or a condition holds, based on the results of small
-//! pieces of ke
+//! pieces of kernel code termed filters.
+
+use super::event::*;
+use super::{Config, Error, EventHandler, RecursiveMode, Result, Watcher};
+use crate::{unbounded, Receiver, Sender};
+use kqueue::{EventDa
