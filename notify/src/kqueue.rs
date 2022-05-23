@@ -7,4 +7,10 @@
 use super::event::*;
 use super::{Config, Error, EventHandler, RecursiveMode, Result, Watcher};
 use crate::{unbounded, Receiver, Sender};
-use kqueue::{EventDa
+use kqueue::{EventData, EventFilter, FilterFlag, Ident};
+use std::collections::HashMap;
+use std::env;
+use std::fs::metadata;
+use std::os::unix::io::AsRawFd;
+use std::path::{Path, PathBuf};
+use std
