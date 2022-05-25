@@ -20,4 +20,10 @@ use walkdir::WalkDir;
 const KQUEUE: mio::Token = mio::Token(0);
 const MESSAGE: mio::Token = mio::Token(1);
 
-// The EventLoop will set up a mio::Poll and use it to 
+// The EventLoop will set up a mio::Poll and use it to wait for the following:
+//
+// -  messages telling it what to do
+//
+// -  events telling it that something has happened on one of the watched files.
+struct EventLoop {
+    running: b
