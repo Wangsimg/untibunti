@@ -13,4 +13,11 @@ use std::env;
 use std::fs::metadata;
 use std::os::unix::io::AsRawFd;
 use std::path::{Path, PathBuf};
-use std
+use std::sync::Arc;
+use std::thread;
+use walkdir::WalkDir;
+
+const KQUEUE: mio::Token = mio::Token(0);
+const MESSAGE: mio::Token = mio::Token(1);
+
+// The EventLoop will set up a mio::Poll and use it to 
