@@ -32,4 +32,11 @@ struct EventLoop {
     event_loop_tx: Sender<EventLoopMsg>,
     event_loop_rx: Receiver<EventLoopMsg>,
     kqueue: kqueue::Watcher,
- 
+    event_handler: Box<dyn EventHandler>,
+    watches: HashMap<PathBuf, bool>,
+}
+
+/// Watcher implementation based on inotify
+#[derive(Debug)]
+pub struct KqueueWatcher {
+    channel: Sender<
