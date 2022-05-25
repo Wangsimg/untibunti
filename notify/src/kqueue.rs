@@ -26,4 +26,10 @@ const MESSAGE: mio::Token = mio::Token(1);
 //
 // -  events telling it that something has happened on one of the watched files.
 struct EventLoop {
-    running: b
+    running: bool,
+    poll: mio::Poll,
+    event_loop_waker: Arc<mio::Waker>,
+    event_loop_tx: Sender<EventLoopMsg>,
+    event_loop_rx: Receiver<EventLoopMsg>,
+    kqueue: kqueue::Watcher,
+ 
