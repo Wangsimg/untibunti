@@ -39,4 +39,11 @@ struct EventLoop {
 /// Watcher implementation based on inotify
 #[derive(Debug)]
 pub struct KqueueWatcher {
-    channel: Sender<
+    channel: Sender<EventLoopMsg>,
+    waker: Arc<mio::Waker>,
+}
+
+enum EventLoopMsg {
+    AddWatch(PathBuf, RecursiveMode, Sender<Result<()>>),
+    RemoveWatch(PathBuf, Sender<Result<()>>),
+    Shutdown
