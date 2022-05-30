@@ -46,4 +46,10 @@ pub struct KqueueWatcher {
 enum EventLoopMsg {
     AddWatch(PathBuf, RecursiveMode, Sender<Result<()>>),
     RemoveWatch(PathBuf, Sender<Result<()>>),
-    Shutdown
+    Shutdown,
+}
+
+impl EventLoop {
+    pub fn new(kqueue: kqueue::Watcher, event_handler: Box<dyn EventHandler>) -> Result<Self> {
+        let (event_loop_tx, event_loop_rx) = unbounded::<EventLoopMsg>();
+   
