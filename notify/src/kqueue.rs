@@ -52,4 +52,9 @@ enum EventLoopMsg {
 impl EventLoop {
     pub fn new(kqueue: kqueue::Watcher, event_handler: Box<dyn EventHandler>) -> Result<Self> {
         let (event_loop_tx, event_loop_rx) = unbounded::<EventLoopMsg>();
-   
+        let poll = mio::Poll::new()?;
+
+        let event_loop_waker = Arc::new(mio::Waker::new(poll.registry(), MESSAGE)?);
+
+        let kqueue_fd = kqueue.as_raw_fd();
+        let m
