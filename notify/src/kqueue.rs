@@ -57,4 +57,8 @@ impl EventLoop {
         let event_loop_waker = Arc::new(mio::Waker::new(poll.registry(), MESSAGE)?);
 
         let kqueue_fd = kqueue.as_raw_fd();
-        let m
+        let mut evented_kqueue = mio::unix::SourceFd(&kqueue_fd);
+        poll.registry()
+            .register(&mut evented_kqueue, KQUEUE, mio::Interest::READABLE)?;
+
+        let event
