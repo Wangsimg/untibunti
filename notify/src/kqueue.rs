@@ -61,4 +61,12 @@ impl EventLoop {
         poll.registry()
             .register(&mut evented_kqueue, KQUEUE, mio::Interest::READABLE)?;
 
-        let event
+        let event_loop = EventLoop {
+            running: true,
+            poll,
+            event_loop_waker,
+            event_loop_tx,
+            event_loop_rx,
+            kqueue,
+            event_handler,
+            watches: Hash
