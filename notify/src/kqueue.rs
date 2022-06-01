@@ -78,4 +78,11 @@ impl EventLoop {
     pub fn run(self) {
         let _ = thread::Builder::new()
             .name("notify-rs kqueue loop".to_string())
-      
+            .spawn(|| self.event_loop_thread());
+    }
+
+    fn event_loop_thread(mut self) {
+        let mut events = mio::Events::with_capacity(16);
+        loop {
+            // Wait for something to happen.
+  
