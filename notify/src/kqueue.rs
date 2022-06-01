@@ -69,4 +69,13 @@ impl EventLoop {
             event_loop_rx,
             kqueue,
             event_handler,
-            watches: Hash
+            watches: HashMap::new(),
+        };
+        Ok(event_loop)
+    }
+
+    // Run the event loop.
+    pub fn run(self) {
+        let _ = thread::Builder::new()
+            .name("notify-rs kqueue loop".to_string())
+      
