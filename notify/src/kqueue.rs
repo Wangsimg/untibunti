@@ -87,4 +87,7 @@ impl EventLoop {
             // Wait for something to happen.
             match self.poll.poll(&mut events, None) {
                 Err(ref e) if matches!(e.kind(), std::io::ErrorKind::Interrupted) => {
-                    
+                    // System call was interrupted, we will retry
+                    // TODO: Not covered by tests (to reproduce likely need to setup signal handlers)
+                }
+            
