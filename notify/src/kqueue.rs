@@ -96,4 +96,14 @@ impl EventLoop {
 
             // Process whatever happened.
             for event in &events {
-             
+                self.handle_event(event);
+            }
+
+            // Stop, if we're done.
+            if !self.running {
+                break;
+            }
+        }
+    }
+
+    // Handle a single 
