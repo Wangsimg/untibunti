@@ -85,4 +85,6 @@ impl EventLoop {
         let mut events = mio::Events::with_capacity(16);
         loop {
             // Wait for something to happen.
-  
+            match self.poll.poll(&mut events, None) {
+                Err(ref e) if matches!(e.kind(), std::io::ErrorKind::Interrupted) => {
+                    
