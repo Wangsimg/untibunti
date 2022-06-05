@@ -106,4 +106,9 @@ impl EventLoop {
         }
     }
 
-    // Handle a single 
+    // Handle a single event.
+    fn handle_event(&mut self, event: &mio::event::Event) {
+        match event.token() {
+            MESSAGE => {
+                // The channel is readable - handle messages.
+              
