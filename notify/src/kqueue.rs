@@ -111,4 +111,11 @@ impl EventLoop {
         match event.token() {
             MESSAGE => {
                 // The channel is readable - handle messages.
-              
+                self.handle_messages()
+            }
+            KQUEUE => {
+                // inotify has something to tell us.
+                self.handle_kqueue()
+            }
+            _ => unreachable!(),
+        }
