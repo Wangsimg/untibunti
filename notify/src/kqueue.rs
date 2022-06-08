@@ -124,4 +124,8 @@ impl EventLoop {
     fn handle_messages(&mut self) {
         while let Ok(msg) = self.event_loop_rx.try_recv() {
             match msg {
-                EventLoopMsg::AddWatch(path, recursiv
+                EventLoopMsg::AddWatch(path, recursive_mode, tx) => {
+                    let _ = tx.send(self.add_watch(path, recursive_mode.is_recursive()));
+                }
+                EventLoopMsg::RemoveWatch(path, tx) => {
+                    let _
