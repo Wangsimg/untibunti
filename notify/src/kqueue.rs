@@ -119,3 +119,9 @@ impl EventLoop {
             }
             _ => unreachable!(),
         }
+    }
+
+    fn handle_messages(&mut self) {
+        while let Ok(msg) = self.event_loop_rx.try_recv() {
+            match msg {
+                EventLoopMsg::AddWatch(path, recursiv
