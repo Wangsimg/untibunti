@@ -128,4 +128,10 @@ impl EventLoop {
                     let _ = tx.send(self.add_watch(path, recursive_mode.is_recursive()));
                 }
                 EventLoopMsg::RemoveWatch(path, tx) => {
-                    let _
+                    let _ = tx.send(self.remove_watch(path, false));
+                }
+                EventLoopMsg::Shutdown => {
+                    self.running = false;
+                    break;
+                }
+       
