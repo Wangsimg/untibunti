@@ -142,4 +142,10 @@ impl EventLoop {
         let mut add_watches = Vec::new();
         let mut remove_watches = Vec::new();
 
-        while let Some(event) = self.kqueue.poll(No
+        while let Some(event) = self.kqueue.poll(None) {
+            match event {
+                kqueue::Event {
+                    data: EventData::Vnode(data),
+                    ident: Ident::Filename(_, path),
+                } => {
+                    l
