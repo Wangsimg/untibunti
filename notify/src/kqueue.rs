@@ -148,4 +148,8 @@ impl EventLoop {
                     data: EventData::Vnode(data),
                     ident: Ident::Filename(_, path),
                 } => {
-                    l
+                    let path = PathBuf::from(path);
+                    let event = match data {
+                        /*
+                        TODO: Differenciate folders and files
+                   
