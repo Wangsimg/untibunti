@@ -134,4 +134,12 @@ impl EventLoop {
                     self.running = false;
                     break;
                 }
-       
+            }
+        }
+    }
+
+    fn handle_kqueue(&mut self) {
+        let mut add_watches = Vec::new();
+        let mut remove_watches = Vec::new();
+
+        while let Some(event) = self.kqueue.poll(No
