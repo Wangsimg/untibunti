@@ -152,4 +152,6 @@ impl EventLoop {
                     let event = match data {
                         /*
                         TODO: Differenciate folders and files
-                   
+                        kqueue dosen't tell us if this was a file or a dir, so we
+                        could only emulate this inotify behavior if we keep track of
+                        all files and d
