@@ -162,4 +162,7 @@ impl EventLoop {
                             Ok(Event::new(EventKind::Remove(RemoveKind::Any)).add_path(path))
                         }
 
-                        // a write to a directory means that a new file was created in it,
+                        // a write to a directory means that a new file was created in it, let's
+                        // figure out which file this was
+                        kqueue::Vnode::Write if path.is_dir() => {
+                            // find which file is new in the di
