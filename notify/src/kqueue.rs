@@ -154,4 +154,8 @@ impl EventLoop {
                         TODO: Differenciate folders and files
                         kqueue dosen't tell us if this was a file or a dir, so we
                         could only emulate this inotify behavior if we keep track of
-                        all files and d
+                        all files and directories internally and then perform a
+                        lookup.
+                        */
+                        kqueue::Vnode::Delete => {
+                            remove_watches.push(path.clone());
