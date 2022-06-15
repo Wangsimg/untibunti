@@ -159,3 +159,7 @@ impl EventLoop {
                         */
                         kqueue::Vnode::Delete => {
                             remove_watches.push(path.clone());
+                            Ok(Event::new(EventKind::Remove(RemoveKind::Any)).add_path(path))
+                        }
+
+                        // a write to a directory means that a new file was created in it,
