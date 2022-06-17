@@ -168,4 +168,7 @@ impl EventLoop {
                             // find which file is new in the directory by comparing it with our
                             // list of known watches
                             std::fs::read_dir(&path)
-                                .map(
+                                .map(|dir| {
+                                    dir.filter_map(std::result::Result::ok)
+                                        .map(|f| f.path())
+                                        .find(|f| !self.watche
