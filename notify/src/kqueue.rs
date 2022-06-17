@@ -171,4 +171,8 @@ impl EventLoop {
                                 .map(|dir| {
                                     dir.filter_map(std::result::Result::ok)
                                         .map(|f| f.path())
-                                        .find(|f| !self.watche
+                                        .find(|f| !self.watches.contains_key(f))
+                                })
+                                .map(|file| {
+                                    if let Some(file) = file {
+                                      
