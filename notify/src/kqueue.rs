@@ -175,4 +175,8 @@ impl EventLoop {
                                 })
                                 .map(|file| {
                                     if let Some(file) = file {
-                                      
+                                        // watch this new file
+                                        add_watches.push(file.clone());
+
+                                        Event::new(EventKind::Create(if file.is_dir() {
+        
