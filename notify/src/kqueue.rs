@@ -179,4 +179,7 @@ impl EventLoop {
                                         add_watches.push(file.clone());
 
                                         Event::new(EventKind::Create(if file.is_dir() {
-        
+                                            CreateKind::Folder
+                                        } else if file.is_file() {
+                                            CreateKind::File
+                              
