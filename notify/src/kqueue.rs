@@ -182,4 +182,7 @@ impl EventLoop {
                                             CreateKind::Folder
                                         } else if file.is_file() {
                                             CreateKind::File
-                              
+                                        } else {
+                                            CreateKind::Other
+                                        }))
+                                        .a
