@@ -188,4 +188,9 @@ impl EventLoop {
                                         .add_path(file)
                                     } else {
                                         Event::new(EventKind::Modify(ModifyKind::Data(
-                                            DataC
+                                            DataChange::Any,
+                                        )))
+                                        .add_path(path)
+                                    }
+                                })
+               
