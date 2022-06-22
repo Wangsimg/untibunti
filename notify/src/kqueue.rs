@@ -185,4 +185,7 @@ impl EventLoop {
                                         } else {
                                             CreateKind::Other
                                         }))
-                                        .a
+                                        .add_path(file)
+                                    } else {
+                                        Event::new(EventKind::Modify(ModifyKind::Data(
+                                            DataC
