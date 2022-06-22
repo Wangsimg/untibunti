@@ -193,4 +193,8 @@ impl EventLoop {
                                         .add_path(path)
                                     }
                                 })
-               
+                                .map_err(Into::into)
+                        }
+
+                        // data was written to this file
+                        kqueue::Vnode::Write => Ok(Event
