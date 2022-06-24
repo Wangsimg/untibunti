@@ -208,4 +208,9 @@ impl EventLoop {
                         else
                         */
                         kqueue::Vnode::Extend | kqueue::Vnode::Truncate => Ok(Event::new(
-                            Event
+                            EventKind::Modify(ModifyKind::Data(DataChange::Size)),
+                        )
+                        .add_path(path)),
+
+                        /*
+                        this kevent has the same problem as the delet
