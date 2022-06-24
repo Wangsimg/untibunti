@@ -202,4 +202,7 @@ impl EventLoop {
                         ))
                         .add_path(path)),
 
-                     
+                        /*
+                        Extend and Truncate are just different names for the same
+                        operation, extend is only used on FreeBSD, truncate everwhere
+               
