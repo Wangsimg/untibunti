@@ -197,4 +197,9 @@ impl EventLoop {
                         }
 
                         // data was written to this file
-                        kqueue::Vnode::Write => Ok(Event
+                        kqueue::Vnode::Write => Ok(Event::new(EventKind::Modify(
+                            ModifyKind::Data(DataChange::Any),
+                        ))
+                        .add_path(path)),
+
+                     
