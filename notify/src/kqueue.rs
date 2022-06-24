@@ -205,4 +205,7 @@ impl EventLoop {
                         /*
                         Extend and Truncate are just different names for the same
                         operation, extend is only used on FreeBSD, truncate everwhere
-               
+                        else
+                        */
+                        kqueue::Vnode::Extend | kqueue::Vnode::Truncate => Ok(Event::new(
+                            Event
