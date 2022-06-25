@@ -213,4 +213,7 @@ impl EventLoop {
                         .add_path(path)),
 
                         /*
-                        this kevent has the same problem as the delet
+                        this kevent has the same problem as the delete kevent. The
+                        only way i can think of providing "better" event with more
+                        information is to do the diff our self, while this maybe do
+       
