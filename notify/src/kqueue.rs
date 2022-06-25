@@ -216,4 +216,7 @@ impl EventLoop {
                         this kevent has the same problem as the delete kevent. The
                         only way i can think of providing "better" event with more
                         information is to do the diff our self, while this maybe do
-       
+                        able of delete. In this case it would somewhat expensive to
+                        keep track and compare ever peace of metadata for every file
+                        */
+        
