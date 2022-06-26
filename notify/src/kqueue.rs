@@ -228,4 +228,6 @@ impl EventLoop {
                         The link count on a file changed => subdirectory created or
                         delete.
                         */
-    
+                        kqueue::Vnode::Link => {
+                            // As we currently don't have a solution that whould allow us
+                            // to only add/remove the new
