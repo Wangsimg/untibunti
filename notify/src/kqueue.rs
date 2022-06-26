@@ -219,4 +219,7 @@ impl EventLoop {
                         able of delete. In this case it would somewhat expensive to
                         keep track and compare ever peace of metadata for every file
                         */
-        
+                        kqueue::Vnode::Attrib => Ok(Event::new(EventKind::Modify(
+                            ModifyKind::Metadata(MetadataKind::Any),
+                        ))
+                      
