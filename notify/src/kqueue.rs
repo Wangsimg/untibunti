@@ -222,4 +222,10 @@ impl EventLoop {
                         kqueue::Vnode::Attrib => Ok(Event::new(EventKind::Modify(
                             ModifyKind::Metadata(MetadataKind::Any),
                         ))
-                      
+                        .add_path(path)),
+
+                        /*
+                        The link count on a file changed => subdirectory created or
+                        delete.
+                        */
+    
