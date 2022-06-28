@@ -234,4 +234,6 @@ impl EventLoop {
                             // possible race condition. On possible solution would be to
                             // create a `HashMap<PathBuf, Vec<PathBuf>>` which would
                             // include every directory and this content add the time of
-                            // adding it to kqueue. While
+                            // adding it to kqueue. While this sould allow us to do the
+                            // diff and only add/remove the files nessesary. This whould
+                            // also introduce 
