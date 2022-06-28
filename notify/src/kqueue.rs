@@ -236,4 +236,7 @@ impl EventLoop {
                             // include every directory and this content add the time of
                             // adding it to kqueue. While this sould allow us to do the
                             // diff and only add/remove the files nessesary. This whould
-                            // also introduce 
+                            // also introduce a race condition, where multiple files could
+                            // all ready be remove from the directory, and we could get out
+                            // of sync.
+                            // 
