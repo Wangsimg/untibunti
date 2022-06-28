@@ -239,4 +239,6 @@ impl EventLoop {
                             // also introduce a race condition, where multiple files could
                             // all ready be remove from the directory, and we could get out
                             // of sync.
-                            // 
+                            // So for now, until we find a better solution, let remove and
+                            // readd the whole directory.
+                            // This is a expensive operation, as we recursive through
