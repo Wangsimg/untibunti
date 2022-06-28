@@ -232,4 +232,6 @@ impl EventLoop {
                             // As we currently don't have a solution that whould allow us
                             // to only add/remove the new/delete directory and that dosn't include a
                             // possible race condition. On possible solution would be to
-                            // create a `HashMap<PathBu
+                            // create a `HashMap<PathBuf, Vec<PathBuf>>` which would
+                            // include every directory and this content add the time of
+                            // adding it to kqueue. While
