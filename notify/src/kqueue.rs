@@ -241,4 +241,8 @@ impl EventLoop {
                             // of sync.
                             // So for now, until we find a better solution, let remove and
                             // readd the whole directory.
-                            // This is a expensive operation, as we recursive through
+                            // This is a expensive operation, as we recursive through all
+                            // subdirectories.
+                            remove_watches.push(path.clone());
+                            add_watches.push(path.clone());
+                     
