@@ -249,4 +249,8 @@ impl EventLoop {
                         }
 
                         // Kqueue not provide us with the infomation nessesary to provide
-  
+                        // the new file name to the event.
+                        kqueue::Vnode::Rename => {
+                            remove_watches.push(path.clone());
+                            Ok(
+    
