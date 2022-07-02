@@ -245,4 +245,8 @@ impl EventLoop {
                             // subdirectories.
                             remove_watches.push(path.clone());
                             add_watches.push(path.clone());
-                     
+                            Ok(Event::new(EventKind::Modify(ModifyKind::Any)).add_path(path))
+                        }
+
+                        // Kqueue not provide us with the infomation nessesary to provide
+  
