@@ -253,4 +253,9 @@ impl EventLoop {
                         kqueue::Vnode::Rename => {
                             remove_watches.push(path.clone());
                             Ok(
-    
+                                Event::new(EventKind::Modify(ModifyKind::Name(RenameMode::Any)))
+                                    .add_path(path),
+                            )
+                        }
+
+   
