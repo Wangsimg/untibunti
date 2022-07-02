@@ -258,4 +258,6 @@ impl EventLoop {
                             )
                         }
 
-   
+                        // Access to the file was revoked via revoke(2) or the underlying file system was unmounted.
+                        kqueue::Vnode::Revoke => {
+          
