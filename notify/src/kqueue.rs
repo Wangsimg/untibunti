@@ -264,4 +264,7 @@ impl EventLoop {
                             Ok(Event::new(EventKind::Remove(RemoveKind::Any)).add_path(path))
                         }
 
-          
+                        // On different BSD variants, different extra events may be present
+                        #[allow(unreachable_patterns)]
+                        _ => Ok(Event::new(EventKind::Other)),
+    
