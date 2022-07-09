@@ -267,4 +267,8 @@ impl EventLoop {
                         // On different BSD variants, different extra events may be present
                         #[allow(unreachable_patterns)]
                         _ => Ok(Event::new(EventKind::Other)),
-    
+                    };
+                    self.event_handler.handle_event(event);
+                }
+                // as we don't add any other EVFILTER to kqueue we should never get here
+  
