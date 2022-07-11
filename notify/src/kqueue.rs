@@ -271,4 +271,12 @@ impl EventLoop {
                     self.event_handler.handle_event(event);
                 }
                 // as we don't add any other EVFILTER to kqueue we should never get here
-  
+                kqueue::Event { ident: _, data: _ } => unreachable!(),
+            }
+        }
+
+        for path in remove_watches {
+            self.remove_watch(path, true).ok();
+        }
+
+        for path in 
