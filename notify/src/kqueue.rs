@@ -279,4 +279,10 @@ impl EventLoop {
             self.remove_watch(path, true).ok();
         }
 
-        for path in 
+        for path in add_watches {
+            self.add_watch(path, true).ok();
+        }
+    }
+
+    fn add_watch(&mut self, path: PathBuf, is_recursive: bool) -> Result<()> {
+        // If the watch is not rec
