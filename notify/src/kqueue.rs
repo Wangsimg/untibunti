@@ -285,4 +285,6 @@ impl EventLoop {
     }
 
     fn add_watch(&mut self, path: PathBuf, is_recursive: bool) -> Result<()> {
-        // If the watch is not rec
+        // If the watch is not recursive, or if we determine (by stat'ing the path to get its
+        // metadata) that the watched path is not a directory, add a single path watch.
+        if !is_recursive || !metadata(&path).ma
