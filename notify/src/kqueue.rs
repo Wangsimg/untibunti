@@ -291,4 +291,10 @@ impl EventLoop {
             self.add_single_watch(path, false)?;
         } else {
             for entry in WalkDir::new(path).follow_links(true).into_iter() {
-                let entry = entry.map_err(map_walkdir
+                let entry = entry.map_err(map_walkdir_error)?;
+                self.add_single_watch(entry.path().to_path_buf(), is_recursive)?;
+            }
+        }
+
+        // Only make a single `kevent` syscall to add all the watches.
+        
