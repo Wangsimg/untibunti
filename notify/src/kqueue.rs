@@ -297,4 +297,11 @@ impl EventLoop {
         }
 
         // Only make a single `kevent` syscall to add all the watches.
-        
+        self.kqueue.watch()?;
+
+        Ok(())
+    }
+
+    /// Adds a single watch to the kqueue.
+    ///
+    /// The caller of this function must call `self.kqueue.watch()` afterw
