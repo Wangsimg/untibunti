@@ -287,4 +287,8 @@ impl EventLoop {
     fn add_watch(&mut self, path: PathBuf, is_recursive: bool) -> Result<()> {
         // If the watch is not recursive, or if we determine (by stat'ing the path to get its
         // metadata) that the watched path is not a directory, add a single path watch.
-        if !is_recursive || !metadata(&path).ma
+        if !is_recursive || !metadata(&path).map_err(Error::io)?.is_dir() {
+            self.add_single_watch(path, false)?;
+        } else {
+            for entry in WalkDir::new(path).follow_links(true).into_iter() {
+                let entry = entry.map_err(map_walkdir
