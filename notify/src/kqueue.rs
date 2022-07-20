@@ -312,4 +312,9 @@ impl EventLoop {
             | FilterFlag::NOTE_EXTEND
             | FilterFlag::NOTE_ATTRIB
             | FilterFlag::NOTE_LINK
-    
+            | FilterFlag::NOTE_RENAME
+            | FilterFlag::NOTE_REVOKE;
+
+        self.kqueue
+            .add_filename(&path, event_filter, filter_flags)
+            .map_err(|e| Error::io(e).
