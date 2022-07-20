@@ -307,4 +307,9 @@ impl EventLoop {
     /// The caller of this function must call `self.kqueue.watch()` afterwards to register the new watch.
     fn add_single_watch(&mut self, path: PathBuf, is_recursive: bool) -> Result<()> {
         let event_filter = EventFilter::EVFILT_VNODE;
-        let filter_flags = FilterFl
+        let filter_flags = FilterFlag::NOTE_DELETE
+            | FilterFlag::NOTE_WRITE
+            | FilterFlag::NOTE_EXTEND
+            | FilterFlag::NOTE_ATTRIB
+            | FilterFlag::NOTE_LINK
+    
