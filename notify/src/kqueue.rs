@@ -324,4 +324,8 @@ impl EventLoop {
     }
 
     fn remove_watch(&mut self, path: PathBuf, remove_recursive: bool) -> Result<()> {
-        matc
+        match self.watches.remove(&path) {
+            None => return Err(Error::watch_not_found()),
+            Some(is_recursive) => {
+                self.kqueue
+                    .r
