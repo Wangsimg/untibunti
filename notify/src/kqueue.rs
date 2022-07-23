@@ -317,4 +317,11 @@ impl EventLoop {
 
         self.kqueue
             .add_filename(&path, event_filter, filter_flags)
-            .map_err(|e| Error::io(e).
+            .map_err(|e| Error::io(e).add_path(path.clone()))?;
+        self.watches.insert(path, is_recursive);
+
+        Ok(())
+    }
+
+    fn remove_watch(&mut self, path: PathBuf, remove_recursive: bool) -> Result<()> {
+        matc
