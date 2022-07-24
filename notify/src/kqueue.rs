@@ -340,3 +340,13 @@ impl EventLoop {
                     }
                 }
                 self.kqueue.watch()?;
+            }
+        }
+        Ok(())
+    }
+}
+
+fn map_walkdir_error(e: walkdir::Error) -> Error {
+    if e.io_error().is_some() {
+        // save to unwrap otherwise we whouldn't be in this branch
+        
