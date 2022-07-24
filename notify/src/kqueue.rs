@@ -328,4 +328,8 @@ impl EventLoop {
             None => return Err(Error::watch_not_found()),
             Some(is_recursive) => {
                 self.kqueue
-                    .r
+                    .remove_filename(&path, EventFilter::EVFILT_VNODE)
+                    .map_err(|e| Error::io(e).add_path(path.clone()))?;
+
+                if is_recursive || remove_recursive {
+            
