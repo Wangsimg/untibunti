@@ -332,4 +332,7 @@ impl EventLoop {
                     .map_err(|e| Error::io(e).add_path(path.clone()))?;
 
                 if is_recursive || remove_recursive {
-            
+                    for entry in WalkDir::new(path).follow_links(true).into_iter() {
+                        let p = entry.map_err(map_walkdir_error)?.path().to_path_buf();
+                        self.kqueue
+                         
