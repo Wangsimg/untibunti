@@ -335,4 +335,8 @@ impl EventLoop {
                     for entry in WalkDir::new(path).follow_links(true).into_iter() {
                         let p = entry.map_err(map_walkdir_error)?.path().to_path_buf();
                         self.kqueue
-                         
+                            .remove_filename(&p, EventFilter::EVFILT_VNODE)
+                            .map_err(|e| Error::io(e).add_path(p))?;
+                    }
+                }
+                self.kqueue.watch()?;
