@@ -349,4 +349,11 @@ impl EventLoop {
 fn map_walkdir_error(e: walkdir::Error) -> Error {
     if e.io_error().is_some() {
         // save to unwrap otherwise we whouldn't be in this branch
-        
+        Error::io(e.into_io_error().unwrap())
+    } else {
+        Error::generic(&e.to_string())
+    }
+}
+
+impl KqueueWatcher {
+    fn from_event_handler(event_handler: Box<dyn EventHandler>) -> Result<Self> 
