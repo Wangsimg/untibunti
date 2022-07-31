@@ -360,4 +360,10 @@ impl KqueueWatcher {
         let kqueue = kqueue::Watcher::new()?;
         let event_loop = EventLoop::new(kqueue, event_handler)?;
         let channel = event_loop.event_loop_tx.clone();
-        let waker = event_loop.event_lo
+        let waker = event_loop.event_loop_waker.clone();
+        event_loop.run();
+        Ok(KqueueWatcher { channel, waker })
+    }
+
+    fn watch_inner(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+ 
