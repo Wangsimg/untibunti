@@ -356,4 +356,8 @@ fn map_walkdir_error(e: walkdir::Error) -> Error {
 }
 
 impl KqueueWatcher {
-    fn from_event_handler(event_handler: Box<dyn EventHandler>) -> Result<Self> 
+    fn from_event_handler(event_handler: Box<dyn EventHandler>) -> Result<Self> {
+        let kqueue = kqueue::Watcher::new()?;
+        let event_loop = EventLoop::new(kqueue, event_handler)?;
+        let channel = event_loop.event_loop_tx.clone();
+        let waker = event_loop.event_lo
