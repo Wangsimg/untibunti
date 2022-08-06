@@ -383,4 +383,11 @@ impl KqueueWatcher {
             .map_err(|e| Error::generic(&e.to_string()))?;
         rx.recv()
             .unwrap()
-            .map_err(|e| Error::generic(&e.to_string(
+            .map_err(|e| Error::generic(&e.to_string()))
+    }
+
+    fn unwatch_inner(&mut self, path: &Path) -> Result<()> {
+        let pb = if path.is_absolute() {
+            path.to_owned()
+        } else {
+            let p = env::current_dir().map_err(Err
