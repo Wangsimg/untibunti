@@ -378,4 +378,9 @@ impl KqueueWatcher {
         self.channel
             .send(msg)
             .map_err(|e| Error::generic(&e.to_string()))?;
-        self.w
+        self.waker
+            .wake()
+            .map_err(|e| Error::generic(&e.to_string()))?;
+        rx.recv()
+            .unwrap()
+            .map_err(|e| Error::generic(&e.to_string(
