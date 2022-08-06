@@ -372,4 +372,10 @@ impl KqueueWatcher {
             let p = env::current_dir().map_err(Error::io)?;
             p.join(path)
         };
-        let (
+        let (tx, rx) = unbounded();
+        let msg = EventLoopMsg::AddWatch(pb, recursive_mode, tx);
+
+        self.channel
+            .send(msg)
+            .map_err(|e| Error::generic(&e.to_string()))?;
+        self.w
