@@ -390,4 +390,12 @@ impl KqueueWatcher {
         let pb = if path.is_absolute() {
             path.to_owned()
         } else {
-            let p = env::current_dir().map_err(Err
+            let p = env::current_dir().map_err(Error::io)?;
+            p.join(path)
+        };
+        let (tx, rx) = unbounded();
+        let msg = EventLoopMsg::RemoveWatch(pb, tx);
+
+        self.channel
+            .send(msg)
+            .ma
