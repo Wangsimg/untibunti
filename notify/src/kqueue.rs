@@ -403,4 +403,11 @@ impl KqueueWatcher {
             .wake()
             .map_err(|e| Error::generic(&e.to_string()))?;
         rx.recv()
-            .u
+            .unwrap()
+            .map_err(|e| Error::generic(&e.to_string()))
+    }
+}
+
+impl Watcher for KqueueWatcher {
+    /// Create a new watcher.
+    fn new<F: EventHan
