@@ -410,4 +410,9 @@ impl KqueueWatcher {
 
 impl Watcher for KqueueWatcher {
     /// Create a new watcher.
-    fn new<F: EventHan
+    fn new<F: EventHandler>(event_handler: F, _config: Config) -> Result<Self> {
+        Self::from_event_handler(Box::new(event_handler))
+    }
+
+    fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+   
