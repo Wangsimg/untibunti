@@ -415,4 +415,12 @@ impl Watcher for KqueueWatcher {
     }
 
     fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
-   
+        self.watch_inner(path, recursive_mode)
+    }
+
+    fn unwatch(&mut self, path: &Path) -> Result<()> {
+        self.unwatch_inner(path)
+    }
+
+    fn kind() -> crate::WatcherKind {
+        crate::Watch
