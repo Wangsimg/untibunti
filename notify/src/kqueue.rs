@@ -423,4 +423,11 @@ impl Watcher for KqueueWatcher {
     }
 
     fn kind() -> crate::WatcherKind {
-        crate::Watch
+        crate::WatcherKind::Kqueue
+    }
+}
+
+impl Drop for KqueueWatcher {
+    fn drop(&mut self) {
+        // we expect the event loop to live => unwrap must not panic
+        self.channel.send(EventLoopMsg::Shutdown).unwrap();
