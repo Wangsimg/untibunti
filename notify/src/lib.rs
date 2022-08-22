@@ -151,3 +151,211 @@ pub(crate) type Receiver<T> = crossbeam_channel::Receiver<T>;
 pub(crate) type Receiver<T> = std::sync::mpsc::Receiver<T>;
 
 #[allow(dead_code)]
+#[cfg(feature = "crossbeam-channel")]
+pub(crate) type Sender<T> = crossbeam_channel::Sender<T>;
+#[allow(dead_code)]
+#[cfg(not(feature = "crossbeam-channel"))]
+pub(crate) type Sender<T> = std::sync::mpsc::Sender<T>;
+
+// std limitation
+#[allow(dead_code)]
+#[cfg(feature = "crossbeam-channel")]
+pub(crate) type BoundSender<T> = crossbeam_channel::Sender<T>;
+#[allow(dead_code)]
+#[cfg(not(feature = "crossbeam-channel"))]
+pub(crate) type BoundSender<T> = std::sync::mpsc::SyncSender<T>;
+
+#[allow(dead_code)]
+#[inline]
+pub(crate) fn unbounded<T>() -> (Sender<T>, Receiver<T>) {
+    #[cfg(feature = "crossbeam-channel")]
+    return crossbeam_channel::unbounded();
+    #[cfg(not(feature = "crossbeam-channel"))]
+    return std::sync::mpsc::channel();
+}
+
+#[allow(dead_code)]
+#[inline]
+pub(crate) fn bounded<T>(cap: usize) -> (BoundSender<T>, Receiver<T>) {
+    #[cfg(feature = "crossbeam-channel")]
+    return crossbeam_channel::bounded(cap);
+    #[cfg(not(feature = "crossbeam-channel"))]
+    return std::sync::mpsc::sync_channel(cap);
+}
+
+#[cfg(all(target_os = "macos", not(feature = "macos_kqueue")))]
+pub use crate::fsevent::FsEventWatcher;
+#[cfg(any(target_os = "linux", target_os = "android"))]
+pub use crate::inotify::INotifyWatcher;
+#[cfg(any(
+    target_os = "freebsd",
+    target_os = "openbsd",
+    target_os = "netbsd",
+    target_os = "dragonflybsd",
+    all(target_os = "macos", feature = "macos_kqueue")
+))]
+pub use crate::kqueue::KqueueWatcher;
+pub use null::NullWatcher;
+pub use poll::PollWatcher;
+#[cfg(target_os = "windows")]
+pub use windows::ReadDirectoryChangesWatcher;
+
+#[cfg(all(target_os = "macos", not(feature = "macos_kqueue")))]
+pub mod fsevent;
+#[cfg(any(target_os = "linux", target_os = "android"))]
+pub mod inotify;
+#[cfg(any(
+    target_os = "freebsd",
+    target_os = "openbsd",
+    target_os = "dragonflybsd",
+    target_os = "netbsd",
+    all(target_os = "macos", feature = "macos_kqueue")
+))]
+pub mod kqueue;
+#[cfg(target_os = "windows")]
+pub mod windows;
+
+pub mod event;
+pub mod null;
+pub mod poll;
+
+mod config;
+mod error;
+
+/// The set of requirements for watcher event handling functions.
+///
+/// # Example implementation
+///
+/// ```no_run
+/// use notify::{Event, Result, EventHandler};
+///
+/// /// Prints received events
+/// struct EventPrinter;
+///
+/// impl EventHandler for EventPrinter {
+///     fn handle_event(&mut self, event: Result<Event>) {
+///         if let Ok(event) = event {
+///             println!("Event: {:?}", event);
+///         }
+///     }
+/// }
+/// ```
+pub trait EventHandler: Send + 'static {
+    /// Handles an event.
+    fn handle_event(&mut self, event: Result<Event>);
+}
+
+impl<F> EventHandler for F
+where
+    F: FnMut(Result<Event>) + Send + 'static,
+{
+    fn handle_event(&mut self, event: Result<Event>) {
+        (self)(event);
+    }
+}
+
+#[cfg(feature = "crossbeam-channel")]
+impl EventHandler for crossbeam_channel::Sender<Result<Event>> {
+    fn handle_event(&mut self, event: Result<Event>) {
+        let _ = self.send(event);
+    }
+}
+
+impl EventHandler for std::sync::mpsc::Sender<Result<Event>> {
+    fn handle_event(&mut self, event: Result<Event>) {
+        let _ = self.send(event);
+    }
+}
+
+/// Watcher kind enumeration
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[non_exhaustive]
+pub enum WatcherKind {
+    /// inotify backend (linux)
+    Inotify,
+    /// FS-Event backend (mac)
+    Fsevent,
+    /// KQueue backend (bsd,optionally mac)
+    Kqueue,
+    /// Polling based backend (fallback)
+    PollWatcher,
+    /// Windows backend
+    ReadDirectoryChangesWatcher,
+    /// Fake watcher for testing
+    NullWatcher,
+}
+
+/// Type that can deliver file activity notifications
+///
+/// Watcher is implemented per platform using the best implementation available on that platform.
+/// In addition to such event driven implementations, a polling implementation is also provided
+/// that should work on any platform.
+pub trait Watcher {
+    /// Create a new watcher with an initial Config.
+    fn new<F: EventHandler>(event_handler: F, config: config::Config) -> Result<Self>
+    where
+        Self: Sized;
+    /// Begin watching a new path.
+    ///
+    /// If the `path` is a directory, `recursive_mode` will be evaluated. If `recursive_mode` is
+    /// `RecursiveMode::Recursive` events will be delivered for all files in that tree. Otherwise
+    /// only the directory and its immediate children will be watched.
+    ///
+    /// If the `path` is a file, `recursive_mode` will be ignored and events will be delivered only
+    /// for the file.
+    ///
+    /// On some platforms, if the `path` is renamed or removed while being watched, behaviour may
+    /// be unexpected. See discussions in [#165] and [#166]. If less surprising behaviour is wanted
+    /// one may non-recursively watch the _parent_ directory as well and manage related events.
+    ///
+    /// [#165]: https://github.com/notify-rs/notify/issues/165
+    /// [#166]: https://github.com/notify-rs/notify/issues/166
+    fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()>;
+
+    /// Stop watching a path.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error in the case that `path` has not been watched or if removing the watch
+    /// fails.
+    fn unwatch(&mut self, path: &Path) -> Result<()>;
+
+    /// Configure the watcher at runtime.
+    ///
+    /// See the [`Config`](config/enum.Config.html) enum for all configuration options.
+    ///
+    /// # Returns
+    ///
+    /// - `Ok(true)` on success.
+    /// - `Ok(false)` if the watcher does not support or implement the option.
+    /// - `Err(notify::Error)` on failure.
+    fn configure(&mut self, _option: Config) -> Result<bool> {
+        Ok(false)
+    }
+
+    /// Returns the watcher kind, allowing to perform backend-specific tasks
+    fn kind() -> WatcherKind
+    where
+        Self: Sized;
+}
+
+/// The recommended `Watcher` implementation for the current platform
+#[cfg(any(target_os = "linux", target_os = "android"))]
+pub type RecommendedWatcher = INotifyWatcher;
+/// The recommended `Watcher` implementation for the current platform
+#[cfg(all(target_os = "macos", not(feature = "macos_kqueue")))]
+pub type RecommendedWatcher = FsEventWatcher;
+/// The recommended `Watcher` implementation for the current platform
+#[cfg(target_os = "windows")]
+pub type RecommendedWatcher = ReadDirectoryChangesWatcher;
+/// The recommended `Watcher` implementation for the current platform
+#[cfg(any(
+    target_os = "freebsd",
+    target_os = "openbsd",
+    target_os = "netbsd",
+    target_os = "dragonflybsd",
+    all(target_os = "macos", feature = "macos_kqueue")
+))]
+pub type RecommendedWatcher = KqueueWatcher;
+/// The recommended `Watcher` implementation for the current platform
+#[cfg(not(any(
