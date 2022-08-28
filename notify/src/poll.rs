@@ -482,3 +482,61 @@ impl PollWatcher {
         if let (Ok(mut watches), Ok(mut data_builder)) =
             (self.watches.lock(), self.data_builder.lock())
         {
+            data_builder.update_timestamp();
+
+            let watch_data =
+                data_builder.build_watch_data(path.to_path_buf(), recursive_mode.is_recursive());
+
+            // if create watch_data successful, add it to watching list.
+            if let Some(watch_data) = watch_data {
+                watches.insert(path.to_path_buf(), watch_data);
+            }
+        }
+    }
+
+    /// Unwatch a path.
+    ///
+    /// Return `Err(_)` if given path has't be monitored.
+    fn unwatch_inner(&mut self, path: &Path) -> crate::Result<()> {
+        // FIXME: inconsistent: some place mutex poison cause panic, some place just ignore.
+        self.watches
+            .lock()
+            .unwrap()
+            .remove(path)
+            .map(|_| ())
+            .ok_or_else(crate::Error::watch_not_found)
+    }
+}
+
+impl Watcher for PollWatcher {
+    /// Create a new [PollWatcher].
+    fn new<F: EventHandler>(event_handler: F, config: Config) -> crate::Result<Self> {
+        Self::new(event_handler, config)
+    }
+
+    fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> crate::Result<()> {
+        self.watch_inner(path, recursive_mode);
+
+        Ok(())
+    }
+
+    fn unwatch(&mut self, path: &Path) -> crate::Result<()> {
+        self.unwatch_inner(path)
+    }
+
+    fn kind() -> crate::WatcherKind {
+        crate::WatcherKind::PollWatcher
+    }
+}
+
+impl Drop for PollWatcher {
+    fn drop(&mut self) {
+        self.want_to_stop.store(true, Ordering::Relaxed);
+    }
+}
+
+#[test]
+fn poll_watcher_is_send_and_sync() {
+    fn check<T: Send + Sync>() {}
+    check::<PollWatcher>();
+}
