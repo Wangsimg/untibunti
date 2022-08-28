@@ -286,3 +286,199 @@ mod data {
             loop {
                 let n = match file.read(&mut buf) {
                     Ok(0) => break,
+                    Ok(len) => len,
+                    Err(e) if e.kind() == io::ErrorKind::Interrupted => continue,
+                    Err(e) => return Err(e),
+                };
+
+                hasher.write(&buf[..n]);
+            }
+
+            Ok(hasher.finish())
+        }
+
+        /// Get [`Event`] by compare two optional [`PathData`].
+        fn compare_to_event<P>(
+            path: P,
+            old: Option<&PathData>,
+            new: Option<&PathData>,
+        ) -> Option<Event>
+        where
+            P: Into<PathBuf>,
+        {
+            match (old, new) {
+                (Some(old), Some(new)) => {
+                    if new.mtime > old.mtime {
+                        Some(EventKind::Modify(ModifyKind::Metadata(
+                            MetadataKind::WriteTime,
+                        )))
+                    } else if new.hash != old.hash {
+                        Some(EventKind::Modify(ModifyKind::Data(DataChange::Any)))
+                    } else {
+                        None
+                    }
+                }
+                (None, Some(_new)) => Some(EventKind::Create(CreateKind::Any)),
+                (Some(_old), None) => Some(EventKind::Remove(RemoveKind::Any)),
+                (None, None) => None,
+            }
+            .map(|event_kind| Event::new(event_kind).add_path(path.into()))
+        }
+    }
+
+    /// Compose path and its metadata.
+    ///
+    /// This data structure designed for make sure path and its metadata can be
+    /// transferred in consistent way, and may avoid some duplicated
+    /// `fs::metadata()` function call in some situations.
+    #[derive(Debug)]
+    pub(super) struct MetaPath {
+        path: PathBuf,
+        metadata: Metadata,
+    }
+
+    impl MetaPath {
+        /// Create `MetaPath` by given parts.
+        ///
+        /// # Invariant
+        ///
+        /// User must make sure the input `metadata` are associated with `path`.
+        fn from_parts_unchecked(path: PathBuf, metadata: Metadata) -> Self {
+            Self { path, metadata }
+        }
+
+        fn path(&self) -> &Path {
+            &self.path
+        }
+
+        fn metadata(&self) -> &Metadata {
+            &self.metadata
+        }
+
+        fn into_path(self) -> PathBuf {
+            self.path
+        }
+    }
+
+    /// Thin wrapper for outer event handler, for easy to use.
+    struct EventEmitter(
+        // Use `RefCell` to make sure `emit()` only need shared borrow of self (&self).
+        // Use `Box` to make sure EventEmitter is Sized.
+        Box<RefCell<dyn EventHandler>>,
+    );
+
+    impl EventEmitter {
+        fn new<F: EventHandler>(event_handler: F) -> Self {
+            Self(Box::new(RefCell::new(event_handler)))
+        }
+
+        /// Emit single event.
+        fn emit(&self, event: crate::Result<Event>) {
+            self.0.borrow_mut().handle_event(event);
+        }
+
+        /// Emit event.
+        fn emit_ok(&self, event: Event) {
+            self.emit(Ok(event))
+        }
+
+        /// Emit io error event.
+        fn emit_io_err<E, P>(&self, err: E, path: P)
+        where
+            E: Into<io::Error>,
+            P: Into<PathBuf>,
+        {
+            self.emit(Err(crate::Error::io(err.into()).add_path(path.into())))
+        }
+    }
+}
+
+/// Polling based `Watcher` implementation.
+/// 
+/// By default scans through all files and checks for changed entries based on their change date.
+/// Can also be changed to perform file content change checks.
+/// 
+/// See [Config] for more details.
+#[derive(Debug)]
+pub struct PollWatcher {
+    watches: Arc<Mutex<HashMap<PathBuf, WatchData>>>,
+    data_builder: Arc<Mutex<DataBuilder>>,
+    want_to_stop: Arc<AtomicBool>,
+    delay: Duration,
+}
+
+impl PollWatcher {
+    /// Create a new [PollWatcher], configured as needed.
+    pub fn new<F: EventHandler>(
+        event_handler: F,
+        config: Config,
+    ) -> crate::Result<PollWatcher> {
+        let data_builder = DataBuilder::new(event_handler, config.compare_contents());
+
+        let poll_watcher = PollWatcher {
+            watches: Default::default(),
+            data_builder: Arc::new(Mutex::new(data_builder)),
+            want_to_stop: Arc::new(AtomicBool::new(false)),
+            delay: config.poll_interval(),
+        };
+
+        poll_watcher.run();
+
+        Ok(poll_watcher)
+    }
+
+    fn run(&self) {
+        let watches = Arc::clone(&self.watches);
+        let data_builder = Arc::clone(&self.data_builder);
+        let want_to_stop = Arc::clone(&self.want_to_stop);
+        let delay = self.delay;
+
+        let _ = thread::Builder::new()
+            .name("notify-rs poll loop".to_string())
+            .spawn(move || {
+                loop {
+                    if want_to_stop.load(Ordering::SeqCst) {
+                        break;
+                    }
+
+                    // HINT: Make sure always lock in the same order to avoid deadlock.
+                    //
+                    // FIXME: inconsistent: some place mutex poison cause panic,
+                    // some place just ignore.
+                    if let (Ok(mut watches), Ok(mut data_builder)) =
+                        (watches.lock(), data_builder.lock())
+                    {
+                        data_builder.update_timestamp();
+
+                        let vals = watches.values_mut();
+                        for watch_data in vals {
+                            watch_data.rescan(&mut data_builder);
+                        }
+                    }
+
+                    // QUESTION: `actual_delay == process_time + delay`. Is it intended to?
+                    //
+                    // If not, consider fix it to:
+                    //
+                    // ```rust
+                    // let still_need_to_delay = delay.checked_sub(data_builder.now.elapsed());
+                    // if let Some(delay) = still_need_to_delay {
+                    //     thread::sleep(delay);
+                    // }
+                    // ```
+                    thread::sleep(delay);
+                }
+            });
+    }
+
+    /// Watch a path location.
+    ///
+    /// QUESTION: this function never return an Error, is it as intend?
+    /// Please also consider the IO Error event problem.
+    fn watch_inner(&mut self, path: &Path, recursive_mode: RecursiveMode) {
+        // HINT: Make sure always lock in the same order to avoid deadlock.
+        //
+        // FIXME: inconsistent: some place mutex poison cause panic, some place just ignore.
+        if let (Ok(mut watches), Ok(mut data_builder)) =
+            (self.watches.lock(), self.data_builder.lock())
+        {
