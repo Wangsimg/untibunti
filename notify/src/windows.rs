@@ -329,3 +329,186 @@ unsafe extern "system" fn handle_event(
     }
 
     // Get the next request queued up as soon as possible
+    start_read(&request.data, request.event_handler.clone(), request.handle);
+
+    // The FILE_NOTIFY_INFORMATION struct has a variable length due to the variable length
+    // string as its last member. Each struct contains an offset for getting the next entry in
+    // the buffer.
+    let mut cur_offset: *const u8 = request.buffer.as_ptr();
+    let mut cur_entry = cur_offset as *const FILE_NOTIFY_INFORMATION;
+    loop {
+        // filename length is size in bytes, so / 2
+        let len = (*cur_entry).FileNameLength as usize / 2;
+        let encoded_path: &[u16] = slice::from_raw_parts((*cur_entry).FileName.as_ptr(), len);
+        // prepend root to get a full path
+        let path = request
+            .data
+            .dir
+            .join(PathBuf::from(OsString::from_wide(encoded_path)));
+
+        // if we are watching a single file, ignore the event unless the path is exactly
+        // the watched file
+        let skip = match request.data.file {
+            None => false,
+            Some(ref watch_path) => *watch_path != path,
+        };
+
+        if !skip {
+            let newe = Event::new(EventKind::Any).add_path(path);
+
+            fn emit_event(event_handler: &Mutex<dyn EventHandler>, res: Result<Event>) {
+                if let Ok(mut guard) = event_handler.lock() {
+                    let f: &mut dyn EventHandler = &mut *guard;
+                    f.handle_event(res);
+                }
+            }
+
+            let event_handler = |res| emit_event(&request.event_handler, res);
+
+            if (*cur_entry).Action == FILE_ACTION_RENAMED_OLD_NAME {
+                let mode = RenameMode::From;
+                let kind = ModifyKind::Name(mode);
+                let kind = EventKind::Modify(kind);
+                let ev = newe.set_kind(kind);
+                event_handler(Ok(ev))
+            } else {
+                match (*cur_entry).Action {
+                    FILE_ACTION_RENAMED_NEW_NAME => {
+                        let kind = EventKind::Modify(ModifyKind::Name(RenameMode::To));
+                        let ev = newe.set_kind(kind);
+                        event_handler(Ok(ev));
+                    }
+                    FILE_ACTION_ADDED => {
+                        let kind = EventKind::Create(CreateKind::Any);
+                        let ev = newe.set_kind(kind);
+                        event_handler(Ok(ev));
+                    }
+                    FILE_ACTION_REMOVED => {
+                        let kind = EventKind::Remove(RemoveKind::Any);
+                        let ev = newe.set_kind(kind);
+                        event_handler(Ok(ev));
+                    }
+                    FILE_ACTION_MODIFIED => {
+                        let kind = EventKind::Modify(ModifyKind::Any);
+                        let ev = newe.set_kind(kind);
+                        event_handler(Ok(ev));
+                    }
+                    _ => (),
+                };
+            }
+        }
+
+        if (*cur_entry).NextEntryOffset == 0 {
+            break;
+        }
+        cur_offset = cur_offset.offset((*cur_entry).NextEntryOffset as isize);
+        cur_entry = cur_offset as *const FILE_NOTIFY_INFORMATION;
+    }
+}
+
+/// Watcher implementation based on ReadDirectoryChanges
+#[derive(Debug)]
+pub struct ReadDirectoryChangesWatcher {
+    tx: Sender<Action>,
+    cmd_rx: Receiver<Result<PathBuf>>,
+    wakeup_sem: HANDLE,
+}
+
+impl ReadDirectoryChangesWatcher {
+    pub fn create(
+        event_handler: Arc<Mutex<dyn EventHandler>>,
+        meta_tx: Sender<MetaEvent>,
+    ) -> Result<ReadDirectoryChangesWatcher> {
+        let (cmd_tx, cmd_rx) = unbounded();
+
+        let wakeup_sem = unsafe { CreateSemaphoreW(ptr::null_mut(), 0, 1, ptr::null_mut()) };
+        if wakeup_sem == 0 || wakeup_sem == INVALID_HANDLE_VALUE {
+            return Err(Error::generic("Failed to create wakeup semaphore."));
+        }
+
+        let action_tx =
+            ReadDirectoryChangesServer::start(event_handler, meta_tx, cmd_tx, wakeup_sem);
+
+        Ok(ReadDirectoryChangesWatcher {
+            tx: action_tx,
+            cmd_rx,
+            wakeup_sem,
+        })
+    }
+
+    fn wakeup_server(&mut self) {
+        // breaks the server out of its wait state.  right now this is really just an optimization,
+        // so that if you add a watch you don't block for 100ms in watch() while the
+        // server sleeps.
+        unsafe {
+            ReleaseSemaphore(self.wakeup_sem, 1, ptr::null_mut());
+        }
+    }
+
+    fn send_action_require_ack(&mut self, action: Action, pb: &PathBuf) -> Result<()> {
+        self.tx
+            .send(action)
+            .map_err(|_| Error::generic("Error sending to internal channel"))?;
+
+        // wake 'em up, we don't want to wait around for the ack
+        self.wakeup_server();
+
+        let ack_pb = self
+            .cmd_rx
+            .recv()
+            .map_err(|_| Error::generic("Error receiving from command channel"))?
+            .map_err(|e| Error::generic(&format!("Error in watcher: {:?}", e)))?;
+
+        if pb.as_path() != ack_pb.as_path() {
+            Err(Error::generic(&format!(
+                "Expected ack for {:?} but got \
+                 ack for {:?}",
+                pb, ack_pb
+            )))
+        } else {
+            Ok(())
+        }
+    }
+
+    fn watch_inner(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+        let pb = if path.is_absolute() {
+            path.to_owned()
+        } else {
+            let p = env::current_dir().map_err(Error::io)?;
+            p.join(path)
+        };
+        // path must exist and be either a file or directory
+        if !pb.is_dir() && !pb.is_file() {
+            return Err(Error::generic(
+                "Input watch path is neither a file nor a directory.",
+            ));
+        }
+        self.send_action_require_ack(Action::Watch(pb.clone(), recursive_mode), &pb)
+    }
+
+    fn unwatch_inner(&mut self, path: &Path) -> Result<()> {
+        let pb = if path.is_absolute() {
+            path.to_owned()
+        } else {
+            let p = env::current_dir().map_err(Error::io)?;
+            p.join(path)
+        };
+        let res = self
+            .tx
+            .send(Action::Unwatch(pb))
+            .map_err(|_| Error::generic("Error sending to internal channel"));
+        self.wakeup_server();
+        res
+    }
+}
+
+impl Watcher for ReadDirectoryChangesWatcher {
+    fn new<F: EventHandler>(event_handler: F, config: Config) -> Result<Self> {
+        // create dummy channel for meta event
+        // TODO: determine the original purpose of this - can we remove it?
+        let (meta_tx, _) = unbounded();
+        let event_handler = Arc::new(Mutex::new(event_handler));
+        Self::create(event_handler, meta_tx)
+    }
+
+    fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
