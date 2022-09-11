@@ -512,3 +512,34 @@ impl Watcher for ReadDirectoryChangesWatcher {
     }
 
     fn watch(&mut self, path: &Path, recursive_mode: RecursiveMode) -> Result<()> {
+        self.watch_inner(path, recursive_mode)
+    }
+
+    fn unwatch(&mut self, path: &Path) -> Result<()> {
+        self.unwatch_inner(path)
+    }
+
+    fn configure(&mut self, config: Config) -> Result<bool> {
+        let (tx, rx) = bounded(1);
+        self.tx.send(Action::Configure(config, tx))?;
+        rx.recv()?
+    }
+
+    fn kind() -> crate::WatcherKind {
+        WatcherKind::ReadDirectoryChangesWatcher
+    }
+}
+
+impl Drop for ReadDirectoryChangesWatcher {
+    fn drop(&mut self) {
+        let _ = self.tx.send(Action::Stop);
+        // better wake it up
+        self.wakeup_server();
+    }
+}
+
+// `ReadDirectoryChangesWatcher` is not Send/Sync because of the semaphore Handle.
+// As said elsewhere it's perfectly safe to send it across threads.
+unsafe impl Send for ReadDirectoryChangesWatcher {}
+// Because all public methods are `&mut self` it's also perfectly safe to share references.
+unsafe impl Sync for ReadDirectoryChangesWatcher {}
