@@ -20,4 +20,10 @@ path = "src/lib.rs"
 
 [features]
 default = ["crossbeam"]
-# can't use dep:crossbeam-channel and feature name cr
+# can't use dep:crossbeam-channel and feature name crossbeam-channel below rust 1.60
+crossbeam = ["crossbeam-channel","notify/crossbeam-channel"]
+
+[dependencies]
+notify = "5.1.0"
+crossbeam-channel = { version = "0.5", optional = true }
+serde = { version = "1.
