@@ -11,3 +11,8 @@ This may create problems used in tokio environments. See [#380](https://github.c
 Use someting like the following to disable it.
 ```toml
 notify-debouncer-mini = { version = "*", default-features = false }
+```
+This also passes through to notify as `crossbeam-channel` feature.
+- `serde` for serde support of event types, off by default
+
+[docs]: https://docs.rs/notify-debouncer-min
