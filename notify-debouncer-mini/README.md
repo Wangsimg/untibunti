@@ -15,4 +15,5 @@ notify-debouncer-mini = { version = "*", default-features = false }
 This also passes through to notify as `crossbeam-channel` feature.
 - `serde` for serde support of event types, off by default
 
-[docs]: https://docs.rs/notify-debouncer-min
+[docs]: https://docs.rs/notify-debouncer-mini
+[notify]: https://crates.io/crates/notify
