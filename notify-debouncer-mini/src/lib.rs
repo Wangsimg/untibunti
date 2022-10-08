@@ -19,4 +19,10 @@
 //! ```rust,no_run
 //! # use std::path::Path;
 //! # use std::time::Duration;
-//! use notify_debouncer_mini::{notify::*
+//! use notify_debouncer_mini::{notify::*,new_debouncer,DebounceEventResult};
+//!
+//! # fn main() {
+//!     // setup initial watcher backend config
+//!     let config = Config::default();
+//! 
+//!     // Select recomm
