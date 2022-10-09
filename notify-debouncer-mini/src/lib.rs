@@ -25,4 +25,6 @@
 //!     // setup initial watcher backend config
 //!     let config = Config::default();
 //! 
-//!     // Select recomm
+//!     // Select recommended watcher for debouncer.
+//!     // Using a callback here, could also be a channel.
+//!     let mut debouncer = new_debouncer(Duration::from_secs(2), None, |res: DebounceEventRe
