@@ -30,4 +30,10 @@
 //!     let mut debouncer = new_debouncer(Duration::from_secs(2), None, |res: DebounceEventResult| {
 //!         match res {
 //!             Ok(events) => events.iter().for_each(|e|println!("Event {:?} for {:?}",e.kind,e.path)),
-//!             Err(errors) => errors.iter().for_
+//!             Err(errors) => errors.iter().for_each(|e|println!("Error {:?}",e)),
+//!         }
+//!     }).unwrap();
+//!
+//!     // Add a path to be watched. All files and directories at that path and
+//!     // below will be monitored for changes.
+//!     
