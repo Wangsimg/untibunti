@@ -27,4 +27,7 @@
 //! 
 //!     // Select recommended watcher for debouncer.
 //!     // Using a callback here, could also be a channel.
-//!     let mut debouncer = new_debouncer(Duration::from_secs(2), None, |res: DebounceEventRe
+//!     let mut debouncer = new_debouncer(Duration::from_secs(2), None, |res: DebounceEventResult| {
+//!         match res {
+//!             Ok(events) => events.iter().for_each(|e|println!("Event {:?} for {:?}",e.kind,e.path)),
+//!             Err(errors) => errors.iter().for_
