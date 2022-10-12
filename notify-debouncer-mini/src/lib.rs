@@ -36,4 +36,10 @@
 //!
 //!     // Add a path to be watched. All files and directories at that path and
 //!     // below will be monitored for changes.
-//!     
+//!     debouncer.watcher().watch(Path::new("."), RecursiveMode::Recursive).unwrap();
+//! # }
+//! ```
+//!
+//! # Features
+//!
+//! The following crate features can be turned on or off in your cargo depe
