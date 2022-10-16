@@ -42,4 +42,7 @@
 //!
 //! # Features
 //!
-//! The following crate features can be turned on or off in your cargo depe
+//! The following crate features can be turned on or off in your cargo dependency config:
+//!
+//! - `crossbeam` enabled by default, adds [`DebounceEventHandler`](DebounceEventHandler) support for crossbeam channels.
+//!   Also enables crossbeam-channel in the re-exp
