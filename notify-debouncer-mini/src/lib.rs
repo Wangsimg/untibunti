@@ -48,4 +48,13 @@
 //!   Also enables crossbeam-channel in the re-exported notify. You may want to disable this when using the tokio async runtime.
 //! - `serde` enables serde support for events.
 #[cfg(feature = "serde")]
-use serde::{Deserializ
+use serde::{Deserialize, Serialize};
+use std::{
+    collections::HashMap,
+    path::PathBuf,
+    sync::{
+        atomic::{AtomicBool, Ordering},
+        Arc, Mutex,
+    },
+    time::{Duration, Instant},
+};
