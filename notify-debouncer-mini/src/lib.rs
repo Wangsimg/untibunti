@@ -58,3 +58,12 @@ use std::{
     },
     time::{Duration, Instant},
 };
+
+pub use notify;
+use notify::{Error, ErrorKind, Event, RecommendedWatcher, Watcher};
+
+/// The set of requirements for watcher debounce event handling functions.
+///
+/// # Example implementation
+///
+/// ```rust,no_ru
