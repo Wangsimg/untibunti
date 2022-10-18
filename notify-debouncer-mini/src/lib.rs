@@ -71,4 +71,10 @@ use notify::{Error, ErrorKind, Event, RecommendedWatcher, Watcher};
 /// # use notify_debouncer_mini::{DebounceEventHandler,DebounceEventResult};
 ///
 /// /// Prints received events
-/// struct EventPrint
+/// struct EventPrinter;
+///
+/// impl DebounceEventHandler for EventPrinter {
+///     fn handle_event(&mut self, event: DebounceEventResult) {
+///         match event {
+///             Ok(events) => {
+///            
