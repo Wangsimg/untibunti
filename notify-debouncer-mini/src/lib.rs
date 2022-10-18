@@ -66,4 +66,9 @@ use notify::{Error, ErrorKind, Event, RecommendedWatcher, Watcher};
 ///
 /// # Example implementation
 ///
-/// ```rust,no_ru
+/// ```rust,no_run
+/// # use notify::{Event, Result, EventHandler};
+/// # use notify_debouncer_mini::{DebounceEventHandler,DebounceEventResult};
+///
+/// /// Prints received events
+/// struct EventPrint
