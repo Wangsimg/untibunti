@@ -77,4 +77,8 @@ use notify::{Error, ErrorKind, Event, RecommendedWatcher, Watcher};
 ///     fn handle_event(&mut self, event: DebounceEventResult) {
 ///         match event {
 ///             Ok(events) => {
-///            
+///                 for event in events {
+///                     println!("Event {:?} for path {:?}",event.kind,event.path);
+///                 }
+///             },
+///             // errors are batched, so
