@@ -81,4 +81,8 @@ use notify::{Error, ErrorKind, Event, RecommendedWatcher, Watcher};
 ///                     println!("Event {:?} for path {:?}",event.kind,event.path);
 ///                 }
 ///             },
-///             // errors are batched, so
+///             // errors are batched, so you get either events or errors, probably both per debounce tick (two calls)
+///             Err(errors) => errors.iter().for_each(|e|println!("Got error {:?}",e)),
+///         }
+///     }
+//
