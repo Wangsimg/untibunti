@@ -85,4 +85,11 @@ use notify::{Error, ErrorKind, Event, RecommendedWatcher, Watcher};
 ///             Err(errors) => errors.iter().for_each(|e|println!("Got error {:?}",e)),
 ///         }
 ///     }
-//
+/// }
+/// ```
+pub trait DebounceEventHandler: Send + 'static {
+    /// Handles an event.
+    fn handle_event(&mut self, event: DebounceEventResult);
+}
+
+impl<F> DebounceEv
