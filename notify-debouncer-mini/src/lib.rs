@@ -92,4 +92,13 @@ pub trait DebounceEventHandler: Send + 'static {
     fn handle_event(&mut self, event: DebounceEventResult);
 }
 
-impl<F> DebounceEv
+impl<F> DebounceEventHandler for F
+where
+    F: FnMut(DebounceEventResult) + Send + 'static,
+{
+    fn handle_event(&mut self, event: DebounceEventResult) {
+        (self)(event);
+    }
+}
+
+#[cfg(feature =
