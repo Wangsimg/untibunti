@@ -107,3 +107,11 @@ impl DebounceEventHandler for crossbeam_channel::Sender<DebounceEventResult> {
         let _ = self.send(event);
     }
 }
+
+impl DebounceEventHandler for std::sync::mpsc::Sender<DebounceEventResult> {
+    fn handle_event(&mut self, event: DebounceEventResult) {
+        let _ = self.send(event);
+    }
+}
+
+//
