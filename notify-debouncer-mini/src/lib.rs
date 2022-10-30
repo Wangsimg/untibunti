@@ -123,4 +123,14 @@ struct EventData {
 }
 
 impl EventData {
-    fn new_any() ->
+    fn new_any() -> Self {
+        let time = Instant::now();
+        Self {
+            insert: time.clone(),
+            update: time,
+        }
+    }
+}
+
+/// A result of debounced events.
+/// Comes with either a vec of 
