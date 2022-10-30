@@ -133,4 +133,9 @@ impl EventData {
 }
 
 /// A result of debounced events.
-/// Comes with either a vec of 
+/// Comes with either a vec of events or vec of errors.
+pub type DebounceEventResult = Result<Vec<DebouncedEvent>, Vec<Error>>;
+
+/// A debounced event kind.
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature =
