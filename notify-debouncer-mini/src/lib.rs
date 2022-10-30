@@ -114,4 +114,13 @@ impl DebounceEventHandler for std::sync::mpsc::Sender<DebounceEventResult> {
     }
 }
 
-//
+/// Deduplicate event data entry
+struct EventData {
+    /// Insertion Time
+    insert: Instant,
+    /// Last Update
+    update: Instant,
+}
+
+impl EventData {
+    fn new_any() ->
