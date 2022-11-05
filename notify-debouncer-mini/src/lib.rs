@@ -143,4 +143,11 @@ pub type DebounceEventResult = Result<Vec<DebouncedEvent>, Vec<Error>>;
 pub enum DebouncedEventKind {
     /// No precise events
     Any,
-    /// Event but debounce timed out (for example continuous writes
+    /// Event but debounce timed out (for example continuous writes)
+    AnyContinuous,
+}
+
+/// A debounced event.
+///
+/// Does not emit any specific event type on purpose, only distinguishes between an any event and a continuous any event.
+#[derive(Cl
