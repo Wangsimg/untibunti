@@ -138,4 +138,9 @@ pub type DebounceEventResult = Result<Vec<DebouncedEvent>, Vec<Error>>;
 
 /// A debounced event kind.
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
-#[cfg_attr(feature =
+#[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
+#[non_exhaustive]
+pub enum DebouncedEventKind {
+    /// No precise events
+    Any,
+    /// Event but debounce timed out (for example continuous writes
