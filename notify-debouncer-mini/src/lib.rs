@@ -155,4 +155,14 @@ pub enum DebouncedEventKind {
 pub struct DebouncedEvent {
     /// Event path
     pub path: PathBuf,
-    /// Event 
+    /// Event kind
+    pub kind: DebouncedEventKind,
+}
+
+impl DebouncedEvent {
+    fn new(path: PathBuf, kind: DebouncedEventKind) -> Self {
+        Self { path, kind }
+    }
+}
+
+type DebounceData = Arc<Mutex<Debo
