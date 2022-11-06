@@ -165,4 +165,14 @@ impl DebouncedEvent {
     }
 }
 
-type DebounceData = Arc<Mutex<Debo
+type DebounceData = Arc<Mutex<DebounceDataInner>>;
+
+#[derive(Default)]
+struct DebounceDataInner {
+    d: HashMap<PathBuf, EventData>,
+    timeout: Duration,
+    e: Vec<crate::Error>,
+}
+
+impl DebounceDataInner {
+    
