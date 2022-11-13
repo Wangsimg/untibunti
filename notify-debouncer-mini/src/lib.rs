@@ -175,4 +175,7 @@ struct DebounceDataInner {
 }
 
 impl DebounceDataInner {
-    
+    /// Retrieve a vec of debounced events, removing them if not continuous
+    pub fn debounced_events(&mut self) -> Vec<DebouncedEvent> {
+        let mut events_expired = Vec::with_capacity(self.d.len());
+        le
