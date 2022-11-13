@@ -178,4 +178,7 @@ impl DebounceDataInner {
     /// Retrieve a vec of debounced events, removing them if not continuous
     pub fn debounced_events(&mut self) -> Vec<DebouncedEvent> {
         let mut events_expired = Vec::with_capacity(self.d.len());
-        le
+        let mut data_back = HashMap::with_capacity(self.d.len());
+        // TODO: perfect fit for drain_filter https://github.com/rust-lang/rust/issues/59618
+        for (k, v) in self.d.drain() {
+            if v.update
