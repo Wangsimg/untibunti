@@ -181,4 +181,7 @@ impl DebounceDataInner {
         let mut data_back = HashMap::with_capacity(self.d.len());
         // TODO: perfect fit for drain_filter https://github.com/rust-lang/rust/issues/59618
         for (k, v) in self.d.drain() {
-            if v.update
+            if v.update.elapsed() >= self.timeout {
+                events_expired.push(DebouncedEvent::new(k, DebouncedEventKind::Any));
+            } else if v.insert.elapsed() >= self.timeout {
+                data_back.insert(k.clone(), v)
