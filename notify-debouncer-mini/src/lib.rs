@@ -184,4 +184,10 @@ impl DebounceDataInner {
             if v.update.elapsed() >= self.timeout {
                 events_expired.push(DebouncedEvent::new(k, DebouncedEventKind::Any));
             } else if v.insert.elapsed() >= self.timeout {
-                data_back.insert(k.clone(), v)
+                data_back.insert(k.clone(), v);
+                events_expired.push(DebouncedEvent::new(k, DebouncedEventKind::AnyContinuous));
+            } else {
+                data_back.insert(k, v);
+            }
+        }
+        s
