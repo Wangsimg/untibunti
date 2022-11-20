@@ -197,4 +197,14 @@ impl DebounceDataInner {
     /// Returns all currently stored errors
     pub fn errors(&mut self) -> Vec<Error> {
         let mut v = Vec::new();
-        std::mem::swap(&mut v, &mut 
+        std::mem::swap(&mut v, &mut self.e);
+        v
+    }
+
+    /// Add an error entry to re-send later on
+    pub fn add_error(&mut self, e: crate::Error) {
+        self.e.push(e);
+    }
+
+    /// Add new event to debouncer cache
+   
