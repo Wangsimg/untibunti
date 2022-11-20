@@ -190,4 +190,11 @@ impl DebounceDataInner {
                 data_back.insert(k, v);
             }
         }
-        s
+        self.d = data_back;
+        events_expired
+    }
+
+    /// Returns all currently stored errors
+    pub fn errors(&mut self) -> Vec<Error> {
+        let mut v = Vec::new();
+        std::mem::swap(&mut v, &mut 
