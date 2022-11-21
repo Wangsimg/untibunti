@@ -207,4 +207,7 @@ impl DebounceDataInner {
     }
 
     /// Add new event to debouncer cache
-   
+    pub fn add_event(&mut self, e: Event) {
+        for path in e.paths.into_iter() {
+            if let Some(v) = self.d.get_mut(&path) {
+                v.updat
