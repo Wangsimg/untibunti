@@ -210,4 +210,13 @@ impl DebounceDataInner {
     pub fn add_event(&mut self, e: Event) {
         for path in e.paths.into_iter() {
             if let Some(v) = self.d.get_mut(&path) {
-                v.updat
+                v.update = Instant::now();
+            } else {
+                self.d.insert(path, EventData::new_any());
+            }
+        }
+    }
+}
+
+/// Debouncer guard, stops the debouncer on drop
+pub struct De
