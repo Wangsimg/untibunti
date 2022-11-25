@@ -219,4 +219,11 @@ impl DebounceDataInner {
 }
 
 /// Debouncer guard, stops the debouncer on drop
-pub struct De
+pub struct Debouncer<T: Watcher> {
+    stop: Arc<AtomicBool>,
+    watcher: T,
+    debouncer_thread: Option<std::thread::JoinHandle<()>>,
+}
+
+impl<T: Watcher> Debouncer<T> {
+    /// Stop the debouncer, waits for the event thre
