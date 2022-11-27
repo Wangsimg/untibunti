@@ -226,4 +226,10 @@ pub struct Debouncer<T: Watcher> {
 }
 
 impl<T: Watcher> Debouncer<T> {
-    /// Stop the debouncer, waits for the event thre
+    /// Stop the debouncer, waits for the event thread to finish.
+    /// May block for the duration of one tick_rate.
+    pub fn stop(mut self) {
+        self.set_stop();
+        if let Some(t) = self.debouncer_thread.take() {
+            let _ = t.join();
+ 
