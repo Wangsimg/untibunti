@@ -232,4 +232,13 @@ impl<T: Watcher> Debouncer<T> {
         self.set_stop();
         if let Some(t) = self.debouncer_thread.take() {
             let _ = t.join();
- 
+        }
+    }
+
+    /// Stop the debouncer, does not wait for the event thread to finish.
+    pub fn stop_nonblocking(self) {
+        self.set_stop();
+    }
+
+    fn set_stop(&self) {
+        self.stop.sto
