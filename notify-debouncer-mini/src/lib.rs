@@ -241,4 +241,13 @@ impl<T: Watcher> Debouncer<T> {
     }
 
     fn set_stop(&self) {
-        self.stop.sto
+        self.stop.store(true, Ordering::Relaxed);
+    }
+
+    /// Access to the internally used notify Watcher backend
+    pub fn watcher(&mut self) -> &mut dyn Watcher {
+        &mut self.watcher
+    }
+}
+
+impl<T: W
