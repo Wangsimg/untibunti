@@ -250,4 +250,11 @@ impl<T: Watcher> Debouncer<T> {
     }
 }
 
-impl<T: W
+impl<T: Watcher> Drop for Debouncer<T> {
+    fn drop(&mut self) {
+        // don't imitate c++ async futures and block on drop
+        self.set_stop();
+    }
+}
+
+/// Creates a new debounced watcher with custo
