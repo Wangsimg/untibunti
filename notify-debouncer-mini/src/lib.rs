@@ -257,4 +257,6 @@ impl<T: Watcher> Drop for Debouncer<T> {
     }
 }
 
-/// Creates a new debounced watcher with custo
+/// Creates a new debounced watcher with custom configuration.
+///
+/// Timeout is the amount of time after which a debounced event is emitted or a continuous event is send, if there still are events incoming for the specific 
