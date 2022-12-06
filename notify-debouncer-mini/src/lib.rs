@@ -263,4 +263,11 @@ impl<T: Watcher> Drop for Debouncer<T> {
 ///
 /// If tick_rate is None, notify will select a tick rate that is less than the provided timeout.
 pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
-  
+    timeout: Duration,
+    tick_rate: Option<Duration>,
+    mut event_handler: F,
+    config: notify::Config
+) -> Result<Debouncer<T>, Error> {
+    let data = DebounceData::default();
+
+    let st
