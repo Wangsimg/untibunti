@@ -270,4 +270,10 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
 ) -> Result<Debouncer<T>, Error> {
     let data = DebounceData::default();
 
-    let st
+    let stop = Arc::new(AtomicBool::new(false));
+
+    let tick_div = 4;
+    let tick = match tick_rate {
+        Some(v) => {
+            if v > timeout {
+                return Err(Error::new(ErrorKind::Generic(format!(
