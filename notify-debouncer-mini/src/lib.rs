@@ -277,3 +277,10 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
         Some(v) => {
             if v > timeout {
                 return Err(Error::new(ErrorKind::Generic(format!(
+                    "Invalid tick_rate, tick rate {:?} > {:?} timeout!",
+                    v, timeout
+                ))));
+            }
+            v
+        }
+        None
