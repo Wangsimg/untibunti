@@ -298,4 +298,9 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
 
     let data_c = data.clone();
     let stop_c = stop.clone();
-    
+    let thread = std::thread::Builder::new()
+        .name("notify-rs debouncer loop".to_string())
+        .spawn(move || loop {
+            if stop_c.load(Ordering::Acquire) {
+                break;
+      
