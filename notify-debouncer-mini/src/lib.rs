@@ -283,4 +283,7 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
             }
             v
         }
-        None
+        None => timeout.checked_div(tick_div).ok_or_else(|| {
+            Error::new(ErrorKind::Generic(format!(
+                "Failed to calculate tick as {:?}/{}!",
+                timeout, tick_div
