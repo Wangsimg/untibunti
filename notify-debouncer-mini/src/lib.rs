@@ -303,4 +303,9 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
         .spawn(move || loop {
             if stop_c.load(Ordering::Acquire) {
                 break;
-      
+            }
+            std::thread::sleep(tick);
+            let send_data;
+            let errors: Vec<crate::Error>;
+            {
+                let mut lock = data_c.lock().expect(
