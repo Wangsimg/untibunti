@@ -287,3 +287,15 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
             Error::new(ErrorKind::Generic(format!(
                 "Failed to calculate tick as {:?}/{}!",
                 timeout, tick_div
+            )))
+        })?,
+    };
+
+    {
+        let mut data_w = data.lock().unwrap();
+        data_w.timeout = timeout;
+    }
+
+    let data_c = data.clone();
+    let stop_c = stop.clone();
+    
