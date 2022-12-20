@@ -308,4 +308,9 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
             let send_data;
             let errors: Vec<crate::Error>;
             {
-                let mut lock = data_c.lock().expect(
+                let mut lock = data_c.lock().expect("Can't lock debouncer data!");
+                send_data = lock.debounced_events();
+                errors = lock.errors();
+            }
+            if send_data.len() > 0 {
+                even
