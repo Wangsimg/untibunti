@@ -313,4 +313,9 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
                 errors = lock.errors();
             }
             if send_data.len() > 0 {
-                even
+                event_handler.handle_event(Ok(send_data));
+            }
+            if errors.len() > 0 {
+                event_handler.handle_event(Err(errors));
+            }
+       
