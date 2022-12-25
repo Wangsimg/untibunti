@@ -324,4 +324,10 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
         let mut lock = data.lock().expect("Can't lock debouncer data!");
 
         match e {
-       
+            Ok(e) => lock.add_event(e),
+            // can't have multiple TX, so we need to pipe that through our debouncer
+            Err(e) => lock.add_error(e),
+        }
+    }, config)?;
+
+    let guard
