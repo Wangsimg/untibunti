@@ -318,4 +318,10 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
             if errors.len() > 0 {
                 event_handler.handle_event(Err(errors));
             }
+        })?;
+
+    let watcher = T::new(move |e: Result<Event, Error>| {
+        let mut lock = data.lock().expect("Can't lock debouncer data!");
+
+        match e {
        
