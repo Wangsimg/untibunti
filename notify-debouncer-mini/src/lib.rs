@@ -330,4 +330,13 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
         }
     }, config)?;
 
-    let guard
+    let guard = Debouncer {
+        watcher,
+        debouncer_thread: Some(thread),
+        stop,
+    };
+
+    Ok(guard)
+}
+
+/// Short function to create a new debounced watcher with the recommended 
