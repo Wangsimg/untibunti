@@ -339,4 +339,8 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
     Ok(guard)
 }
 
-/// Short function to create a new debounced watcher with the recommended 
+/// Short function to create a new debounced watcher with the recommended debouncer.
+///
+/// Timeout is the amount of time after which a debounced event is emitted or a continuous event is send, if there still are events incoming for the specific path.
+///
+/// 
