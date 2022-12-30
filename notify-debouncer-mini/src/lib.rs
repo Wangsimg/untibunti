@@ -343,4 +343,8 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
 ///
 /// Timeout is the amount of time after which a debounced event is emitted or a continuous event is send, if there still are events incoming for the specific path.
 ///
-/// 
+/// If tick_rate is None, notify will select a tick rate that is less than the provided timeout.
+pub fn new_debouncer<F: DebounceEventHandler>(
+    timeout: Duration,
+    tick_rate: Option<Duration>,
+ 
