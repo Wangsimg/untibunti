@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+options="$*"
+attempt=1
+lastexit=0
+
+rm tests/last-fai
