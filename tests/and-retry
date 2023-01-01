@@ -4,4 +4,12 @@ options="$*"
 attempt=1
 lastexit=0
 
-rm tests/last-fai
+rm tests/last-fails || true
+
+while [[ $attempt < 5 ]]; do
+    echo
+    echo "~~> Test attempt $attempt"
+
+    if [[ -f tests/last-fails ]]; then
+        echo "~~? Testing only: $(cat tests/last-fails | xargs)"
+   
