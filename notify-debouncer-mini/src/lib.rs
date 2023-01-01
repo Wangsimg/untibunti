@@ -347,4 +347,7 @@ pub fn new_debouncer_opt<F: DebounceEventHandler, T: Watcher>(
 pub fn new_debouncer<F: DebounceEventHandler>(
     timeout: Duration,
     tick_rate: Option<Duration>,
- 
+    event_handler: F
+) -> Result<Debouncer<RecommendedWatcher>, Error> {
+    new_debouncer_opt::<F, RecommendedWatcher>(timeout, tick_rate, event_handler, notify::Config::default())
+}
