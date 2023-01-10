@@ -19,4 +19,11 @@ while [[ $attempt < 5 ]]; do
 
         while read t; do
             cargo test --color=always $options $t -- --exact | tee -a tests/last-run.log
-            status=$
+            status=${PIPESTATUS[0]}
+            if ! [[ $status = 0 ]]; then
+                lastexit=$status
+            fi
+        done < tests/last-fails
+    else
+        echo
+        cargo test --color=always $options | tee tests/l
