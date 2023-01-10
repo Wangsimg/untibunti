@@ -26,4 +26,13 @@ while [[ $attempt < 5 ]]; do
         done < tests/last-fails
     else
         echo
-        cargo test --color=always $options | tee tests/l
+        cargo test --color=always $options | tee tests/last-run.log
+        lastexit=${PIPESTATUS[0]}
+    fi
+
+    if [[ $lastexit = 0 ]]; then
+        break
+    fi
+
+    grep -E "^test \w+ \.\.\. FAILED$" tests/last-run.log \
+        | cut -d
