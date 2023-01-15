@@ -47,4 +47,11 @@ while [[ $attempt < 5 ]]; do
     echo "~~! $n failures this attempt"
     echo
 
-    if [[ $n 
+    if [[ $n = "compile" ]]; then
+        break
+    fi
+
+    ((attempt+=1))
+done
+
+exit $lastexit
