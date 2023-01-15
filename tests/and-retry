@@ -35,4 +35,16 @@ while [[ $attempt < 5 ]]; do
     fi
 
     grep -E "^test \w+ \.\.\. FAILED$" tests/last-run.log \
-        | cut -d
+        | cut -d\  -f2 > tests/last-fails
+
+    n=$(cat tests/last-fails | wc -l)
+
+    if [[ $n = 0 ]]; then
+        n=compile
+    fi
+
+    echo
+    echo "~~! $n failures this attempt"
+    echo
+
+    if [[ $n 
