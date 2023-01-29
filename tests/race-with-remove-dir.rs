@@ -11,4 +11,7 @@ fn test_race_with_remove_dir() {
     {
         let tmpdir = tmpdir.path().to_path_buf();
         let _ = thread::Builder::new()
-            .name("noti
+            .name("notify-rs test-race-with-remove-dir".to_string())
+            .spawn(move || {
+                let mut watcher = notify::recommended_watcher(move |result| {
+                    eprint
