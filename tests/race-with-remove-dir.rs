@@ -22,3 +22,8 @@ fn test_race_with_remove_dir() {
             });
     }
 
+    let subdir = tmpdir.path().join("146d921d.tmp");
+    fs::create_dir_all(&subdir).unwrap();
+    fs::remove_dir_all(&tmpdir).unwrap();
+    thread::sleep(Duration::from_secs(1));
+}
