@@ -192,3 +192,208 @@ fn access_events_are_serializable() {
             "access": { "kind": "other" }
         })
     );
+}
+
+#[cfg(feature = "serde")]
+#[test]
+fn create_events_are_serializable() {
+    assert_eq!(
+        json!(EventKind::Create(CreateKind::Any)),
+        json!({
+            "create": { "kind": "any" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Create(CreateKind::File)),
+        json!({
+            "create": { "kind": "file" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Create(CreateKind::Folder)),
+        json!({
+            "create": { "kind": "folder" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Create(CreateKind::Other)),
+        json!({
+            "create": { "kind": "other" }
+        })
+    );
+}
+
+#[cfg(feature = "serde")]
+#[test]
+fn modify_events_are_serializable() {
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Any)),
+        json!({
+            "modify": { "kind": "any" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Data(DataChange::Any))),
+        json!({
+            "modify": { "kind": "data", "mode": "any" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Data(DataChange::Size))),
+        json!({
+            "modify": { "kind": "data", "mode": "size" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Data(DataChange::Content))),
+        json!({
+            "modify": { "kind": "data", "mode": "content" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Data(DataChange::Other))),
+        json!({
+            "modify": { "kind": "data", "mode": "other" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(MetadataKind::Any))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "any" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(
+            MetadataKind::AccessTime
+        ))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "access-time" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(
+            MetadataKind::WriteTime
+        ))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "write-time" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(
+            MetadataKind::Permissions
+        ))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "permissions" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(
+            MetadataKind::Ownership
+        ))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "ownership" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(
+            MetadataKind::Extended
+        ))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "extended" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Metadata(MetadataKind::Other))),
+        json!({
+            "modify": { "kind": "metadata", "mode": "other" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Name(RenameMode::Any))),
+        json!({
+            "modify": { "kind": "rename", "mode": "any" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Name(RenameMode::To))),
+        json!({
+            "modify": { "kind": "rename", "mode": "to" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Name(RenameMode::From))),
+        json!({
+            "modify": { "kind": "rename", "mode": "from" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Name(RenameMode::Both))),
+        json!({
+            "modify": { "kind": "rename", "mode": "both" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Name(RenameMode::Other))),
+        json!({
+            "modify": { "kind": "rename", "mode": "other" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Modify(ModifyKind::Other)),
+        json!({
+            "modify": { "kind": "other" }
+        })
+    );
+}
+
+#[cfg(feature = "serde")]
+#[test]
+fn remove_events_are_serializable() {
+    assert_eq!(
+        json!(EventKind::Remove(RemoveKind::Any)),
+        json!({
+            "remove": { "kind": "any" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Remove(RemoveKind::File)),
+        json!({
+            "remove": { "kind": "file" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Remove(RemoveKind::Folder)),
+        json!({
+            "remove": { "kind": "folder" }
+        })
+    );
+
+    assert_eq!(
+        json!(EventKind::Remove(RemoveKind::Other)),
+        json!({
+            "remove": { "kind": "other" }
+        })
+    );
+}
